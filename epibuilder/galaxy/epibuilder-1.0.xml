@@ -1,0 +1,578 @@
+<tool id="epibuilder_0.2" name="EpiBuilder" version="1.0">
+  <description>Predict B cell epitopes</description>
+    <requirements>
+		<requirement type="package" version=">=1.8">Java</requirement>
+		<requirement type="package" version=">=2.11.0+">Blastp</requirement>
+		<requirement type="package" version=">=2.11.0+">Makeblastdb</requirement>
+    </requirements>
+	<stdio>
+		<regex match="command not found"
+           source="both"
+           level="log"
+           description="WARNING: some methods could not be applied -> check inputs and outputs files" />
+		<regex match="makeblastdb "
+           source="both"
+           level="log"
+           description="makeblastdb and blastp must be in $PATH on your Galaxy server" />  
+		<regex match="blastp "
+           source="both"
+           level="log"
+           description="makeblastdb and blastp must be in $PATH on your Galaxy server" />  
+	</stdio>
+    <command><![CDATA[
+	#*<!-- 
+		Methods used will be saved in $param with each threshold 
+		Threshold is separated from method by ":"
+		Each method is separated by ";"
+		example: emini:0.8;parker:d;
+
+		>> d means defalt threshold
+	-->*#
+
+	#*<!-- Set variables that concatenate methods -->*#
+	#set param = ''
+	#set nomethod = ''
+	#set proteomes = ''
+
+	#*<!-- Add Bepipred2.0 method -->*#
+	#if $bepi_type.bepipred_origin == 'y':
+		#set bepipred_origin = '-o'
+	#*<!-- jobid -->*#
+	#elif $bepi_type.bepipred_origin == 'id':
+		#set bepipred_origin = '-jobid ' + str($bepi_type.job_id)
+	#else:
+		#set bepipred_origin = ''
+	#end if
+	
+	#*<!-- Add Emini method -->*#
+	#if $emini_method.emini_choice == 'eminiyes':
+		#if $emini_method.emini_t.t_emini == 't_emini_choice'
+			#set param += 'emini:' + str($emini_method.emini_t.thresh_em_value) + ';'
+		#else:
+			#set param += 'emini:d;'		
+		#end if
+	#end if
+
+	#*<!-- Add Parker method -->*#
+	#if $parker_method.parker_choice == 'parkeryes':
+		#if $parker_method.parker_t.t_parker == 't_parker_choice'
+			#set param += 'parker:' + str($parker_method.parker_t.thresh_park_value) + ';'
+		#else:
+			#set param += 'parker:d;'		
+		#end if
+    #end if
+
+	#*<!-- Add Chou method -->*#
+	#if $chou_method.chou_choice == 'chouyes':
+		#if $chou_method.chou_t.t_chou == 't_chou_choice'
+			#set param += 'chou_fosman:' + str($chou_method.chou_t.thresh_chou_value) + ';'
+		#else:
+			#set param += 'chou_fosman:d;'		
+		#end if
+    #end if
+
+	#*<!-- Add Karplus method -->*#
+	#if $karplus_method.karplus_choice == 'karplusyes':
+		#if $karplus_method.karplus_t.t_karplus == 't_karplus_choice'
+			#set param += 'karplus_schulz:' + str($karplus_method.karplus_t.thresh_karplus_value) + ';'
+		#else:
+			#set param += 'karplus_schulz:d;'		
+		#end if
+    #end if
+
+	#*<!-- Add Kolaskar method -->*#
+	#if $kolaskar_method.kolaskar_choice == 'kolaskaryes':
+		#if $kolaskar_method.kolaskar_t.t_kolaskar == 't_kolaskar_choice'
+			#set param += 'kolaskar:' + str($kolaskar_method.kolaskar_t.thresh_kolaskar_value) + ';'
+		#else:
+			#set param += 'kolaskar:d;'		
+		#end if
+    #end if
+
+
+
+	#*<!-- Clean $proteome if there's no protome -->*#
+	#if proteomes == '-proteomes ':
+		#set proteomes = ''	
+	#end if
+
+
+	#*<!-- Parse blast command -->*#
+	
+	#if $use_blast.blast_use_bool == "use":
+		#*<!-- Add proteomes, as many as given -->*#
+		#if $use_blast.prot_input: 
+			#for $file in $use_blast.prot_input:
+				#set proteomes += str($file.prot_name) + '=' + str($file.prot_file) + ';'
+			#end for
+		#end if
+		#if $use_blast.prot_input:
+			#if $use_blast.blast.blast_search == 'blastyes':
+				#set blast_command = 'task=' + str($use_blast.blast.blast_task) 		
+				#set blast_command += ';identity=' + str($use_blast.blast.blast_id) + ';cover=' + str($use_blast.blast.blast_cover) + ';word-size=' + str($use_blast.blast.blast_wordsize)
+				#set blast_command += ';makeblastdb_path=makeblastdb;blastp_path=blastp'
+			#end if
+		#end if
+	#end if
+
+	#*<!-- Paste Command-line and run -->*#
+
+	java -jar $__tool_directory__/EpiBuilder-1.0.jar
+	
+	#*<!-- bepipred_origin give -o if online, nothing if command and -jobid if jobID -->*#
+	#*<!-- if origin is not jobid, there is a file, and -b must be passed  -->*#
+	#if $bepi_type.bepipred_origin != 'id':
+		-b ${bepi_type.bepi_out}
+	#end if 
+	-t ${tresh_bepi2} 
+	${bepipred_origin}
+	#if $param:
+		-p "${param}"
+	#end if
+	-f "${basename}"
+	-min_len ${min_length} 
+	-max_len ${max_length}
+	#if $proteomes:
+		-proteomes
+		"${proteomes}"
+		#if $use_blast.blast.blast_search == 'blastyes':
+			-blast "${blast_command}"
+		#end if
+	#end if
+	#*<!-- DONT REMOVE THIS ; -->*#
+	>log.log 2>log.log; 
+
+	mv $basename-EpiBuilder.xlsx EpiBuilder_report.xlsx;
+
+	#*<!-- Rename output files -->*#
+	mv ${basename}-EpiBuilder.txt EpiBuilder;
+
+
+	]]>
+	</command>
+    <inputs> 
+		<!-- Bepipred 2.0 -->
+		<conditional name="bepi_type">
+			<param name="bepipred_origin" type="select" display="radio" label="Input files" help="Online prediction returns a csv file, command-line based returns a tsv file" >
+				<option value="y" selected="true">csv file from Bepipred 2.0</option>
+				<option value="n" >text file from IEDB Bcell Software standalone</option>
+				<option value="id">JobID from Bepipred 2.0 Server</option>
+			</param>
+			<when value="y" >
+				<param name="bepi_out" multiple="false" format="data" type="data" label="File" help="Epitopes predicted by Bepipred 2.0" />
+			</when>
+			<when value="n" >
+				<param name="bepi_out" multiple="false" format="data" type="data" label="File" help="Epitopes predicted by Bepipred 2.0" />
+			</when>
+			<when value="id" >
+				<param name="job_id" type="text" value="" label="JobID" help="Prediction must be complete - check it in: http://www.cbs.dtu.dk/cgi-bin/webface2.fcgi?jobid=YOUR_JOB_ID" >
+					<!-- Check if its an empty value-->
+					<validator type="empty_field" message="ID required"/>
+				</param>
+			</when>
+		</conditional>
+		<param name="tresh_bepi2" min="0.0" value="0.6" type="float" label="Threshold for Bepipred 2.0" help="Default = 0.6" />
+		<!-- Epitope Length -->					
+		<param name="min_length" value="10" min="1" type="integer" label="Min epitope length" help="[1-X] Minimal length must be smaller than maximal length" />
+		<param name="max_length" value="30" min="2" type="integer" label="Max epitope length" help="[2-X] Maximal length must be greather than minimal length" />	
+		<!-- EMINI -->
+		<conditional name="emini_method">
+			<param name="emini_choice" type="boolean" checked="true" truevalue="eminiyes" falsevalue="eminino" label="Use Emini Surface Accessibility Prediction method?" />
+			<when value="eminino">
+			</when>
+			<when value="eminiyes">
+			<conditional name="emini_t">
+					<param name="t_emini" display="radio" type="select" label="Threshold" help="Define threshold for Emini" >
+						<option value="d_emini_choice" selected="true">Default (calculated by method)</option>
+						<option value="t_emini_choice">Set Threshold</option>
+					</param>
+					<when value="t_emini_choice">
+						<param name="thresh_em_value" value="0" type="float" label="Value" />
+					</when>
+					<when value="d_emini_choice">
+					</when>
+				</conditional>
+			</when>
+		</conditional>
+		<!-- PARKER -->
+		<conditional name="parker_method">
+			<param name="parker_choice" type="boolean" checked="true" truevalue="parkeryes" falsevalue="parkerno" label="Use Parker Hydrophilicity Prediction method?" />
+			<when value="parkerno">
+			</when>
+			<when value="parkeryes">
+			<conditional name="parker_t">
+					<param name="t_parker" display="radio" type="select" label="Threshold" help="Define threshold for Parker" >
+						<option value="d_parker_choice" selected="true">Default (calculated by method)</option>
+						<option value="t_parker_choice">Set Threshold</option>
+					</param>
+					<when value="t_parker_choice">
+						<param name="thresh_park_value" value="0" type="float" label="Value" />
+					</when>
+					<when value="d_parker_choice">
+					</when>
+				</conditional>
+			</when>
+		</conditional>
+		<!-- Chou -->
+		<conditional name="chou_method">
+			<param name="chou_choice" type="boolean" checked="true" truevalue="chouyes" falsevalue="chouno" label="Use Chou &amp; Fasman Beta-Turn Prediction method?" />
+			<when value="chouno">
+			</when>
+			<when value="chouyes">
+			<conditional name="chou_t">
+					<param name="t_chou" display="radio" type="select" label="Threshold" help="Define threshold for Chou &amp; Fasman" >
+						<option value="d_chou_choice" selected="true">Default (calculated by method)</option>
+						<option value="t_chou_choice">Set Threshold</option>
+					</param>
+					<when value="t_chou_choice">
+						<param name="thresh_chou_value" value="0" type="float" label="Value" />
+					</when>
+					<when value="d_chou_choice">
+					</when>
+				</conditional>
+			</when>
+		</conditional>
+		<!-- Karplus -->
+		<conditional name="karplus_method">
+			<param name="karplus_choice" type="boolean" checked="true" truevalue="karplusyes" falsevalue="karplusno" label="Use Karplus &amp; Schulz Flexibility Prediction method?" />
+			<when value="karplusno">
+			</when>
+			<when value="karplusyes">
+			<conditional name="karplus_t">
+					<param name="t_karplus" display="radio" type="select" label="Threshold" help="Define threshold for Karplus &amp; Schulz" >
+						<option value="d_karplus_choice" selected="true">Default (calculated by method)</option>
+						<option value="t_karplus_choice">Set Threshold</option>
+					</param>
+					<when value="t_karplus_choice">
+						<param name="thresh_karplus_value" type="float" value="0" label="Value" />
+					</when>
+					<when value="d_karplus_choice">
+					</when>
+				</conditional>
+			</when>
+		</conditional>
+		<!-- Kolaskar -->
+		<conditional name="kolaskar_method">
+			<param name="kolaskar_choice" type="boolean" checked="true" truevalue="kolaskaryes" falsevalue="kolaskarno" label="Use Kolaskar &amp; Tongaonkar Antigenicity method?" />
+			<when value="kolaskarno">
+			</when>
+			<when value="kolaskaryes">
+			<conditional name="kolaskar_t">
+					<param name="t_kolaskar" display="radio" type="select" label="Threshold" help="Define threshold for Kolaskar &amp; Tongaonkar" >
+						<option value="d_kolaskar_choice" selected="true">Default (calculated by method)</option>
+						<option value="t_kolaskar_choice">Set Threshold</option>
+					</param>
+					<when value="t_kolaskar_choice">
+						<param name="thresh_kolaskar_value" type="float" value="0" label="Value" />
+					</when>
+					<when value="d_kolaskar_choice">
+					</when>
+				</conditional>
+			</when>
+		</conditional>
+		<!-- Insert Proteome -->
+		<conditional name="use_blast">
+			<param name="blast_use_bool" type="boolean" checked="false" truevalue="use" falsevalue="dont" label="Do you want to search the predicted epitopes in a proteome file?" />
+			<when value="dont">
+			</when>
+			<when value="use">
+				<repeat name="prot_input" title="Proteome" min="1">
+					<param type="data" name="prot_file" format="fasta" label="Proteome file" help="Protein sequences in fasta format" />
+					<param type="text" name="prot_name" label="Proteome name" help="Give a name to this dataset" >
+						<!-- Change spaces for '_' -->
+						<sanitizer>
+							<valid initial="string.printable">
+								<remove value=" "/>
+							</valid>
+							<mapping initial="none">
+								<add source=" " target="_"/>
+							</mapping>
+						</sanitizer>
+						<!-- Check if its an empty value-->
+						<validator type="empty_field" message="Basename required"/>
+					</param>
+				</repeat>
+				<conditional name="blast">
+					<param name="blast_search" type="boolean" checked="false" truevalue="blastyes" falsevalue="blastno" label="Blastp" help="Choose this option if you want to add a blast search for epitopes in proteomes" />
+					<when value="blastno">
+					</when>
+					<when value="blastyes">
+						<param name="blast_id" value="90" min="1" type="integer" label="Identity" help="[0-100] Minimal identity accepted to parse blast results" />
+						<param name="blast_cover" value="90" min="2" type="integer" label="Coverage" help="[0-100] Minimal coverage accepted to parse blast results" />			
+						<param name="blast_wordsize" value="4" min="1" type="integer" label="Word-Size" help="Blast argument word-size" />
+						<param name="blast_task" type="select" label="Task" help="How blastp should run">
+							<option value="blastp-short" selected="True">Blastp-short</option>
+							<option value="blastp-fast">Blastp-fast</option>
+							<option value="blastp">Blastp</option>
+						</param>	
+					</when>
+				</conditional>
+			</when>
+		</conditional>
+		<param name="basename" type="text" value="" label="Basename" help="Provide a name for this run (string text without special characters)" >
+		<!-- Change spaces for '_' -->
+			<sanitizer>
+				<valid initial="string.printable">
+					<remove value=" "/>
+				</valid>
+				<mapping initial="none">
+          			<add source=" " target="_"/>
+        		</mapping>
+			</sanitizer>
+		<!-- Check if its an empty value-->
+			<validator type="empty_field" message="Basename required"/>
+		</param>
+	</inputs>
+    <outputs>
+	<data name="epif_out" format="txt" from_work_dir="EpiBuilder" label="EpiBuilder Output Summary - ${basename}" />
+	<data name="ep_xls" format="xlsx" from_work_dir="EpiBuilder_report.xlsx" label="EpiBuilder Report - ${basename}" />
+	<collection type="list" label="EpiBuilder Files - ${basename}" name="epif_collection" >
+		<discover_datasets format="fasta" pattern="(?P&lt;designation&gt;.*)\.fasta" visible="false" />
+		<discover_datasets format="txt" pattern="(?P&lt;designation&gt;.*)\.tsv" visible="false"  />
+		<discover_datasets format="txt" pattern="(?P&lt;designation&gt;.*)\.txt" visible="false" />
+	</collection>
+	<collection type="list" label="EpiBuilder Blast Run - ${basename}" name="blast_collection" >
+		<filter>use_blast['blast_use_bool'] is True and use_blast['blast']['blast_search'] is True</filter>
+        <discover_datasets pattern="(?P&lt;designation&gt;.*)blast\.csv" visible="false" />
+    </collection>
+	</outputs>
+		<tests>
+		<test>
+			<!-- Test all methods threshold selected, command line version of input with proteome-->
+			<conditional name="bepi_type">
+				<param name="bepipred_origin" value="y"/>
+				<param name="bepi_out" value="input_bepi_online.csv"/>
+			</conditional>
+			<param name="tresh_bepi2" value="0.6"/>	
+
+		    <param name="min_length" value="10" />
+			<param name="max_length" value="30" />	
+			
+			<conditional name="emini_method">
+				<param name="emini_choice"  value="eminiyes"/>
+				<conditional name="emini_t">
+					<param name="t_emini" value="t_emini_choice"/>
+					<param name="thresh_em_value" value="0.8" />
+				</conditional>
+			</conditional>
+
+			<conditional name="parker_method">
+				<param name="parker_choice"  value="parkeryes"/>
+				<conditional name="parker_t">
+					<param name="t_parker" value="t_parker_choice"/>
+					<param name="thresh_park_value" value="0.8" />
+				</conditional>
+			</conditional>
+
+			<conditional name="chou_method">
+				<param name="chou_choice"  value="chouyes"/>
+				<conditional name="chou_t">
+					<param name="t_chou" value="t_chou_choice"/>
+					<param name="thresh_chou_value" value="0.8" />
+				</conditional>
+			</conditional>
+
+			<conditional name="karplus_method">
+				<param name="karplus_choice"  value="karplusyes"/>
+				<conditional name="karplus_t">
+					<param name="t_karplus" value="t_karplus_choice"/>
+					<param name="thresh_karplus_value" value="0.8" />
+				</conditional>
+			</conditional>
+
+
+			<conditional name="kolaskar_method">
+				<param name="kolaskar_choice"  value="kolaskaryes"/>
+				<conditional name="kolaskar_t">
+					<param name="t_kolaskar" value="t_kolaskar_choice"/>
+					<param name="thresh_kolaskar_value" value="0.8" />
+				</conditional>
+			</conditional>
+			<!-- This first part test all methods-->
+
+			<conditional name="use_blast" >
+			<param name="blast_use_bool" value="use" />
+				<repeat name="prot_input">
+					<param name="prot_name" value="test_proteom" />
+					<param name="prot_file" value="proteom.fasta" />
+				</repeat>
+				<conditional name="blast">
+					<param name="blast_search" value="blastyes" />
+					<param name="blast_id" value="90" />
+					<param name="blast_cover" value="90" />
+					<param name="blast_wordsize" value="4" />
+					<param name="blast_task" value="blastp-short" />
+				</conditional>
+			</conditional>
+
+			<param name="basename" value="online" />
+
+			<output name="epif_out" file="online-EpiBuilder.txt" />
+			<output name="ep_xls" file="online-EpiBuilder.xlsx" />
+			<output_collection name= "epif_collection">
+				<element name="ep_prot_sum" file="online-EpiBuilder-protein-summary.tsv" />
+				<element name="ep_top" file="online-EpiBuilder-topology.tsv" />
+				<element name="ep_score" file="online-EpiBuilder-socre.tsv" />
+				<element name="ep_detail" file="online-EpiBuilder-epitope-detail.tsv" />
+				<element name="ep_parameters" file="online-EpiBuilder-parameters.tsv" />
+				<element name="ep_fasta" file="online-EpiBuilder-fasta.fasta" />
+			</output_collection>
+			<output_collection  name="blast_collection" >
+				<element name="test_proteom" file="online-test_proteom_blast.csv" ftype="csv" />
+			</output_collection >
+		</test>
+		
+		<test>
+			<!-- Test all methods threshold selected, online version of input with proteome-->
+			<conditional name="bepi_type">
+				<param name="bepipred_origin" value="y"/>
+				<param name="bepi_out" value="input_bcell_command_line.txt"/>
+			</conditional>
+			
+			<param name="bepipred_origin" value="n"/>
+			<param name="tresh_bepi2" value="0.6"/>	
+
+		    <param name="min_length" value="10" />
+			<param name="max_length" value="30" />	
+			
+			<conditional name="emini_method">
+				<param name="emini_choice"  value="eminiyes"/>
+				<conditional name="emini_t">
+					<param name="t_emini" value="t_emini_choice"/>
+					<param name="thresh_em_value" value="0.8" />
+				</conditional>
+			</conditional>
+
+			<conditional name="parker_method">
+				<param name="parker_choice"  value="parkeryes"/>
+				<conditional name="parker_t">
+					<param name="t_parker" value="t_parker_choice"/>
+					<param name="thresh_park_value" value="0.8" />
+				</conditional>
+			</conditional>
+
+			<conditional name="chou_method">
+				<param name="chou_choice"  value="chouyes"/>
+				<conditional name="chou_t">
+					<param name="t_chou" value="t_chou_choice"/>
+					<param name="thresh_chou_value" value="0.8" />
+				</conditional>
+			</conditional>
+
+			<conditional name="karplus_method">
+				<param name="karplus_choice"  value="karplusyes"/>
+				<conditional name="karplus_t">
+					<param name="t_karplus" value="t_karplus_choice"/>
+					<param name="thresh_karplus_value" value="0.8" />
+				</conditional>
+			</conditional>
+
+
+			<conditional name="kolaskar_method">
+				<param name="kolaskar_choice"  value="kolaskaryes"/>
+				<conditional name="kolaskar_t">
+					<param name="t_kolaskar" value="t_kolaskar_choice"/>
+					<param name="thresh_kolaskar_value" value="0.8" />
+				</conditional>
+			</conditional>
+			<!-- This first part test all methods-->
+
+			<conditional name="use_blast">
+				<param name="blast_use_bool" value="use"/>
+					<repeat name="prot_input">
+						<param name="prot_name" value="test_proteom" />
+						<param name="prot_file" value="proteom.fasta" />
+					</repeat>
+					<conditional name="blast">
+						<param name="blast_search" value="blastyes" />
+						<param name="blast_id" value="90" />
+						<param name="blast_cover" value="90"/>
+						<param name="blast_wordsize" value="4" />
+						<param name="blast_task" value="blastp-short" />
+					</conditional>
+			</conditional>
+	
+			<param name="basename" value="command" />
+
+			<output name="epif_out" file="command-EpiBuilder.txt" />
+			<output name="ep_xls" file="command-EpiBuilder.xlsx" />
+			<output_collection name= "epif_collection">
+				<element name="ep_prot_sum" file="command-EpiBuilder-protein-summary.tsv" />
+				<element name="ep_top" file="command-EpiBuilder-topology.tsv" />
+				<element name="ep_score" file="command-EpiBuilder-socre.tsv" />
+				<element name="ep_detail" file="command-EpiBuilder-epitope-detail.tsv" />
+				<element name="ep_parameters" file="command-EpiBuilder-parameters.tsv" />
+				<element name="ep_fasta" file="command-EpiBuilder-fasta.fasta" />
+			</output_collection>
+			<output_collection  name="blast_collection" >
+				<element name="test_proteom" file="command-test_proteom_blast.csv" ftype="csv" />
+			</output_collection >
+		</test>
+	</tests>
+    <help>
+**How to Run**
+
+First, you must have a file with epitopes predicted by Bepipred 2.0 or have one job submmited into bepipred's server.
+
+.. class:: warningmark 
+
+Input this file (or jobID) and specify if Bepipred 2.0 was ran online or command-line based through bcell standalone suite.
+
+Select methods that you want to check your epitopes for validation.
+
+Give a threshold for each method (or use default threshold).
+
+Optionaly, you can search validated epitopes in proteomes datasets, as many as you wish.
+
+.. class:: warningmark 
+
+If you want to search using Blastp, this software and Makeblastdb must be avaliable on your server's $PATH.
+
+-----
+
+**Outputs**
+
+
+**Summary** : Prediction overview 
+
+**Protein Summary** : Show proteins that have epitopes predicted
+
+**Fasta** : Epitopes' sequences
+
+**Topology** : Show epitope match in each method, aminoacid per aminoacid
+
+**Score** : Detailed score for aminoacids
+
+**Epitope Detail** : Properties of each predicted epitope
+
+**Parameters** : Softwares, thresholds and parameters used for prediction
+
+**Xls Report** : Table with epitope detail, protein summary, topology and scores
+
+**Collection with blast files** : All blast results for each proteome 
+
+
+-----
+
+.. class:: infomark
+
+**For more information, checkout our GitHub page**: https://github.com/bioinfo-ufsc/EpiBuilder
+
+-----
+
+Please cite methods used in your analysis, available bellow
+
+| Bioinformatics Lab - UFSC - 2021
+
+</help>
+<citations>
+	<citation type="doi">10.1093/nar/gkx346</citation>
+	<citation type="doi">10.1016/0014-5793(90)80535-q</citation>
+	<citation type="doi">10.1002/9780470122921.ch2</citation>
+	<citation type="doi">10.1021/bi00367a013</citation>
+	<citation type="doi">https://doi.org/10.1007/BF01195768</citation>
+	<citation type="doi">doi:10.1128/jvi.55.3.836-839.1985</citation>
+	<citation type="doi">10.1371/journal.pcbi.1006791</citation>
+	<citation type="doi">https://doi.org/10.1093/nar/gky379</citation>
+</citations>
+</tool>
