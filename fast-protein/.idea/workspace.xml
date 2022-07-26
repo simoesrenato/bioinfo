@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6918885e-a377-4a1e-940c-e5c0b1636984" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/pom2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/one-jar.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/resources/one-jar.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-project/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-project/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-project/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-project/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-project/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-project/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ERRetention.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../fast-n-glyc/src/main/java/NGlycFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-gui/nbactions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-gui/nbactions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-gui/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-gui/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-gui/properties.conf" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-gui/properties.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-gui/src/main/java/br/ufsc/epibuilder/gui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-gui/src/main/java/br/ufsc/epibuilder/gui/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-main/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-main/nbactions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/nbactions.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-main/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-main/properties.conf" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/properties.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/udesc/epibuilder/bepipred/BepiPredRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/udesc/epibuilder/bepipred/BepiPredRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/udesc/epibuilder/bepipred/PrimeiroTeste.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/udesc/epibuilder/blast/BlastRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/udesc/epibuilder/blast/BlastRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/udesc/epibuilder/blast/ReportBlastJoiner.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/udesc/epibuilder/blast/ReportBlastJoiner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/EpitopeCount.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/EpitopeCount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/EpitopeFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/EpitopeFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/MainTeste.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/MainTeste.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/Parameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/Parameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/converter/BCellBepipred1Converter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/converter/BCellBepipred1Converter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/converter/BCellBepipred2Converter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/converter/BCellBepipred2Converter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/exceptions/InputException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/exceptions/InputException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/gui/Main2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/gui/Main2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/proteomics/FastaAdjust.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/proteomics/FastaAdjust.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/proteomics/ProteomicCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/proteomics/ProteomicCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../epibuilder/epibuilder-project/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../epibuilder/epibuilder-project/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2CRnGuRc2lDO7q1J8afjDqwcgxV" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6918885e-a377-4a1e-940c-e5c0b1636984" name="Changes" comment="" />
+      <created>1658774175641</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1658774175641</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
