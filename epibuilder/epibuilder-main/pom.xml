@@ -14,22 +14,51 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>com.github.sampov2</groupId>
-                <artifactId>onejar-maven-plugin</artifactId>
-                <version>1.4.6</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
                 <executions>
                     <execution>
-                        <configuration>
-                            <mainClass>br.ufsc.epifinder.Main</mainClass>
-                            <attachToBuild>true</attachToBuild>
-                        </configuration>
+                        <phase>package</phase>
                         <goals>
-                            <goal>one-jar</goal>
+                            <goal>single</goal>
                         </goals>
+                        <configuration>
+                            <archive>
+                                <index>true</index>
+                                <manifest>
+                                    <mainClass>br.ufsc.epibuilder.Main</mainClass>
+                                </manifest>
+                                <manifestEntries>
+                                    <Multi-Release>true</Multi-Release>
+                                </manifestEntries>
+                                <manifestSections>
+                                    <manifestSection>
+                                        <name>fast-protein</name>
+                                        <manifestEntries>
+                                            <Project-Name>${project.artifactId}</Project-Name>
+                                            <Project-Version>${project.version}</Project-Version>
+                                            <Project-Built-Date>${build.timestamp}</Project-Built-Date>
+                                        </manifestEntries>
+                                    </manifestSection>
+                                </manifestSections>
+                            </archive>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>br.ufsc.epibuilder.Main</mainClass>
+                                    <manifestEntries>
+                                        <Multi-Release>true</Multi-Release>
+                                    </manifestEntries>
+                                </transformer>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            </transformers>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
-            
         </plugins>
     </build>
     <dependencies>
@@ -82,7 +111,7 @@
             <artifactId>selenium-remote-driver</artifactId>
             <version>3.141.59</version>
         </dependency>
-       
+
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-firefox-driver</artifactId>
@@ -93,14 +122,7 @@
             <artifactId>selenium-server</artifactId>
             <version>3.141.5</version>
         </dependency>
-        
+
     </dependencies>
-    
-    <pluginRepositories>
-        <pluginRepository>
-            <id>com.github.sampov2.onejar-maven-plugin</id>
-            <url>http://maven.codeforcode.com/repository</url>
-        </pluginRepository>
-    </pluginRepositories>
     <name>epibuilder-main</name>
 </project>

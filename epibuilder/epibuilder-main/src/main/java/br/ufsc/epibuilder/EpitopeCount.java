@@ -14,7 +14,6 @@ public class EpitopeCount {
     private String ids;
     private int totalhits;
     private int totalProteins;
-    
 
     public EpitopeCount(String ids, int total, int totalProteins) {
         this.ids = ids;

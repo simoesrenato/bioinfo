@@ -29,13 +29,21 @@ public class BCellBepipred2Converter {
     }
     
     public static ArrayList<ProteinConverter> getAll(File f, Parameters.BEPIPRED2_TYPE inputType) throws Exception {
-        if (inputType == Parameters.BEPIPRED2_TYPE.ONLINE) {
+        if (inputType == Parameters.BEPIPRED2_TYPE.ONLINE ) {
             try {
+
                 return getBepipred2FromCsv(f);
             } catch (InputException ex) {
                 throw new Exception(ex);
             }
-        } else{
+        } if(inputType== Parameters.BEPIPRED2_TYPE.LOCAL){
+            try {
+                return getBepipred2FromLocalCsv(f);
+            } catch (InputException ex) {
+                ex.printStackTrace();
+                throw new Exception(ex);
+            }
+        }else{
             return getBepipred2FromTsvBcell(f);
         }
         
@@ -69,7 +77,7 @@ public class BCellBepipred2Converter {
                 }
             }
         } catch (Exception e) {
-            throw new InputException();
+            throw new InputException(e);
         }
         return proteins;
     }
@@ -87,6 +95,9 @@ public class BCellBepipred2Converter {
         ArrayList<ProteinConverter> proteins = new ArrayList<>();
         ProteinConverter protein = new ProteinConverter("");
         s.nextLine();
+        if(Parameters.BEPIPRED2_INPUT == Parameters.BEPIPRED2_TYPE.LOCAL){
+            s.nextLine();
+        }
         while (s.hasNext()) {
             try {
                 String val = s.nextLine();
@@ -98,14 +109,51 @@ public class BCellBepipred2Converter {
                 }
                 protein.addAmino(Integer.parseInt(res[1]) - 1, res[2], Double.parseDouble(res[8]));
             } catch (Exception e) {
-                throw new InputException();
+                throw new InputException(e);
             }
         }
         return proteins;
     }
+    /**
+     * Convert a Bepipred2 file
+     *
+     * @param csvFile
+     * @return
+     * @throws FileNotFoundException
+     * @throws InputException
+     */
+    public static ArrayList<ProteinConverter> getBepipred2FromLocalCsv(File csvFile) throws FileNotFoundException, InputException {
+        Scanner s = new Scanner(csvFile);
+        ArrayList<ProteinConverter> proteins = new ArrayList<>();
+        ProteinConverter protein = new ProteinConverter("");
+        s.nextLine();
+        s.nextLine();
+        while (s.hasNext()) {
+            try {
+                String val = s.nextLine();
+                System.out.println("Processando linha:" + val);
+                if(val.contains("/") || val.startsWith(" ")) {
+                    System.out.println("Ignorando linha: "+val);
+                }else{
+                    System.out.println("Linha OK");
+                    String[] res = val.split("\t");
+                    String id = res[0];
+                    if (!protein.getId().equals(id)) {
+                        protein = new ProteinConverter(id);
+                        proteins.add(protein);
+                    }
+                    protein.addAmino(Integer.parseInt(res[1]) - 1, res[2], Double.parseDouble(res[7]));
 
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new InputException(e);
+            }
+        }
+        return proteins;
+    }
     public static void main(String[] args) throws FileNotFoundException, InputException {
-        ArrayList<ProteinConverter> proteins = getBepipred2FromCsv(new File("/tese/projects/epifinder/bepipred-online.csv"));
+        ArrayList<ProteinConverter> proteins = getBepipred2FromLocalCsv(new File("/bioinformatic/bepipred.csv"));
         System.out.println(proteins.size());
     }
 }

@@ -16,8 +16,8 @@ import java.util.Scanner;
  */
 public class ReportBlastJoiner {
     
-    public static String joinReport(String epifinderDetailFile, String blastFile, String genome) {
-        String epiDetailTxt = (epifinderDetailFile);
+    public static String joinReport(String epibuilderDetailFile, String blastFile, String genome) {
+        String epiDetailTxt = (epibuilderDetailFile);
         String blastTxt = (blastFile);
         String[] blastLines = blastTxt.split("\n");
         HashMap<String, String[]> mapBlast = new HashMap<>();
@@ -29,12 +29,12 @@ public class ReportBlastJoiner {
         
         StringBuilder sb = new StringBuilder();
         
-        String[] epifinderDetailRes = epiDetailTxt.split("\n");
-        sb.append(String.format("%s\tblast_%s_%s\tblast_%s_%s\n",epifinderDetailRes[0], genome, "count", genome, "acc"));
-        for (int i = 1; i < epifinderDetailRes.length; i++) {
-            String epifinderDetailRe = epifinderDetailRes[i];
+        String[] epibuilderDetailRes = epiDetailTxt.split("\n");
+        sb.append(String.format("%s\tblast_%s_%s\tblast_%s_%s\n",epibuilderDetailRes[0], genome, "count", genome, "acc"));
+        for (int i = 1; i < epibuilderDetailRes.length; i++) {
+            String epibuilderDetailRe = epibuilderDetailRes[i];
             
-            String[] epiLine = epifinderDetailRe.split("\t");
+            String[] epiLine = epibuilderDetailRe.split("\t");
             String id = String.format("%s-%s", epiLine[0].trim(), epiLine[2].trim());
             
             String[] blastAux = mapBlast.get(id);
@@ -42,15 +42,15 @@ public class ReportBlastJoiner {
                 blastAux = new String[]{"-", "-", "-"};
             }
             
-            sb.append(String.format("%s\t%s\t%s", epifinderDetailRe, blastAux[1], blastAux[2]));
+            sb.append(String.format("%s\t%s\t%s", epibuilderDetailRe, blastAux[1], blastAux[2]));
             
             sb.append("\n");
         }
         
         return  sb.toString();
     }
-    public static String joinReport(File epifinderDetailFile, File blastFile, String genome) throws FileNotFoundException{
-        String epiDetailTxt = readFile(epifinderDetailFile);
+    public static String joinReport(File epibuilderDetailFile, File blastFile, String genome) throws FileNotFoundException{
+        String epiDetailTxt = readFile(epibuilderDetailFile);
         String blastTxt = readFile(blastFile);
         
         return  joinReport(epiDetailTxt, blastTxt, genome);

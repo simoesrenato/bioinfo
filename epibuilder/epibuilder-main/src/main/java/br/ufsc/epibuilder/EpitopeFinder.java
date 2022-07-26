@@ -6,13 +6,10 @@ package br.ufsc.epibuilder;
  * and open the template in the editor.
  */
 import br.udesc.cav.tese.glycosylation.Motif;
+import br.udesc.epibuilder.bepipred.BepiPredRunner;
 import br.udesc.epibuilder.blast.Blast;
 import static br.udesc.epibuilder.blast.BlastRunner.getBlastResults;
 import br.udesc.epibuilder.blast.ReportBlastJoiner;
-import static br.ufsc.epibuilder.Parameters.BEPIPRED2_FILE;
-import static br.ufsc.epibuilder.Parameters.MAX_LENGTH_BEPIPRED2;
-import static br.ufsc.epibuilder.Parameters.MIN_LENGTH_BEPIPRED2;
-import static br.ufsc.epibuilder.Parameters.THRESHOLD_BEPIPRED2;
 import br.ufsc.epibuilder.entity.Proteome;
 import br.ufsc.epibuilder.converter.BCellBepipred2Converter;
 import br.ufsc.epibuilder.converter.IEDBBcellCalculator;
@@ -27,6 +24,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeSet;
+
+import static br.ufsc.epibuilder.Parameters.*;
 import static br.ufsc.epibuilder.entity.SoftwareBcellEnum.CHOU_FOSMAN;
 import static br.ufsc.epibuilder.entity.SoftwareBcellEnum.EMINI;
 import static br.ufsc.epibuilder.entity.SoftwareBcellEnum.KARPLUS_SCHULZ;
@@ -184,6 +183,9 @@ public class EpitopeFinder {
             if (Parameters.BEPIPRED2_INPUT == Parameters.BEPIPRED2_TYPE.JOB_ID) {
                 proteins = BCellBepipred2Converter.getAllByJobID();
             } else {
+                if(Parameters.BEPIPRED2_INPUT == Parameters.BEPIPRED2_TYPE.LOCAL){
+                    BEPIPRED2_FILE = BepiPredRunner.getBepiPred2Results(FASTA, BEPIPRED2_TYPE.LOCAL);
+                }
                 proteins = BCellBepipred2Converter.getAll(BEPIPRED2_FILE, Parameters.BEPIPRED2_INPUT);
             }
             sout("Reading BepiPred-2.0 Files - Done");
@@ -387,31 +389,31 @@ public class EpitopeFinder {
             stParameters.append("\nIdentified epitopes    : " + totalEpitopes);
             stParameters.append("\nN-glycosylated epitopes: " + totalEpitopesNglyc);
             stParameters.append("\n");
-            String fileParameters = saveRandomFileName(dest + "/" + basename + "epifinder-parameters", stParameters.toString(), "txt");
+            String fileParameters = saveRandomFileName(dest + "/" + basename + "epibuilder-parameters", stParameters.toString(), "txt");
             sout("\t Parameters - done\t");
 
             StringBuilder stReport = new StringBuilder();
 
             sout("\t Report by Protein\t");
             String reportByProtein = generateReportByProtein(proteinList);
-            String fileEpifinderProteinSummary = saveRandomFileName(dest + "/" + basename + "epifinder-protein-summary", reportByProtein, "tsv");
+            String fileEpibuilderProteinSummary = saveRandomFileName(dest + "/" + basename + "epibuilder-protein-summary", reportByProtein, "tsv");
             sout("\t Report by Protein - done\t");
 
             sout("\t Report by Topology\t");
             String reportTopology = generateReportByTopology(reportList);
-            String fileEpifinderTopology = saveRandomFileName(dest + "/" + basename + "epifinder-topology", reportTopology, "tsv");
+            String fileEpibuilderTopology = saveRandomFileName(dest + "/" + basename + "epibuilder-topology", reportTopology, "tsv");
 
             sout("\t Report by Topology - Done\t");
 
             sout("\t Report Scores\t");
             String reportScores = generateMethodScore(proteinList);
-            String fileEpifinderScores = saveRandomFileName(dest + "/" + basename + "epifinder-scores", reportScores, "tsv");
+            String fileEpibuilderScores = saveRandomFileName(dest + "/" + basename + "epibuilder-scores", reportScores, "tsv");
 
             sout("\t Report Scores - done\t");
 
             sout("\t Epitopes FASTA\t");
 
-            String fileEpifinderFastaEpitopo = saveRandomFileName(dest + "/" + basename + "epifinder-epitopes-fasta", generateReportFastaEpitope(reportList), "fasta");
+            String fileEpibuilderFastaEpitopo = saveRandomFileName(dest + "/" + basename + "epibuilder-epitopes-fasta", generateReportFastaEpitope(reportList), "fasta");
             sout("\t Epitopes FASTA - done\t");
 
             sout("\t Report Detailed\t");
@@ -422,13 +424,13 @@ public class EpitopeFinder {
                 sout("\tBlast\t");
                 //Each blast result append in the last reportDetaild textFile until generate the last
                 for (Proteome proteome : Parameters.PROTEOMES) {
-                    File blastoutput = getBlastResults(proteome, fileEpifinderFastaEpitopo);
+                    File blastoutput = getBlastResults(proteome, fileEpibuilderFastaEpitopo);
                     Blast blast = new Blast(proteome.getOrganism(), blastoutput);
                     reportDetailed = ReportBlastJoiner.joinReport(reportDetailed, blast.getListReport(Parameters.BLAST_IDENTITY, Parameters.BLAST_COVER), blast.getName());
                 }
                 sout("\tBlast - done\t");
             }
-            String fileEpifinderDetail = saveRandomFileName(dest + "/" + basename + "epifinder-epitope-detail", reportDetailed, "tsv");
+            String fileEpibuilderDetail = saveRandomFileName(dest + "/" + basename + "epibuilder-epitope-detail", reportDetailed, "tsv");
             sout("\t Report Detailed - Done\t");
             //END BLAST
 
@@ -447,38 +449,35 @@ public class EpitopeFinder {
             excelTab.add(new ExcelTabReport("Epitopes Topology", reportTopology));
             //excelTab.add(new ExcelTabReport("Scores", reportScores));
 
-            //if (reportList.size() < 65535) {
-            // ExcelReport.generateExcel(excelTab, dest + "/" + basename + "epifinder.xls");
             boolean excelReport = false;
-            String fileEpifinderExcel = dest + "/" + basename + "epifinder.xlsx";
+            String fileEpibuilderExcel = dest + "/" + basename + "epibuilder.xlsx";
             try {
-                ExcelReport.generateExcelXlsx(excelTab, fileEpifinderExcel);
+                ExcelReport.generateExcelXlsx(excelTab, fileEpibuilderExcel);
                 excelReport = true;
             } catch (Exception e) {
                 System.err.println("Error generating excel files:" + e.getMessage());
                 e.printStackTrace();
             }
 
-//}
             stReport.append("Generated files:");
             stReport.append("\n\t");
             stReport.append(fileParameters);
             stReport.append("\n\t");
-            stReport.append(fileEpifinderProteinSummary);
+            stReport.append(fileEpibuilderProteinSummary);
             stReport.append("\n\t");
-            stReport.append(fileEpifinderTopology);
+            stReport.append(fileEpibuilderTopology);
             stReport.append("\n\t");
-            stReport.append(fileEpifinderDetail);
+            stReport.append(fileEpibuilderDetail);
             if (excelReport) {
                 stReport.append("\n\t");
-                stReport.append(fileEpifinderExcel);
+                stReport.append(fileEpibuilderExcel);
             }
             stReport.append("\n\t");
-            stReport.append(fileEpifinderScores);
+            stReport.append(fileEpibuilderScores);
             stReport.append("\n\t");
-            stReport.append(fileEpifinderFastaEpitopo);
+            stReport.append(fileEpibuilderFastaEpitopo);
 
-            saveRandomFileName(dest + "/" + basename + "epifinder", stReport.toString(), "txt");
+            saveRandomFileName(dest + "/" + basename + "epibuilder", stReport.toString(), "txt");
             sout("Finish\t");
             return stReport.toString();
         } catch (Exception e) {
@@ -727,7 +726,7 @@ public class EpitopeFinder {
 
     private static void setOutput() throws Exception {
         if (Parameters.OUTPUT_FILE) {
-            File file = new File(Parameters.DESTINATION_FOLDER + "/" + Parameters.BASENAME + "-epifinder.log");
+            File file = new File(Parameters.DESTINATION_FOLDER + "/" + Parameters.BASENAME + "-epibuilder.log");
             PrintStream stream = new PrintStream(file);
             System.setOut(stream);
         }

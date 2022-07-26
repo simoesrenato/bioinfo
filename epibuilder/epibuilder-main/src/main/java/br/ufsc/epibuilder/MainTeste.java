@@ -11,7 +11,7 @@ package br.ufsc.epibuilder;
  */
 public class MainTeste {
     public static void main(String[] args) throws Exception {
-        String src = "/tese/projects/epifinder/";
+        String src = "/tese/projects/epibuilder/";
         args = new String[]{
             "-b", src + "bepipred2-teste.csv",
 //            "-o",

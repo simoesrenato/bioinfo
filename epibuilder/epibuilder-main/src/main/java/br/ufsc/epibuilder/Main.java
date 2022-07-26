@@ -9,6 +9,7 @@ import br.ufsc.epibuilder.entity.Proteome;
 import br.ufsc.epibuilder.entity.SoftwareBcellEnum;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -26,6 +27,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         
         LinkedHashMap<String, String> map = new LinkedHashMap<>();
+
 
         for (int i = 0; i < args.length; i++) {
             if (args[i].equals("-f")) {
@@ -45,6 +47,12 @@ public class Main {
             } else if (args[i].equals("-jobid")){
                 Parameters.BEPIPRED2_INPUT= Parameters.BEPIPRED2_TYPE.JOB_ID;
                 Parameters.BEPIPRED2_JOBID = args[i+1];
+            } else if(args[i].equals("-l")){
+                i++;
+                Parameters.BEPIPRED2_INPUT= Parameters.BEPIPRED2_TYPE.LOCAL;
+                String arquivo = args[i];
+                File arquivoFasta = new File (arquivo);
+                Parameters.FASTA = arquivoFasta; 
             }
            
             else if (args[i].equals("-p")) {

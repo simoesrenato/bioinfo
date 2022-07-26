@@ -43,9 +43,4 @@ public class BCellBepipred1Converter {
         }
         return proteins;
     }
-
-    public static void main(String[] args) throws FileNotFoundException {
-        ArrayList<ProteinConverter> proteins = getAll(new File("/tese/epifinder/teste/bepipred1.out.txt"));
-        System.out.println(proteins.size());
-    }
 }

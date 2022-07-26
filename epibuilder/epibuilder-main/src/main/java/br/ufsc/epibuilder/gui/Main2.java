@@ -101,7 +101,7 @@ public class Main2 extends javax.swing.JFrame {
             config.put("makeblastdb", Parameters.MAKEBLASTDB_PATH);
             config.put("blastp", Parameters.BLASTP_PATH);
             config.put("jobid", jtBepiPredJobId.getText());
-            config.store(fw, "Epifinder configuration");
+            config.store(fw, "Epibuilder configuration");
 
         } catch (IOException ex) {
             Logger.getLogger(Main2.class.getName()).log(Level.SEVERE, null, ex);
@@ -151,7 +151,7 @@ public class Main2 extends javax.swing.JFrame {
         loadProperties();
         adjustBlastSearchItems();
         pack();
-        setTitle("EpiFinder - BCell Epitope Tool - Version 1.1");
+        setTitle("Epibuilder - BCell Epitope Tool - Version 1.1");
 
     }
 
@@ -1363,7 +1363,7 @@ public class Main2 extends javax.swing.JFrame {
                 FileWriter fw = new FileWriter(fileToSave);
 
                 Properties config = getConfig();
-                config.store(fw, "Epifinder configuration");
+                config.store(fw, "Epibuilder configuration");
 
                 fw.close();
                 showMessage("Configuration saved: " + fileToSave.getAbsolutePath());

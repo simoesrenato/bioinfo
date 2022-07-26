@@ -29,15 +29,4 @@ public class ProteomicCalculator {
     public static double getHydropathy(String sequence) throws CompoundNotFoundException {
         return peptideProperties.getAvgHydropathy(new ProteinSequence(sequence));
     }
-
-    public static void main(String[] args) throws CompoundNotFoundException {
-        double pI = 0.0;
-        String s = "V";
-
-        System.out.println("Mass " + getMolecularWeight(s));
-        System.out.println("PI " + getIsoelectricPoint(s));
-        System.out.println("Hydro " + getHydropathy(s));
-       
-        
-    }
 }

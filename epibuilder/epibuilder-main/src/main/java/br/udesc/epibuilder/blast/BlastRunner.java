@@ -27,13 +27,9 @@ public class BlastRunner {
         fw.close();
     }
 
-    public static void main(String[] args) throws Exception {
-        addHeader(new File("/Volumes/DATA/epifinder/sarscov2/sarscov2-human_blast.csv"));
-    }
-
-    public static File getBlastResults(Proteome proteome, String epiFinderFastaEpitopesFile) {
+    public static File getBlastResults(Proteome proteome, String epiBuilderFastaEpitopesFile) {
         String s = null;
-        String db = String.format("%s/%s-epifinder-blast-%s", Parameters.DESTINATION_FOLDER, Parameters.BASENAME, proteome.getOrganism());
+        String db = String.format("%s/%s-epibuilder-blast-%s", Parameters.DESTINATION_FOLDER, Parameters.BASENAME, proteome.getOrganism());
         String blastOutput = db + "_blast.csv";
 
         String[] makeblast = {Parameters.MAKEBLASTDB_PATH,
@@ -42,7 +38,7 @@ public class BlastRunner {
             "-out", db};
 
         String[] blastp = {Parameters.BLASTP_PATH,
-            "-query", epiFinderFastaEpitopesFile,
+            "-query", epiBuilderFastaEpitopesFile,
             "-db", db,
             "-outfmt", "6 qacc sacc pident qcovs qseq sseq qacc",
             "-task", Parameters.BLAST_TASK,
@@ -54,11 +50,13 @@ public class BlastRunner {
         cmds.add(blastp);
         try {
             for (String[] cmd : cmds) {
-                System.out.print("Running command: ");
+                System.out.print("Running command[: ");
+
                 for (String string : cmd) {
                     System.out.print(string + " ");
                 }
-                System.out.println("");
+                System.out.println("]");
+                
                 Process p = Runtime.getRuntime().exec(cmd);
                 BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
                 BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
@@ -70,13 +68,16 @@ public class BlastRunner {
                     stSuccess += "\n";
                     success = true;
                 }
+
                 boolean error = false;
                 String stError = "";
+
                 while ((s = stdError.readLine()) != null) {
                     stError += s;
                     stError += "\n";
                     error = true;
                 }
+
                 if (success) {
                     System.out.println("Success:");
                     System.out.println(stSuccess);

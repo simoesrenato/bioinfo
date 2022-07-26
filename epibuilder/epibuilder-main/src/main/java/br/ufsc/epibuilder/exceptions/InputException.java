@@ -11,8 +11,9 @@ package br.ufsc.epibuilder.exceptions;
  */
 public class InputException extends Exception{
 
-    public InputException() {
+    public InputException(Exception e) {
         super("Error 1 - Convertion error.\nPlease check the input files. There are 2 options of Bepipred-2 input files: online (param -o) and IEDB BCELL Antibody Epitope Prediction (download and install from https://downloads.iedb.org/tools/bcell/LATEST/.");
+        e.printStackTrace();
     }
     
 }

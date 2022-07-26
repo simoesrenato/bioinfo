@@ -35,43 +35,4 @@ public class FastaAdjust {
         }
         return proteins;
     }
-
-    public static void main(String[] args) throws FileNotFoundException, IOException {
-        System.out.println("");
-        //LinkedHashMap<String, ProteinSequence> a
-          //      = FastaReaderHelper.readFastaProteinSequence(new File("/bioinformatic/epifinder/runs/sarscov2/novo/allprot0331.fasta.clean"));
-        ArrayList<ProteinConverter> proteins = getProteins(new File("/bioinformatic/epifinder/runs/sarscov2/novo/sars-cov-2.fasta"));
-        ArrayList<ProteinConverter> proteins2 = getProteins(new File("/bioinformatic/epifinder/runs/sarscov2/novo/allprot0331.fasta.clean"));
-        //s FastaReaderHelper.re
-        //LinkedHashMap<String, ProteinSequence> b = FastaReaderHelper.readFastaProteinSequence(new File("/bioinformatic/epifinder/runs/sarscov2/novo/spikeprot0331.fasta.clean"));
-        //String header = ">Spike|hCoV-19/pangolin/Guangxi/P2V/2017|2017-00-00|EPI_ISL_410542|Vero E6|hCoV-19^^Guangxi|Manis javanica|Beijing Institute of Microbiology and Epidemiology|Beijing Institute of Microbiology and Epidemiology|Lam|China";
-        //String headerEpi = header.substring(header.indexOf("EPI_ISL"));
-        //String headerFinal = headerEpi.substring(0, headerEpi.indexOf("|"));
-        //    System.exit(0);
-        //String src = args[1];]
-        ArrayList<String> srcs = new ArrayList<>();
-        srcs.add("/bioinformatic/epifinder/runs/sarscov2/gsaid/spikeprot0331.fasta");
-        srcs.add("/bioinformatic/epifinder/runs/sarscov2/gsaid/allprot0331.fasta");
-        for (String src : srcs) {
-            Scanner s = new Scanner(new File(src));
-            FileWriter fw = new FileWriter(new File(src + ".clean"), true);
-            while (s.hasNext()) {
-                String res = s.nextLine();
-                if (res.startsWith(">")) {
-                    String header = res;
-                    String headerEpi = header.substring(header.indexOf("EPI_ISL"));
-                    String headerFinal = headerEpi.substring(0, headerEpi.indexOf("|"));
-
-                    String name = header.substring(0, header.indexOf("|"));
-
-                    fw.write(name + "-" + headerFinal);
-                } else {
-                    fw.write(res);
-                }
-                fw.write("\n");
-                fw.flush();
-            }
-            fw.close();
-        }
-    }
 }

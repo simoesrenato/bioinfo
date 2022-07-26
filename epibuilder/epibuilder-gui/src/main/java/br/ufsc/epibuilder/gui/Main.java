@@ -5,14 +5,14 @@
  */
 package br.ufsc.epibuilder.gui;
 
-import br.udesc.epifinder.bepipred.BepiPredOnlineRunner;
-import br.udesc.epifinder.blast.CommandTest;
-import br.ufsc.epifinder.EpitopeFinder;
-import br.ufsc.epifinder.Parameters;
-import br.ufsc.epifinder.converter.FileHelper;
-import br.ufsc.epifinder.converter.ProteinConverter;
-import br.ufsc.epifinder.entity.Proteome;
-import br.ufsc.epifinder.entity.SoftwareBcellEnum;
+import br.udesc.epibuilder.bepipred.BepiPredOnlineRunner;
+import br.udesc.epibuilder.blast.CommandTest;
+import br.ufsc.epibuilder.EpitopeFinder;
+import br.ufsc.epibuilder.Parameters;
+import br.ufsc.epibuilder.converter.FileHelper;
+import br.ufsc.epibuilder.converter.ProteinConverter;
+import br.ufsc.epibuilder.entity.Proteome;
+import br.ufsc.epibuilder.entity.SoftwareBcellEnum;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;
 import java.awt.datatransfer.Clipboard;
@@ -101,7 +101,7 @@ public class Main extends javax.swing.JFrame {
             config.put("makeblastdb", Parameters.MAKEBLASTDB_PATH);
             config.put("blastp", Parameters.BLASTP_PATH);
             config.put("jobid", jtBepiPredJobId.getText());
-            config.store(fw, "Epifinder configuration");
+            config.store(fw, "Epibuilder configuration");
 
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
@@ -151,7 +151,7 @@ public class Main extends javax.swing.JFrame {
         loadProperties();
         adjustBlastSearchItems();
         pack();
-        setTitle("EpiFinder - BCell Epitope Tool - Version 1.1");
+        setTitle("Epibuilder - BCell Epitope Tool - Version 1.1");
 
     }
 
@@ -1363,7 +1363,7 @@ public class Main extends javax.swing.JFrame {
                 FileWriter fw = new FileWriter(fileToSave);
 
                 Properties config = getConfig();
-                config.store(fw, "Epifinder configuration");
+                config.store(fw, "Epibuilder configuration");
 
                 fw.close();
                 showMessage("Configuration saved: " + fileToSave.getAbsolutePath());
