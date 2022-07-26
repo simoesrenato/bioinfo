@@ -1,0 +1,7 @@
+br/edu/ifsc/bioinfo/fast/protein/Main.class
+br/edu/ifsc/bioinfo/fast/protein/MainTest.class
+br/edu/ifsc/bioinfo/fast/protein/Protein.class
+br/edu/ifsc/bioinfo/fast/protein/FastProteinCalculator$Output.class
+br/edu/ifsc/bioinfo/fast/protein/FastProteinCalculator$Field.class
+br/edu/ifsc/bioinfo/fast/protein/FastProteinCalculator.class
+br/edu/ifsc/bioinfo/fast/protein/ProteomicCalculator.class
