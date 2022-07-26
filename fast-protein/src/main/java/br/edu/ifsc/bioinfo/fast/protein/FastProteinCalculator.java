@@ -363,4 +363,5 @@ public class FastProteinCalculator {
         run(args);
     }
 
+    
 }
