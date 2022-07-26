@@ -1,0 +1,31 @@
+#Required Java 11+
+
+Help command
+  java -jar fast-protein-1.0.jar -h
+
+Fast-protein commands manual
+USAGE
+	java -jar fast-protein.jar [<fastaFile>] [-h] [-t <value>] [-out <output_file>]
+
+DESCRIPTION
+	Fast-protein 1.0
+
+ARGUMENTS
+	*<fastaFile> - Input FASTA file (required as 1st argument)
+	-h (optional)
+		Print USAGE, DESCRIPTION and ARGUMENTS; ignore all other parameters
+	-v or -version (optional)
+		Print version number;  ignore all other arguments
+	-t <options> (optional)
+		Type of output format options:
+			0 = csv - Comma separated values,
+			1 = tsv - Tab separated values,
+			2 = txt - Formatted output (default)
+	-o <output_file> (optional) 
+		Output file name - if not informed, the output will be displayed only in the console.
+    
+ Example
+#This command shows a content of a generated CSV on console
+  java -jar fast-protein-1.0.jar test1.fasta -t 0
+#This command shows a content of a generated CSV on console saves it in test1.csv file
+  java -jar fast-protein-1.0.jar test1.fasta -t 0 -o test1.csv
