@@ -101,7 +101,7 @@ class Main:
             # Author(s): Kyte J., Doolittle R.F.
             # Reference: J. Mol. Biol. 157:105-132(1982).
             # https://web.expasy.org/protscale/pscale/Hphob.Doolittle.html
-            # https://www.ncbi.nlm.nih.gov/pmc/articles/PMC310293/pdf/nar00039-0320.pdf
+
             scale = {
                 "A": 1.8,
                 "R": -4.5,
