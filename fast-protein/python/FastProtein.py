@@ -202,25 +202,29 @@ class Main:
 
         results = []
         for prot in proteins:
+            try:
+                proteinProp = ProteinAnalysis(prot.sequence)
+                line = [
+                    prot.id,
+                    str(len(prot.sequence)),
+                    f"{proteinProp.molecular_weight()/1000:.3f}",
+                    f"{proteinProp.isoelectric_point():.2f}",
+                    f"{hydrophobicity(prot.sequence):.2f}",
+                    f"{proteinProp.aromaticity():.2f}",
+                    str(len(prot.erretDomains)),
+                    ",".join(prot.erretDomains),
+                    str(len(prot.nGlycDomains)),
+                    ",".join(prot.nGlycDomains),
+                    prot.header,
+                    prot.sequence,
+                ]
+                results.append(line)
+            except Exception as e:
+                print(f"An error occurred during processing the protein {prot.id}")
+                print("Please check your FASTA file and restart the process")
+                print(e)
+                sys.exit()
 
-            proteinProp = ProteinAnalysis(prot.sequence)
-
-            line = [
-                prot.id,
-                str(len(prot.sequence)),
-                f"{proteinProp.molecular_weight()/1000:.3f}",
-                f"{proteinProp.isoelectric_point():.2f}",
-                f"{hydrophobicity(prot.sequence):.2f}",
-                f"{proteinProp.aromaticity():.2f}",
-                str(len(prot.erretDomains)),
-                ",".join(prot.erretDomains),
-                str(len(prot.nGlycDomains)),
-                ",".join(prot.nGlycDomains),
-                prot.header,
-                prot.sequence,
-            ]
-
-            results.append(line)
         report = ""
 
         if args.type == "txt":
