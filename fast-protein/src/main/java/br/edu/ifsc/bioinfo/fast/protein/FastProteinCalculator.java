@@ -71,25 +71,25 @@ public class FastProteinCalculator {
     }
 
     private static void showHelp() {
-        System.out.println("Fast-protein commands manual");
+        System.out.println("FastProtein commands manual");
         System.out.println("USAGE");
         System.out.println("\tjava -jar fast-protein.jar [<fastaFile>] [-h] [-t <value>] [-out <output_file>]");
         System.out.println("");
         System.out.println("DESCRIPTION");
-        System.out.println("\tFast-protein 1.0");
+        System.out.println("\tFastProtein 1.0");
         System.out.println("");
         System.out.println("ARGUMENTS\n"
                 + "\t*<fastaFile> - Input FASTA file (required as 1st argument)\n"
-                + "\t-h (optional)\n"
+                + "\t-h or --help (optional)\n"
                 + "\t\tPrint USAGE, DESCRIPTION and ARGUMENTS; ignore all other parameters\n"
                 + "\t-v or -version (optional)\n"
                 + "\t\tPrint version number;  ignore all other arguments\n"
                 + "\t-t <options> (optional)\n"
                 + "\t\tType of output format options:\n"
-                + "\t\t\t0 = csv - Comma separated values,\n"
-                + "\t\t\t1 = tsv - Tab separated values,\n"
-                + "\t\t\t2 = txt - Formatted output (default)\n"
-                + "\t-o <output_file> (optional) \n"
+                + "\t\t\tcsv - Comma separated values,\n"
+                + "\t\t\ttsv - Tab separated values,\n"
+                + "\t\t\ttxt - Formatted output (default)\n"
+                + "\t-out <output_file> (optional) \n"
                 + "\t\tOutput file name - if not informed, the output will be displayed only in the console."
         );
 
@@ -140,13 +140,13 @@ public class FastProteinCalculator {
                     String typeOutput = args[i];
                     if (args[i] != null) {
                         switch (typeOutput) {
-                            case "0":
+                            case "csv":
                                 out = Output.CSV;
                                 break;
-                            case "1":
+                            case "tsv":
                                 out = Output.TSV;
                                 break;
-                            case "2":
+                            case "txt":
                                 out = Output.TXT;
                                 break;
                             default:
@@ -161,7 +161,7 @@ public class FastProteinCalculator {
                     System.exit(0);
                 }
             }
-            if (args[i].equals("-o")) {
+            if (args[i].equals("-out")) {
                 console = false;
                 i++;
                 if (i < args.length) {
