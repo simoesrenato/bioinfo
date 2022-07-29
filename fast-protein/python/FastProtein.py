@@ -96,6 +96,39 @@ class Protein:
 
 class Main:
     def main():
+        def hydrophobicity(sequence):
+            # Amino acid scale: Hydropathicity.
+            # Author(s): Kyte J., Doolittle R.F.
+            # Reference: J. Mol. Biol. 157:105-132(1982).
+            # https://web.expasy.org/protscale/pscale/Hphob.Doolittle.html
+            # https://www.ncbi.nlm.nih.gov/pmc/articles/PMC310293/pdf/nar00039-0320.pdf
+            scale = {
+                "A": 1.8,
+                "R": -4.5,
+                "N": -3.5,
+                "D": -3.5,
+                "C": 2.5,
+                "Q": -3.5,
+                "E": -3.5,
+                "G": -0.4,
+                "H": -3.2,
+                "I": 4.5,
+                "L": 3.8,
+                "K": -3.9,
+                "M": 1.9,
+                "F": 2.8,
+                "P": -1.6,
+                "S": -0.8,
+                "T": -0.7,
+                "W": -0.9,
+                "Y": -1.3,
+                "V": 4.2,
+            }
+            total = 0
+            for residue in sequence:
+                total += scale[residue]
+            return total / len(sequence)
+
         def showAbout():
             print("#FastProtein Software 1.0")
             print("#Developed by Renato Simões - renato.simoes@ifsc.edu.br")
@@ -158,6 +191,7 @@ class Main:
             "kDa",
             "Isoeletric Point",
             "Hydropathy",
+            "Aromaticity",
             "ERRet Total",
             "ERRet domains",
             "NGlyc Total",
@@ -170,11 +204,13 @@ class Main:
         for prot in proteins:
 
             proteinProp = ProteinAnalysis(prot.sequence)
+
             line = [
                 prot.id,
                 str(len(prot.sequence)),
                 f"{proteinProp.molecular_weight()/1000:.3f}",
                 f"{proteinProp.isoelectric_point():.2f}",
+                f"{hydrophobicity(prot.sequence):.2f}",
                 f"{proteinProp.aromaticity():.2f}",
                 str(len(prot.erretDomains)),
                 ",".join(prot.erretDomains),
@@ -210,11 +246,12 @@ class Main:
                 report += str(res[3]).rjust(col_length[3], " ") + " "
                 report += str(res[4]).rjust(col_length[4], " ") + " "
                 report += str(res[5]).rjust(col_length[5], " ") + " "
-                report += str(res[6]).ljust(col_length[6], " ") + " "
-                report += str(res[7]).rjust(col_length[7], " ") + " "
-                report += str(res[8]).ljust(col_length[8], " ") + " "
+                report += str(res[6]).rjust(col_length[6], " ") + " "
+                report += str(res[7]).ljust(col_length[7], " ") + " "
+                report += str(res[8]).rjust(col_length[8], " ") + " "
                 report += str(res[9]).ljust(col_length[9], " ") + " "
-                report += str(res[10]).ljust(col_length[10], " ")
+                report += str(res[10]).ljust(col_length[10], " ") + " "
+                report += str(res[11]).ljust(col_length[11], " ")
 
         else:
             sep = "\t"

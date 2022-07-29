@@ -98,7 +98,7 @@ public class Protein {
      * @return the hydropathy
      */
     public Double getHydropathy() throws CompoundNotFoundException {
-
+        
         return ProteomicCalculator.getHydropathy(sequence);
     }
 
@@ -162,4 +162,10 @@ public class Protein {
         this.nGlycDomains = nGlycDomains;
     }
 
+    public double getAromaticity(){
+        return ProteomicCalculator.getAromaticity(sequence);
+    }
+    public String getAromaticityStr() throws CompoundNotFoundException {
+        return String.format("%.2f", getHydropathy());
+    }
 }
