@@ -15,10 +15,10 @@
 - Header: protein header
 - Sequence: protein sequence
 
-| Plugin | Domain | About |
-| ------ | ------ | ------ |
-| E.R Retention | [KRHQSA][DENQ][E][L] | https://prosite.expasy.org/PDOC00014 |
-| N-Glyc | [N][Xaa(except P)][ST] where Xaa = any aminoacid | https://prosite.expasy.org/PDOC00001|
+| Domain | Reference |
+| ------ | ------ |
+| E.R Retention |  https://prosite.expasy.org/PDOC00014 |
+| N-Glyc |  https://prosite.expasy.org/PDOC00001|
 
 ## Input options
 | Type | Description |
@@ -27,12 +27,15 @@
 
 
 ## Output options
-| Type | Description | Style |
-| ------ | ------ | ------ |
-| tsv | tab formatted | column |
-| csv | csv file using semicolon by default separator | column |
-| txt | formatted file with white space (default) | column
-| sep | individual protein   | plain |
+| Type | Description | Style | Example |
+| ------ | ------ | ------ | ------ |
+| tsv | tab formatted | column | [Link](https://github.com/simoesrenato/bioinfo/blob/master/fast-protein/python/test1.fasta.tsv) |
+| csv | csv file using semicolon by default separator | column | [Link](https://github.com/simoesrenato/bioinfo/blob/master/fast-protein/python/test1.fasta.csv) |
+| txt | formatted file with white space (default) | column | [Link](https://github.com/simoesrenato/bioinfo/blob/master/fast-protein/python/test1.fasta.txt) |
+| sep | individual protein   | plain | [Link](https://github.com/simoesrenato/bioinfo/blob/master/fast-protein/python/test1.fasta.sep) |
+
+
+
 Check the [source code](https://github.com/simoesrenato/bioinfo/tree/master/fast-protein) 
 Developed by Dr. Renato Simoes - renato.simoes@ifsc.edu.br
 
