@@ -1,0 +1,32 @@
+biolib_version: 2
+
+modules:
+    main:
+        image: 'dockerhub://biopython/biopython:latest'
+        command: python3 FastProtein.py
+        working_directory: /home/biolib/
+        input_files:
+            - COPY / /home/biolib/
+        output_files:
+            - COPY /home/biolib/ /
+        source_files:
+            - COPY / /home/biolib/
+
+arguments:
+    -
+        default_value: test.fasta
+        description: FASTA file to process
+        key: '--input'
+        required: true
+        type: file
+    -
+        default_value: txt
+        description: Type of output format options
+        key: '--type'
+        type: text
+        type: dropdown
+        options:
+            Comma separated values: csv
+            Tab separated values: tsv
+            Formatted output: txt
+            Separated protein: sep
