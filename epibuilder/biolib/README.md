@@ -45,8 +45,8 @@ This version is adapted exclusively for Biolib, so the only CSV accepted here is
 | tsv | The epitopes details | run-epibuilder-epitope-detail.fasta |
 | csv | Blast generated files by proteome | run-epibuilder-blast-PROTEOME_blast.csv |
 | psq, pdb, phr, pin, pjs, pot, psq, ptf, pto | Other blast generated files | * |
-[Download here a zip file with all files](https://github.com/simoesrenato/bioinfo/blob/master/epibuilder/test/EpiBuilder-1-results-example.zip?raw=true)
 
+[Download here a zip file with all files](https://github.com/simoesrenato/bioinfo/blob/master/epibuilder/test/EpiBuilder-1-results-example.zip?raw=true)
 
 Check the [source code](https://github.com/simoesrenato/bioinfo/tree/master/epibuilder) 
 Developed by Dr. Renato Simoes - renato.simoes@ifsc.edu.br
