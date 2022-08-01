@@ -1398,18 +1398,18 @@ public class Main2 extends javax.swing.JFrame {
         }
         Parameters.OUTPUT_FILE = false;
         Parameters.MAP_SOFTWARES = new LinkedHashMap<>();
-        Parameters.BEPIPRED2_FILE = new File(jtBepPredFile.getText());
+        Parameters.BEPIPRED_FILE = new File(jtBepPredFile.getText());
 
         if (jrBepipredOnline.isSelected()) {
-            Parameters.BEPIPRED2_INPUT = Parameters.BEPIPRED2_TYPE.ONLINE;
+            Parameters.BEPIPRED_INPUT = Parameters.BEPIPRED_TYPE.ONLINE;
         } else if (jrIEDBStd.isSelected()) {
-            Parameters.BEPIPRED2_INPUT = Parameters.BEPIPRED2_TYPE.BCELL_STANDALONE;
+            Parameters.BEPIPRED_INPUT = Parameters.BEPIPRED_TYPE.BCELL_STANDALONE;
         } else if (jrBepipredJobid.isSelected()) {
-            Parameters.BEPIPRED2_INPUT = Parameters.BEPIPRED2_TYPE.JOB_ID;
+            Parameters.BEPIPRED_INPUT = Parameters.BEPIPRED_TYPE.JOB_ID;
             Parameters.BEPIPRED2_JOBID = jtBepiPredJobId.getText();
         }
 
-        Parameters.THRESHOLD_BEPIPRED2 = Double.parseDouble(jtBepipredThreshold.getText());
+        Parameters.THRESHOLD_BEPIPRED = Double.parseDouble(jtBepipredThreshold.getText());
         Parameters.MIN_LENGTH_BEPIPRED2 = Integer.parseInt(jtBepiPredMinLength.getText());
         Parameters.MAX_LENGTH_BEPIPRED2 = Integer.parseInt(jtBepiPredMaxLength.getText());
         if (Parameters.MIN_LENGTH_BEPIPRED2 >= Parameters.MAX_LENGTH_BEPIPRED2) {
@@ -1657,7 +1657,7 @@ public class Main2 extends javax.swing.JFrame {
         jrBepipredJobid.setSelected(true);
         jrBepipredJobidActionPerformed(evt);
         Parameters.BEPIPRED2_JOBID = jobid;
-        Parameters.BEPIPRED2_INPUT = Parameters.BEPIPRED2_TYPE.JOB_ID;
+        Parameters.BEPIPRED_INPUT = Parameters.BEPIPRED_TYPE.JOB_ID;
         saveProperties();
         waiterBepipredOnline();
     }//GEN-LAST:event_jbSubmitBepipred2ActionPerformed

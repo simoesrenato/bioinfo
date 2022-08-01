@@ -2,7 +2,9 @@
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/Main.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/converter/BCellBepipred1Converter.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/entity/report/FormatHelper.java
+/Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/BiolibMain.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/converter/ProteinConverter.java
+/Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/converter/BepiPred3Converter.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/entity/SoftwareBcellEnum.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/Parameters.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/proteomics/ProteomicCalculator.java

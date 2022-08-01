@@ -26,6 +26,7 @@ import java.util.Map;
 import java.util.TreeSet;
 
 import static br.ufsc.epibuilder.Parameters.*;
+import br.ufsc.epibuilder.converter.BepiPred3Converter;
 import static br.ufsc.epibuilder.entity.SoftwareBcellEnum.CHOU_FOSMAN;
 import static br.ufsc.epibuilder.entity.SoftwareBcellEnum.EMINI;
 import static br.ufsc.epibuilder.entity.SoftwareBcellEnum.KARPLUS_SCHULZ;
@@ -180,13 +181,16 @@ public class EpitopeFinder {
             ArrayList<ProteinConverter> proteins = new ArrayList<>();
 
             sout("Reading BepiPred-2.0 Files");
-            if (Parameters.BEPIPRED2_INPUT == Parameters.BEPIPRED2_TYPE.JOB_ID) {
+            if (Parameters.BEPIPRED_INPUT == Parameters.BEPIPRED_TYPE.JOB_ID) {
                 proteins = BCellBepipred2Converter.getAllByJobID();
-            } else {
-                if(Parameters.BEPIPRED2_INPUT == Parameters.BEPIPRED2_TYPE.LOCAL){
-                    BEPIPRED2_FILE = BepiPredRunner.getBepiPred2Results(FASTA, BEPIPRED2_TYPE.LOCAL);
+            }else if (Parameters.BEPIPRED_INPUT == Parameters.BEPIPRED_TYPE.BEPIPRED3_BIOLIB){
+                proteins = BepiPred3Converter.getBepipred3FromBiolab(BEPIPRED_FILE);
+            } 
+            else {
+                if(Parameters.BEPIPRED_INPUT == Parameters.BEPIPRED_TYPE.LOCAL){
+                    BEPIPRED_FILE = BepiPredRunner.getBepiPred2Results(FASTA, BEPIPRED_TYPE.LOCAL);
                 }
-                proteins = BCellBepipred2Converter.getAll(BEPIPRED2_FILE, Parameters.BEPIPRED2_INPUT);
+                proteins = BCellBepipred2Converter.getAll(BEPIPRED_FILE, Parameters.BEPIPRED_INPUT);
             }
             sout("Reading BepiPred-2.0 Files - Done");
 
@@ -248,7 +252,7 @@ public class EpitopeFinder {
 
             sout("Building epitopes");
             for (Protein re : proteinList) {
-                re.process(THRESHOLD_BEPIPRED2, MIN_LENGTH_BEPIPRED2, MAX_LENGTH_BEPIPRED2);
+                re.process(THRESHOLD_BEPIPRED, MIN_LENGTH_BEPIPRED2, MAX_LENGTH_BEPIPRED2);
                 for (Epitopo epitopo : re.getEpitopes()) {
                     totalEpitopes++;
                     if (epitopo.isNglycolised()) {
@@ -348,7 +352,7 @@ public class EpitopeFinder {
             sout("\t Parameters\t");
             StringBuilder stParameters = new StringBuilder();
             stParameters.append("\n---- Running Parameters ----");
-            stParameters.append("\nBepiPred-2.0 Threshold : " + THRESHOLD_BEPIPRED2);
+            stParameters.append("\nBepiPred-2.0 Threshold : " + THRESHOLD_BEPIPRED);
             stParameters.append("\nMin epitope length     : " + MIN_LENGTH_BEPIPRED2);
             stParameters.append("\nMax epitope length     : " + MAX_LENGTH_BEPIPRED2);
             stParameters.append("\n");
@@ -543,7 +547,7 @@ public class EpitopeFinder {
                     count++,
                     report.getProteinId(),
                     StringUtils.leftPad(SoftwareBcellEnum.BEPIPRED2.description, 15, ' '),
-                    Parameters.THRESHOLD_BEPIPRED2,
+                    Parameters.THRESHOLD_BEPIPRED,
                     report.getAvgBepipredScore(),
                     report.getEpitope()));
 

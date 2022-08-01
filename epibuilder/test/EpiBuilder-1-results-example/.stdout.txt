@@ -1,0 +1,93 @@
+EpiBuilder - Executing from Biolib
+Arguments
+0 - --input
+1 - raw_output.csv
+2 - --threshold
+3 - 0.1
+4 - --min-length
+5 - 10
+6 - --max-length
+7 - 30
+8 - --features_biolib,emini,kolaskar,chou,karplus,parker
+9 - --basename
+10 - run
+11 - --system
+12 - linux
+13 - --search
+14 - direct_blast
+15 - --task
+16 - blastp-short
+17 - --ident
+18 - 90
+19 - --cover
+20 - 90
+21 - --word-size
+22 - 4
+23 - --proteome1
+24 - Tevansi.fasta
+25 - --proteome1-alias
+26 - tevansi
+27 - --proteome2
+28 - TequiperdumTxid5694.fasta
+29 - --proteome2-alias
+30 - tequiperdum
+31 - --proteome3
+32 - 
+33 - --proteome3-alias
+34 - 
+35 - --proteome4
+36 - 
+37 - --proteome4-alias
+38 - 
+39 - --proteome5
+40 - 
+41 - --proteome5-alias
+42 - 
+New Arguments
+0 - --input
+1 - raw_output.csv
+2 - --threshold
+3 - 0.1
+4 - --min-length
+5 - 10
+6 - --max-length
+7 - 30
+8 - --features
+9 - emini,kolaskar,chou,karplus,parker
+10 - --basename
+11 - run
+12 - --system
+13 - linux
+14 - --search
+15 - direct_blast
+16 - --task
+17 - blastp-short
+18 - --ident
+19 - 90
+20 - --cover
+21 - 90
+22 - --word-size
+23 - 4
+24 - --proteome1
+25 - Tevansi.fasta
+26 - --proteome1-alias
+27 - tevansi
+28 - --proteome2
+29 - TequiperdumTxid5694.fasta
+30 - --proteome2-alias
+31 - tequiperdum
+32 - --proteome3
+33 - 
+34 - --proteome3-alias
+35 - 
+36 - --proteome4
+37 - 
+38 - --proteome4-alias
+39 - 
+40 - --proteome5
+41 - 
+42 - --proteome5-alias
+43 - 
+Execution started
+Features
+Giving permission to execution to blastp and makeblastdb

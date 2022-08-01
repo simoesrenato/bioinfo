@@ -1,0 +1,22 @@
+{
+  "version": "1.2",
+  "dbname": "run-epibuilder-blast-tequiperdum",
+  "dbtype": "Protein",
+  "db-version": 5,
+  "description": "/home/biolib/TequiperdumTxid5694.fasta",
+  "number-of-letters": 3861545,
+  "number-of-sequences": 7768,
+  "last-updated": "2022-08-01T06:47:00",
+  "number-of-volumes": 1,
+  "bytes-total": 5160152,
+  "bytes-to-cache": 3931602,
+  "files": [
+    "run-epibuilder-blast-tequiperdum.pdb",
+    "run-epibuilder-blast-tequiperdum.phr",
+    "run-epibuilder-blast-tequiperdum.pin",
+    "run-epibuilder-blast-tequiperdum.pot",
+    "run-epibuilder-blast-tequiperdum.psq",
+    "run-epibuilder-blast-tequiperdum.ptf",
+    "run-epibuilder-blast-tequiperdum.pto"
+  ]
+}

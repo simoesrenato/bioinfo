@@ -5,7 +5,6 @@ import br.ufsc.epibuilder.entity.SoftwareBcellEnum;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.LinkedHashMap;
 
 /*
@@ -19,11 +18,12 @@ import java.util.LinkedHashMap;
  */
 public class Parameters {
 
-    public static double THRESHOLD_BEPIPRED2 = 0.6;
+    public static SO OPERATIONAL_SYSTEM = SO.linux;
+    public static double THRESHOLD_BEPIPRED = 0.6;
     public static int MIN_LENGTH_BEPIPRED2 = 10;
     public static int MAX_LENGTH_BEPIPRED2 = 30;
     public static int LENGTH_SEQUENCE_EMINI_PARKER = 10;
-    public static File BEPIPRED2_FILE = null;
+    public static File BEPIPRED_FILE = null;
     public static File EMINI_FILE = null;
     public static File PARKER_FILE = null;
     public static boolean NGLYC = false;
@@ -40,11 +40,16 @@ public class Parameters {
     public static String MAKEBLASTDB_PATH = "makeblastdb";
     public static String BLASTP_PATH = "blastp";
     public static File FASTA;
-    public enum BEPIPRED2_TYPE {
-        BCELL_STANDALONE("bcell_bepipred2"), ONLINE("online"), JOB_ID("job_id"), LOCAL("local");
-        private String name;
 
-        private BEPIPRED2_TYPE(String name) {
+    public enum SO {
+        windows, linux, macos
+    }
+
+    public enum BEPIPRED_TYPE {
+        BCELL_STANDALONE("bcell_bepipred2"), ONLINE("online"), JOB_ID("job_id"), LOCAL("local"), BEPIPRED3_BIOLIB("bepipred3_biolib");
+        private final String name;
+
+        private BEPIPRED_TYPE(String name) {
             this.name = name;
         }
 
@@ -52,7 +57,9 @@ public class Parameters {
             return name;
         }
     };
-    public static BEPIPRED2_TYPE BEPIPRED2_INPUT = BEPIPRED2_TYPE.BCELL_STANDALONE;
+
+    public static BEPIPRED_TYPE BEPIPRED_INPUT = BEPIPRED_TYPE.BCELL_STANDALONE;
+
     public static String BEPIPRED2_PATH = "BepiPred-2.0";
     public static String BEPIPRED2_BCELL_STANDALONE_PATH = "predict_antibody_epitope.py";
     public static String BEPIPRED2_JOBID;
@@ -60,7 +67,8 @@ public class Parameters {
     public static String DESTINATION_FOLDER = ".";
     public static boolean OUTPUT_FILE = false;
     public static boolean HIT_ACCESSION = true;
-    static{
-        Parameters.BASENAME = "run-"+String.format("%1$tF-%1$tH%1$tM%1$tS", Calendar.getInstance().getTime());
+
+    static {
+        Parameters.BASENAME = "run-" + String.format("%1$tF-%1$tH%1$tM%1$tS", Calendar.getInstance().getTime());
     }
 }

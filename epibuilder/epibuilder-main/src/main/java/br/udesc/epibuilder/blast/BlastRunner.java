@@ -11,6 +11,7 @@ import br.ufsc.epibuilder.entity.Proteome;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
@@ -19,6 +20,52 @@ import java.util.ArrayList;
  * @author renato
  */
 public class BlastRunner {
+
+    public static void runCommand(String command) throws IOException {
+        String s;
+        Process p = Runtime.getRuntime().exec(command);
+        BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+
+        boolean success = false;
+        String stSuccess = "";
+        while ((s = stdInput.readLine()) != null) {
+            stSuccess += s;
+            stSuccess += "\n";
+            success = true;
+        }
+
+        boolean error = false;
+        String stError = "";
+
+        while ((s = stdError.readLine()) != null) {
+            stError += s;
+            stError += "\n";
+            error = true;
+        }
+
+        if (success) {
+            System.out.println("Success:");
+            System.out.println(stSuccess);
+        }
+        if (error) {
+            System.out.println("Error:");
+            System.out.println(stError);
+        }
+    }
+
+    public static void chmodBlast(Parameters.SO so) {
+        System.out.println("Giving permission to execution to blastp and makeblastdb");
+        try {
+            if (so == Parameters.SO.linux || so == Parameters.SO.macos) {
+                runCommand("chmod +x " + Parameters.BLASTP_PATH);
+                runCommand("chmod +x " + Parameters.MAKEBLASTDB_PATH);
+            }
+        } catch (Exception e) {
+//            e.printStackTrace();
+            System.out.println("Error giving permission: "+ e.getMessage());
+        }
+    }
 
     public static void addHeader(File file) throws Exception {
         String res = FileHelper.readFile(file);
@@ -56,7 +103,7 @@ public class BlastRunner {
                     System.out.print(string + " ");
                 }
                 System.out.println("]");
-                
+
                 Process p = Runtime.getRuntime().exec(cmd);
                 BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
                 BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));

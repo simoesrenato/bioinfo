@@ -1,0 +1,12 @@
+[2022-08-01 03:44:30] Running job 6596aba9-d6e0-4951-904e-6bcec8d201b1 with arguments: ["--input","raw_output.csv","--threshold","0.1","--min-length","10","--max-length","30","--features_biolib,emini,kolaskar,chou,karplus,parker","--basename","run","--system","linux","--search","direct_blast","--task","blastp-short","--ident","90","--cover","90","--word-size","4","--proteome1","Tevansi.fasta","--proteome1-alias","tevansi","--proteome2","TequiperdumTxid5694.fasta","--proteome2-alias","tequiperdum","--proteome3","","--proteome3-alias","","--proteome4","","--proteome4-alias","","--proteome5","","--proteome5-alias",""]. Got 0 bytes of stdin data.
+[2022-08-01 03:44:31] Cloud: Creating job
+[2022-08-01 03:44:32] Cloud: Job created with id 1c6c27e0-f71b-41cb-94eb-e1f6c0a976c5
+[2022-08-01 03:44:32] Cloud: Awaiting initialization of compute node at 10.11.7.73
+[2022-08-01 03:44:53] Cloud: Initializing
+[2022-08-01 03:44:53] Cloud: Downloading Source Files...
+[2022-08-01 03:44:57] Cloud: Pulling images...
+[2022-08-01 03:44:57] Cloud: Computing...
+[2022-08-01 03:49:06] Cloud: Computation finished
+[2022-08-01 03:49:06] Cloud: Result Ready
+[2022-08-01 03:49:10] Cloud: Got module output.
+[2022-08-01 03:49:10] Job with id 6596aba9-d6e0-4951-904e-6bcec8d201b1 finished computing

@@ -1,9 +1,7 @@
 package br.ufsc.epibuilder;
 
-import static br.ufsc.epibuilder.Parameters.BEPIPRED2_FILE;
 import static br.ufsc.epibuilder.Parameters.MAX_LENGTH_BEPIPRED2;
 import static br.ufsc.epibuilder.Parameters.MIN_LENGTH_BEPIPRED2;
-import static br.ufsc.epibuilder.Parameters.THRESHOLD_BEPIPRED2;
 
 import br.ufsc.epibuilder.entity.Proteome;
 import br.ufsc.epibuilder.entity.SoftwareBcellEnum;
@@ -12,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import static br.ufsc.epibuilder.Parameters.BEPIPRED_FILE;
+import static br.ufsc.epibuilder.Parameters.THRESHOLD_BEPIPRED;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -39,17 +39,17 @@ public class Main {
                 if (!new File(args[i]).exists()) {
                     throw new Exception("File not found: " + args[i]);
                 } else {
-                    BEPIPRED2_FILE = new File(args[i]);
+                    BEPIPRED_FILE = new File(args[i]);
                 }
 
             } else if (args[i].equals("-o")) {
-                Parameters.BEPIPRED2_INPUT= Parameters.BEPIPRED2_TYPE.ONLINE;
+                Parameters.BEPIPRED_INPUT= Parameters.BEPIPRED_TYPE.ONLINE;
             } else if (args[i].equals("-jobid")){
-                Parameters.BEPIPRED2_INPUT= Parameters.BEPIPRED2_TYPE.JOB_ID;
+                Parameters.BEPIPRED_INPUT= Parameters.BEPIPRED_TYPE.JOB_ID;
                 Parameters.BEPIPRED2_JOBID = args[i+1];
             } else if(args[i].equals("-l")){
                 i++;
-                Parameters.BEPIPRED2_INPUT= Parameters.BEPIPRED2_TYPE.LOCAL;
+                Parameters.BEPIPRED_INPUT= Parameters.BEPIPRED_TYPE.LOCAL;
                 String arquivo = args[i];
                 File arquivoFasta = new File (arquivo);
                 Parameters.FASTA = arquivoFasta; 
@@ -67,7 +67,7 @@ public class Main {
             } else if (args[i].equals("-t")) {
                 i++;
                 try {
-                    THRESHOLD_BEPIPRED2 = Double.parseDouble(args[i]);
+                    THRESHOLD_BEPIPRED = Double.parseDouble(args[i]);
                 } catch (Exception e) {
                     throw new Exception("-t requires a number: " + args[i]);
                 }

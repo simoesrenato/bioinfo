@@ -1,0 +1,22 @@
+{
+  "version": "1.2",
+  "dbname": "run-epibuilder-blast-tevansi",
+  "dbtype": "Protein",
+  "db-version": 5,
+  "description": "/home/biolib/Tevansi.fasta",
+  "number-of-letters": 4786024,
+  "number-of-sequences": 10109,
+  "last-updated": "2022-08-01T06:45:00",
+  "number-of-volumes": 1,
+  "bytes-total": 5905104,
+  "bytes-to-cache": 4877134,
+  "files": [
+    "run-epibuilder-blast-tevansi.pdb",
+    "run-epibuilder-blast-tevansi.phr",
+    "run-epibuilder-blast-tevansi.pin",
+    "run-epibuilder-blast-tevansi.pot",
+    "run-epibuilder-blast-tevansi.psq",
+    "run-epibuilder-blast-tevansi.ptf",
+    "run-epibuilder-blast-tevansi.pto"
+  ]
+}

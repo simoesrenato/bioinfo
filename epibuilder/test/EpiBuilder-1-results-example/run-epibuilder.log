@@ -1,0 +1,113 @@
+Mon Aug 01 06:44:59 GMT 2022	Process started: 
+Mon Aug 01 06:44:59 GMT 2022	Reading BepiPred-2.0 Files
+Mon Aug 01 06:44:59 GMT 2022	Reading BepiPred-2.0 Files - Done
+Mon Aug 01 06:44:59 GMT 2022	Converting AA in Protein
+Mon Aug 01 06:44:59 GMT 2022	Converting AA in Protein - Done
+Mon Aug 01 06:44:59 GMT 2022	Processing Methods
+Mon Aug 01 06:44:59 GMT 2022	Processing Methods - Done
+Mon Aug 01 06:44:59 GMT 2022	Building epitopes
+Mon Aug 01 06:44:59 GMT 2022	Building epitopes - Done
+Mon Aug 01 06:44:59 GMT 2022	Creating report's structure
+Mon Aug 01 06:45:00 GMT 2022	Creating report's structure - Done
+Mon Aug 01 06:45:00 GMT 2022	Creating reports
+Mon Aug 01 06:45:00 GMT 2022		 Parameters	
+Mon Aug 01 06:45:00 GMT 2022		 Parameters - done	
+Mon Aug 01 06:45:00 GMT 2022		 Report by Protein	
+Mon Aug 01 06:45:00 GMT 2022		 Report by Protein - done	
+Mon Aug 01 06:45:00 GMT 2022		 Report by Topology	
+Mon Aug 01 06:45:00 GMT 2022		 Report by Topology - Done	
+Mon Aug 01 06:45:00 GMT 2022		 Report Scores	
+Mon Aug 01 06:45:00 GMT 2022		 Report Scores - done	
+Mon Aug 01 06:45:00 GMT 2022		 Epitopes FASTA	
+Mon Aug 01 06:45:00 GMT 2022		 Epitopes FASTA - done	
+Mon Aug 01 06:45:00 GMT 2022		 Report Detailed	
+Mon Aug 01 06:45:00 GMT 2022			Loading proteome: tevansi	/home/biolib/Tevansi.fasta	
+Mon Aug 01 06:45:00 GMT 2022			Loaded 10109 proteins	
+Mon Aug 01 06:45:00 GMT 2022			Loading proteome: tequiperdum	/home/biolib/TequiperdumTxid5694.fasta	
+Mon Aug 01 06:45:01 GMT 2022			Loaded 7768 proteins	
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: SHHSKSKNGYPP	1/13 in tevansi(10109 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: SHHSKSKNGYPP	1/13 in tevansi(10109 proteins). Found (1 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: SHHSKSKNGYPP	1/13 in tequiperdum(7768 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: SHHSKSKNGYPP	1/13 in tequiperdum(7768 proteins). Found (1 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: KPHEKGNEDHLDE	2/13 in tevansi(10109 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: KPHEKGNEDHLDE	2/13 in tevansi(10109 proteins). Found (1 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: KPHEKGNEDHLDE	2/13 in tequiperdum(7768 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: KPHEKGNEDHLDE	2/13 in tequiperdum(7768 proteins). Found (1 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: DNEDEDISSSDNGNFETEKKKKKK	3/13 in tevansi(10109 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: DNEDEDISSSDNGNFETEKKKKKK	3/13 in tevansi(10109 proteins). Found (0 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: DNEDEDISSSDNGNFETEKKKKKK	3/13 in tequiperdum(7768 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: DNEDEDISSSDNGNFETEKKKKKK	3/13 in tequiperdum(7768 proteins). Found (1 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: QKQRYATTDSTDVDLAADANINGEDEEKN	4/13 in tevansi(10109 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: QKQRYATTDSTDVDLAADANINGEDEEKN	4/13 in tevansi(10109 proteins). Found (1 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: QKQRYATTDSTDVDLAADANINGEDEEKN	4/13 in tequiperdum(7768 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: QKQRYATTDSTDVDLAADANINGEDEEKN	4/13 in tequiperdum(7768 proteins). Found (1 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: YDEDDDAEEDEIN	5/13 in tevansi(10109 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: YDEDDDAEEDEIN	5/13 in tevansi(10109 proteins). Found (1 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: YDEDDDAEEDEIN	5/13 in tequiperdum(7768 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: YDEDDDAEEDEIN	5/13 in tequiperdum(7768 proteins). Found (1 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: TGDVYQQRKLHH	6/13 in tevansi(10109 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: TGDVYQQRKLHH	6/13 in tevansi(10109 proteins). Found (0 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: TGDVYQQRKLHH	6/13 in tequiperdum(7768 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: TGDVYQQRKLHH	6/13 in tequiperdum(7768 proteins). Found (0 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: IKKNNNASILPKRRFTEEEARAP	7/13 in tevansi(10109 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: IKKNNNASILPKRRFTEEEARAP	7/13 in tevansi(10109 proteins). Found (1 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: IKKNNNASILPKRRFTEEEARAP	7/13 in tequiperdum(7768 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: IKKNNNASILPKRRFTEEEARAP	7/13 in tequiperdum(7768 proteins). Found (1 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: DERQMEDKRT	8/13 in tevansi(10109 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: DERQMEDKRT	8/13 in tevansi(10109 proteins). Found (1 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: DERQMEDKRT	8/13 in tequiperdum(7768 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: DERQMEDKRT	8/13 in tequiperdum(7768 proteins). Found (1 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: IRPFGTATQR	9/13 in tevansi(10109 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: IRPFGTATQR	9/13 in tevansi(10109 proteins). Found (0 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: IRPFGTATQR	9/13 in tequiperdum(7768 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: IRPFGTATQR	9/13 in tequiperdum(7768 proteins). Found (0 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: RKRRWAERQER	10/13 in tevansi(10109 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: RKRRWAERQER	10/13 in tevansi(10109 proteins). Found (1 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: RKRRWAERQER	10/13 in tequiperdum(7768 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: RKRRWAERQER	10/13 in tequiperdum(7768 proteins). Found (1 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: KNNPTPQKSK	11/13 in tevansi(10109 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: KNNPTPQKSK	11/13 in tevansi(10109 proteins). Found (0 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: KNNPTPQKSK	11/13 in tequiperdum(7768 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: KNNPTPQKSK	11/13 in tequiperdum(7768 proteins). Found (0 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: MSTDDVRDGFLQE	12/13 in tevansi(10109 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: MSTDDVRDGFLQE	12/13 in tevansi(10109 proteins). Found (0 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: MSTDDVRDGFLQE	12/13 in tequiperdum(7768 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: MSTDDVRDGFLQE	12/13 in tequiperdum(7768 proteins). Found (0 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: ALVAEDAPVLSKA	13/13 in tevansi(10109 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: ALVAEDAPVLSKA	13/13 in tevansi(10109 proteins). Found (1 hits)
+Mon Aug 01 06:45:01 GMT 2022	Start searching for epitope: ALVAEDAPVLSKA	13/13 in tequiperdum(7768 proteins)
+Mon Aug 01 06:45:01 GMT 2022	End searching for epitope: ALVAEDAPVLSKA	13/13 in tequiperdum(7768 proteins). Found (1 hits)
+Mon Aug 01 06:45:01 GMT 2022		Blast	
+Running command[: linux/./makeblastdb -dbtype prot -in /home/biolib/Tevansi.fasta -out ./run-epibuilder-blast-tevansi ]
+Success:
+
+
+Building a new DB, current time: 08/01/2022 06:45:01
+New DB name:   /home/biolib/run-epibuilder-blast-tevansi
+New DB title:  /home/biolib/Tevansi.fasta
+Sequence type: Protein
+Keep MBits: T
+Maximum file size: 3000000000B
+Adding sequences from FASTA; added 10109 sequences in 0.211069 seconds.
+
+
+
+Running command[: linux/./blastp -query ./run-epibuilder-epitopes-fasta.fasta -db ./run-epibuilder-blast-tevansi -outfmt 6 qacc sacc pident qcovs qseq sseq qacc -task blastp-short -word_size 4 -out ./run-epibuilder-blast-tevansi_blast.csv ]
+Running command[: linux/./makeblastdb -dbtype prot -in /home/biolib/TequiperdumTxid5694.fasta -out ./run-epibuilder-blast-tequiperdum ]
+Success:
+
+
+Building a new DB, current time: 08/01/2022 06:47:01
+New DB name:   /home/biolib/run-epibuilder-blast-tequiperdum
+New DB title:  /home/biolib/TequiperdumTxid5694.fasta
+Sequence type: Protein
+Keep MBits: T
+Maximum file size: 3000000000B
+Adding sequences from FASTA; added 7768 sequences in 0.140556 seconds.
+
+
+
+Running command[: linux/./blastp -query ./run-epibuilder-epitopes-fasta.fasta -db ./run-epibuilder-blast-tequiperdum -outfmt 6 qacc sacc pident qcovs qseq sseq qacc -task blastp-short -word_size 4 -out ./run-epibuilder-blast-tequiperdum_blast.csv ]
+Mon Aug 01 06:49:02 GMT 2022		Blast - done	
+Mon Aug 01 06:49:02 GMT 2022		 Report Detailed - Done	
+Mon Aug 01 06:49:03 GMT 2022	Finish	

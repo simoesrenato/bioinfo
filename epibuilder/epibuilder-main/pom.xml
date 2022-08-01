@@ -123,6 +123,11 @@
             <version>3.141.5</version>
         </dependency>
 
+        <dependency>
+            <groupId>info.picocli</groupId>
+            <artifactId>picocli</artifactId>
+            <version>4.6.3</version>
+        </dependency>
     </dependencies>
     <name>epibuilder-main</name>
 </project>

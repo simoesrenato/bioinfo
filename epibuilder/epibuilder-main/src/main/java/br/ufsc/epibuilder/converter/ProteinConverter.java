@@ -17,6 +17,7 @@ public class ProteinConverter {
     private String id;
     private StringBuilder sequence = new StringBuilder();
     private TreeMap<Integer, Amino> aminoacidMap = new TreeMap<>();
+    private int index=0;
 
     public ProteinConverter(String id, String sequence) {
         this.id = id;
@@ -30,7 +31,18 @@ public class ProteinConverter {
     public String getSequence() {
         return sequence.toString();
     }
-
+    
+    public String getSequenceFromMap(){
+        String sequence = "";
+        for (Amino value : aminoacidMap.values()) {
+            sequence+=value.getAa();
+        }
+        return sequence;
+    }
+    public void addAmino(String aa, double value) {
+        aminoacidMap.put(index++, new Amino(aa, value));
+    }
+    
     public void addAmino(int pos, String aa, double value) {
         aminoacidMap.put(pos, new Amino(aa, value));
     }

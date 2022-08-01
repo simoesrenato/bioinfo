@@ -24,19 +24,19 @@ public class BCellBepipred2Converter {
     
     public static ArrayList<ProteinConverter> getAllByJobID() throws Exception {
         File bepipredFile = BepiPredOnlineRunner.getBepiPredByJobId(Parameters.BEPIPRED2_JOBID);
-        return getAll(bepipredFile, Parameters.BEPIPRED2_TYPE.ONLINE);
+        return getAll(bepipredFile, Parameters.BEPIPRED_TYPE.ONLINE);
         
     }
     
-    public static ArrayList<ProteinConverter> getAll(File f, Parameters.BEPIPRED2_TYPE inputType) throws Exception {
-        if (inputType == Parameters.BEPIPRED2_TYPE.ONLINE ) {
+    public static ArrayList<ProteinConverter> getAll(File f, Parameters.BEPIPRED_TYPE inputType) throws Exception {
+        if (inputType == Parameters.BEPIPRED_TYPE.ONLINE ) {
             try {
 
                 return getBepipred2FromCsv(f);
             } catch (InputException ex) {
                 throw new Exception(ex);
             }
-        } if(inputType== Parameters.BEPIPRED2_TYPE.LOCAL){
+        } if(inputType== Parameters.BEPIPRED_TYPE.LOCAL){
             try {
                 return getBepipred2FromLocalCsv(f);
             } catch (InputException ex) {
@@ -95,7 +95,7 @@ public class BCellBepipred2Converter {
         ArrayList<ProteinConverter> proteins = new ArrayList<>();
         ProteinConverter protein = new ProteinConverter("");
         s.nextLine();
-        if(Parameters.BEPIPRED2_INPUT == Parameters.BEPIPRED2_TYPE.LOCAL){
+        if(Parameters.BEPIPRED_INPUT == Parameters.BEPIPRED_TYPE.LOCAL){
             s.nextLine();
         }
         while (s.hasNext()) {
