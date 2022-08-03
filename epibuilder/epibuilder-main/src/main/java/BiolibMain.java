@@ -70,6 +70,10 @@ public class BiolibMain implements Callable<Integer> {
     String proteome5;
     @Option(names = {"-p5a", "--proteome5-alias"}, description = "Proteome 5 alias - appears in the report file", defaultValue = "proteome5")
     String proteome5Alias;
+    @Option(names = {"-p6", "--proteome6"}, description = "Proteome 6 file", defaultValue = "null")
+    String proteome6;
+    @Option(names = {"-p6a", "--proteome6-alias"}, description = "Proteome 6 alias - appears in the report file", defaultValue = "proteome6")
+    String proteome6Alias;
     @Option(names = {"-so", "--system"}, description = "Operational System ${COMPLETION-CANDIDATES}. Default: ${DEFAULT-VALUE}", defaultValue = "linux")
     Parameters.SO operationalSystem;
 
@@ -135,6 +139,7 @@ public class BiolibMain implements Callable<Integer> {
             addProteome(proteomeFiles, proteome3, proteome3Alias, 3);
             addProteome(proteomeFiles, proteome4, proteome4Alias, 4);
             addProteome(proteomeFiles, proteome5, proteome5Alias, 5);
+            addProteome(proteomeFiles, proteome6, proteome6Alias, 6);
             if (proteomeFiles.isEmpty()) {
                 System.out.println("ERROR: Choose at least one proteome to perform the search");
                 System.exit(0);

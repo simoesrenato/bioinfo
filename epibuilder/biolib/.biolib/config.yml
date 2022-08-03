@@ -11,7 +11,18 @@ modules:
             - COPY /home/biolib/ /
         source_files:
             - COPY / /home/biolib/
+
+citation:
+   entry_type: 'article'
+   author: 'Moreira, Renato Simões, Vilmar Benetti Filho, Nathália Anderson Calomeno, Glauber Wagner, and Luiz Claudio Miletti'
+   title: 'EpiBuilder: A Tool for Assembling, Searching, and Classifying B-Cell Epitopes'
+   journal: 'Bioinform Biol Insights'
+   year: '2022'
+   volume: '16'
+   doi: '10.1177/11779322221095221'
+
 output_type: markdown
+    
 arguments:
    -
       key: --input
@@ -123,6 +134,16 @@ arguments:
                 description: 'Proteome 5 alias - appears in the report file' 
                 type: text
                 required: false
+             -   
+                key: --proteome6
+                description: 'Proteome 6 file'
+                type: file
+                required: false
+             -   
+                key: --proteome6-alias
+                description: 'Proteome 6 alias - appears in the report file' 
+                type: text
+                required: false
 
          'direct_blast':
              -
@@ -202,6 +223,16 @@ arguments:
              -   
                 key: --proteome5-alias
                 description: 'Proteome 5 alias - appears in the report file' 
+                type: text
+                required: false
+             -   
+                key: --proteome6
+                description: 'Proteome 6 file'
+                type: file
+                required: false
+             -   
+                key: --proteome6-alias
+                description: 'Proteome 6 alias - appears in the report file' 
                 type: text
                 required: false
                 

@@ -39,7 +39,10 @@ public class BepiPred3Converter {
                 String remaining = val.substring(0, lastComma);
                 lastComma = remaining.lastIndexOf(",");
                 String aa = remaining.substring(lastComma + 1);
-                String id = remaining.substring(0, remaining.indexOf(" "));
+                String id = remaining.substring(0,lastComma);
+                if (remaining.contains(" ")) {
+                    id = remaining.substring(0, remaining.indexOf(" "));
+                }
 
                 if (!protein.getId().equals(id)) {
                     protein = new ProteinConverter(id);
@@ -56,10 +59,10 @@ public class BepiPred3Converter {
     }
 
     public static void main(String[] args) throws Exception, InputException {
-        File f = new File("/bioinformatic/bepipred3/online/BepiPred-3-results/raw_output.csv");
+        File f = new File("/tese/resultados/epitope/bepipred3/biolib-online/secretome.csv");
         ArrayList<ProteinConverter> proteins = getBepipred3FromBiolab(f);
         for (ProteinConverter protein : proteins) {
-            System.out.println(">"+protein.getId());
+            System.out.println(">" + protein.getId());
             System.out.println(protein.getSequenceFromMap());
         }
         System.out.println("Teste");
