@@ -1,17 +1,32 @@
 package br.edu.ifsc.bioinfo.fast.protein;
 
+import br.edu.ifsc.bioinfo.fast.protein.conversor.BlastConverter;
+import br.edu.ifsc.bioinfo.fast.protein.conversor.InterproScanConverter;
+import br.edu.ifsc.bioinfo.fast.protein.conversor.WolfPsortConverter;
+import br.edu.ifsc.bioinfo.fast.protein.conversor.SignalP5Converter;
+import br.edu.ifsc.bioinfo.fast.protein.conversor.TMHMM2Converter;
+import br.edu.ifsc.bioinfo.fast.protein.conversor.geneontology.GeneOntologyProcess;
+import br.edu.ifsc.bioinfo.fast.util.GeneOntologyUtil;
+import br.edu.ifsc.bioinfo.fast.util.MarkdownHelper;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.lang3.StringUtils;
 import org.biojava.nbio.core.exceptions.CompoundNotFoundException;
 import org.biojava.nbio.core.sequence.ProteinSequence;
 import org.biojava.nbio.core.sequence.io.FastaReaderHelper;
+import static br.edu.ifsc.bioinfo.fast.util.MarkdownHelper.*;
+import br.edu.ifsc.bioinfo.fast.util.MathCalculator;
+import java.util.Date;
 
 /**
  *
@@ -22,16 +37,22 @@ public class FastProteinCalculator {
     private static Pattern patternErret = Pattern.compile("[KRHQSA][DENQ][E][L]");
     private static Pattern patternNglyc = Pattern.compile("[N][ARNDBCEQZGHILKMFSTWYV][ST]");
 
-    private enum Output {
-        CSV(","), TSV("\t"), TXT("txt");
-        private String separator;
+    public enum Output {
+        csv(",", ".csv"), tsv("\t", ".txt"), txt("txt", ".txt"), sep("sep", ".txt"), raw("raw", ".tsv");
+        private final String separator;
+        private final String extension;
 
-        private Output(String separator) {
+        private Output(String separator, String extension) {
             this.separator = separator;
+            this.extension = extension;
         }
 
         public String getSeparator() {
             return separator;
+        }
+
+        public String getExtension() {
+            return extension;
         }
     }
 
@@ -44,11 +65,19 @@ public class FastProteinCalculator {
         ISOELETRIC_POINT("Isoelectric Point"),
         HYDROPATHY("Hydropathy"),
         AROMATICITY("Aromaticity"),
+        SUBCELLULAR_LOCALIZATION("Subcell Localization"),
         ERR_TOTAL("E.R Retention Total"),
         ERR_DOMAINS("E.R Retention Domains"),
         NGLYC_TOTAL("NGlyc Total"),
         NGLYC_DOMAINS("NGlyc Domains"),
-        SEQUENCE("Sequence");
+        SEQUENCE("Sequence"),
+        TRANSMEMBRANE("Transmembrane"),
+        SIGNAL_P5("SignalP5"),
+        BLAST_DESC("Blast description"),
+        GO_ANNOTATION("Gene Ontology"),
+        INTERPRO_ANNOTATION("Interpro Annotation"),
+        PFAM_ANNOTATION("PFAM Annotation"),
+        PANTHER_ANNOTATION("Panther Annotation");
 
         private String description;
 
@@ -63,6 +92,20 @@ public class FastProteinCalculator {
 
     }
 
+    public static File generateCleanFasta(ArrayList<Protein> proteins) throws IOException {
+        StringBuilder sbFasta = new StringBuilder();
+        for (Protein protein : proteins) {
+            sbFasta.append(">" + protein.getId() + "\n");
+            sbFasta.append(protein.getSequence() + "\n");
+        }
+        File out = new File("clean.fasta");
+        FileWriter fw = new FileWriter(out);
+        fw.write(sbFasta.toString());
+        fw.flush();
+        fw.close();
+        return out;
+    }
+
     private static void replaceSize(String value, Field field, HashMap<Field, Integer> mapSize) {
         int maxSize = mapSize.get(field);
         int length = value.length();
@@ -71,118 +114,47 @@ public class FastProteinCalculator {
         }
     }
 
-    private static void showHelp() {
-        System.out.println("FastProtein commands manual");
-        System.out.println("USAGE");
-        System.out.println("\tjava -jar fast-protein.jar [<fastaFile>] [-h] [-t <value>] [-out <output_file>]");
-        System.out.println("");
-        System.out.println("DESCRIPTION");
-        System.out.println("\tFastProtein 1.0");
-        System.out.println("");
-        System.out.println("ARGUMENTS\n"
-                + "\t*<fastaFile> - Input FASTA file (required as 1st argument)\n"
-                + "\t-h or --help (optional)\n"
-                + "\t\tPrint USAGE, DESCRIPTION and ARGUMENTS; ignore all other parameters\n"
-                + "\t-v or -version (optional)\n"
-                + "\t\tPrint version number;  ignore all other arguments\n"
-                + "\t-t <options> (optional)\n"
-                + "\t\tType of output format options:\n"
-                + "\t\t\tcsv - Comma separated values,\n"
-                + "\t\t\ttsv - Tab separated values,\n"
-                + "\t\t\ttxt - Formatted output (default)\n"
-                + "\t-out <output_file> (optional) \n"
-                + "\t\tOutput file name - if not informed, the output will be displayed only in the console."
-        );
+    public static boolean createChart() {
 
-        System.out.println("");
-    }
+        try {
+            System.out.println("Generating charts");
+            CommandRunner.run(String.format("chmod +x charts.sh"));
+            CommandRunner.run(String.format("./charts.sh"));
+            return true;
 
-    public static void run(String[] args) {
-        if (args.length == 0) {
-            System.out.println("Fast-protein commands manual");
-            System.out.println("Command");
-            System.out.println("\tjava -jar fast-protein.jar [-h] [-f <fastaFile>] [-t <value>] [-out <output_file>]");
-            System.out.println("Help");
-            System.out.println("\tjava -jar fast-protein.jar -h");
-            System.exit(0);
-        } else {
-            for (String arg : args) {
-                if (arg.equals("-h") || arg.equals("--help")) {
-                    showHelp();
-                    System.exit(0);
-                }
-                if (arg.equals("-v") || arg.equals("-version")) {
-                    System.out.println("Fast-protein 1.0");
-                    System.exit(0);
-                }
-            }
+        } catch (Exception ex) {
+            System.out.println("Error creating charts: " + ex.getMessage());
+            return false;
         }
 
-        Output out = Output.TXT;
-        boolean console = true;
+    }
 
-        String fileSource = "";
-        String fileOutput = "";
-
-        fileSource = args[0];
+    public static void run(File fileSource, 
+            Output out[], 
+            String fileOutput, WolfPsortConverter.Type psortType, SignalP5Converter.Organism signalPOption, boolean blast, BlastConverter.Database blastDb, int blastTimeout, boolean interpro, int interproLimit) {
+        StringBuilder outputmd = new StringBuilder();
         LinkedHashMap<String, ProteinSequence> resp = null;
+
+        ArrayList<String[]> goP = new ArrayList<>();
+        ArrayList<String[]> goF = new ArrayList<>();
+        ArrayList<String[]> goC = new ArrayList<>();
+        String[] goHeader = {"GO", "Description", "Total"};
+        Integer[] goHeaderAlignments = {LEFT, LEFT, RIGHT};
+
         try {
-            resp = FastaReaderHelper.readFastaProteinSequence(new File(fileSource));
+            resp = FastaReaderHelper.readFastaProteinSequence(fileSource);
         } catch (IOException ex) {
             System.err.println("Invalid FASTA file. Please check your informed file " + fileSource);
             ex.printStackTrace();
             System.exit(1);
         }
 
-        for (int i = 1; i < args.length; i++) {
-            if (args[i].equals("-t")) {
-                i++;
-                if (i < args.length) {
-                    String typeOutput = args[i];
-                    if (args[i] != null) {
-                        switch (typeOutput) {
-                            case "csv":
-                                out = Output.CSV;
-                                break;
-                            case "tsv":
-                                out = Output.TSV;
-                                break;
-                            case "txt":
-                                out = Output.TXT;
-                                break;
-                            default:
-                                System.out.println("Invalid -t option (0-csv, 1-tsv or 2-txt).");
-                                System.out.println("For more information use -h or -help.");
-                                System.exit(0);
-                        }
-                    }
-                } else {
-                    System.out.println("Enter a value for -t option (0-csv, 1-tsv or 2-txt).");
-                    System.out.println("For more information use -h or -help.");
-                    System.exit(0);
-                }
-            }
-            if (args[i].equals("-out")) {
-                console = false;
-                i++;
-                if (i < args.length) {
-                    fileOutput = args[i];
-                } else {
-                    System.out.println("File not informed using -o option ");
-                    System.out.println("For more information use -h or -help.");
-                    System.exit(0);
-                }
-            }
-
-        }
-
         System.out.println("#Fast-protein Software 1.0");
-        System.out.println("#Developed by Renato Simões - renato.simoes@ifsc.edu.br");
+        System.out.println("#Developed by PhD. Renato Simoes Moreira - renato.simoes@ifsc.edu.br");
         System.out.println("#Protein information software");
         System.out.println("#Obs:");
-        System.out.println("#Pattern ER Retention [KRHQSA][DENQ][E][L] based on PROSITE-PS00014 https://prosite.expasy.org/  ");
-        System.out.println("#Pattern N-Glyc [N][Xaa(except P)][ST] Xaa = any aminoacid");
-
+        System.out.println("#Pattern ER Retention [KRHQSA][DENQ][E][L]");
+        System.out.println("#Pattern N-Glyc [N][Xaa(except P)][ST] | Xaa = any aminoacid");
         System.out.println("");
 
         ArrayList<Protein> proteins = new ArrayList<>();
@@ -192,180 +164,646 @@ public class FastProteinCalculator {
             String proteinId = id.split(" ")[0];
 
             String sequence = s.getSequenceAsString().toUpperCase();
+            Protein protein = new Protein(proteinId, sequence);
+            protein.setHeader(s.getAccession().getID());
 
             //Processing ER Retention
-            Matcher matcher = patternErret.matcher(sequence);
-            int erretTotalPerProtein = 0;
-            String erretDomain = "";
-            while (matcher.find()) {
-                erretDomain += String.format("%s[%d-%d],", matcher.group(), matcher.start(), matcher.end());
-                erretTotalPerProtein++;
-            }
-            if (erretTotalPerProtein > 0) {
-                erretDomain = erretDomain.substring(0, erretDomain.length() - 1);
+            Matcher erretMatcher = patternErret.matcher(sequence);
+            while (erretMatcher.find()) {
+                protein.addErretDomain(new Domain(erretMatcher.group(), erretMatcher.start(), erretMatcher.end()));
             }
             //Processing Nglyc domain
             Matcher nGlycmatcher = patternNglyc.matcher(sequence);
-            int nglycTotalPerProtein = 0;
-            String nglycDomain = "";
             while (nGlycmatcher.find()) {
-                nglycDomain += String.format("%s[%d-%d],", nGlycmatcher.group(), nGlycmatcher.start(), nGlycmatcher.end());
-                nglycTotalPerProtein++;
-            }
-            if (nglycTotalPerProtein > 0) {
-                nglycDomain = nglycDomain.substring(0, nglycDomain.length() - 1);
+                protein.addNglycDomain(new Domain(nGlycmatcher.group(), nGlycmatcher.start(), nGlycmatcher.end()));
             }
 
-            Protein protein = new Protein();
-            protein.setId(proteinId);
-            protein.setHeader(s.getAccession().getID());
-            protein.setSequence(sequence);
-            protein.setErretTotal(erretTotalPerProtein);
-            protein.setErretDomains(erretDomain);
-            protein.setnGlycTotal(nglycTotalPerProtein);
-            protein.setnGlycDomains(nglycDomain);
+            if (blast) {
+                protein.setBlastHit(BlastConverter.getFirstHit(protein, blastDb, blastTimeout));
+            }
+
             proteins.add(protein);
         }
-        //Calculate column size to formated report
-        HashMap<Field, Integer> mapSize = new HashMap<>();
-        for (Field value : Field.values()) {
-            mapSize.put(value, value.toString().length());
-        }
-        for (Field value : Field.values()) {
-            replaceSize(value.toString(), value, mapSize);
-        }
-        for (Protein protein : proteins) {
-            try {
-                replaceSize(protein.getId(), Field.ID, mapSize);
-                replaceSize(protein.getLength().toString(), Field.LENGTH, mapSize);
+        try {
+            //Generate clean fasta
+            File cleanFasta = generateCleanFasta(proteins);
+            //System.out.println("Clean fasta generated");
 
-                replaceSize(protein.getKdaStr(), Field.KDA, mapSize);
-                replaceSize(protein.getIsoeletricPointAvgStr(), Field.ISOELETRIC_POINT, mapSize);
-                replaceSize(protein.getHydropathyStr(), Field.HYDROPATHY, mapSize);
-
-                replaceSize(protein.getErretTotal().toString(), Field.ERR_TOTAL, mapSize);
-                replaceSize(protein.getErretDomains(), Field.ERR_DOMAINS, mapSize);
-                replaceSize(protein.getnGlycTotal().toString(), Field.NGLYC_TOTAL, mapSize);
-                replaceSize(protein.getnGlycDomains(), Field.NGLYC_DOMAINS, mapSize);
-                replaceSize(protein.getHeader(), Field.HEADER, mapSize);
-                replaceSize(protein.getSequence(), Field.SEQUENCE, mapSize);
-            } catch (CompoundNotFoundException ex) {
-                System.err.println("It is not possible to calculate molecular mass, isoelectric point and hydropathy of the protein" + protein.getId() + ". The sequence appears to be in error, check the contents of the FASTA file and run the program again. Check for non-amino acid characters with X and *.");
-                ex.printStackTrace();
-                System.exit(1);
+            WolfPsortConverter wolfpsort = new WolfPsortConverter(cleanFasta);
+            if (psortType != WolfPsortConverter.Type.none) {
+                wolfpsort.execute(psortType);
             }
-        }
 
-        String finalOut = "";
-        //Insert Header
-        if (out == Output.CSV || out == Output.TSV) {
-            StringBuilder sbOut = new StringBuilder();
-            sbOut.append(String.join(out.getSeparator(),
-                    Field.ID.toString(),
-                    Field.LENGTH.toString(),
-                    Field.KDA.toString(),
-                    Field.ISOELETRIC_POINT.toString(),
-                    Field.HYDROPATHY.toString(),
-                    Field.ERR_TOTAL.toString(),
-                    Field.ERR_DOMAINS.toString(),
-                    Field.NGLYC_TOTAL.toString(),
-                    Field.NGLYC_DOMAINS.toString(),
-                    Field.HEADER.toString(),
-                    Field.SEQUENCE.toString()));
-            sbOut.append("\n");
+            //Executing TMHMM2.0c
+            TMHMM2Converter tmhmm2 = new TMHMM2Converter(cleanFasta);
+            tmhmm2.execute();
+
+            SignalP5Converter signalp5 = new SignalP5Converter(cleanFasta);
+            if (signalPOption != SignalP5Converter.Organism.none) {
+                signalp5.execute(SignalP5Converter.Organism.euk);
+            } else {
+                System.out.println("Skipping SignalP-5 prediction");
+            }
+
+            //Executing InteproScan
+            if (interpro) {
+                InterproScanConverter iprScan = new InterproScanConverter(proteins, interproLimit);
+                iprScan.execute();
+                iprScan.updateProteins(proteins);
+
+                //creating files for type of GO's
+                HashMap<String, Integer> mapP = sortByValue(GeneOntologyProcess.getMap(proteins, GeneOntologyUtil.Type.biological_process));
+                HashMap<String, Integer> mapC = sortByValue(GeneOntologyProcess.getMap(proteins, GeneOntologyUtil.Type.cellular_component));
+                HashMap<String, Integer> mapF = sortByValue(GeneOntologyProcess.getMap(proteins, GeneOntologyUtil.Type.molecular_function));
+
+                for (Map.Entry<String, Integer> go : mapP.entrySet()) {
+                    goP.add(new String[]{go.getKey(), GeneOntologyUtil.getOntology(go.getKey()), go.getValue().toString()});
+                }
+
+                for (Map.Entry<String, Integer> go : mapF.entrySet()) {
+                    goF.add(new String[]{go.getKey(), GeneOntologyUtil.getOntology(go.getKey()), go.getValue().toString()});
+                }
+
+                for (Map.Entry<String, Integer> go : mapC.entrySet()) {
+                    goC.add(new String[]{go.getKey(), GeneOntologyUtil.getOntology(go.getKey()), go.getValue().toString()});
+                }
+
+                StringBuilder sbgop = new StringBuilder();
+                sbgop.append(String.join("\t", goHeader)).append("\n");
+                for (String[] cols : goP) {
+                    sbgop.append(String.join("\t", cols)).append("\n");
+                }
+                createFile(sbgop.toString(), String.format("go-%s.txt", GeneOntologyUtil.Type.biological_process));
+
+                StringBuilder sbgoc = new StringBuilder();
+                sbgoc.append(String.join("\t", goHeader)).append("\n");
+                for (String[] cols : goC) {
+                    sbgoc.append(String.join("\t", cols)).append("\n");
+                }
+                createFile(sbgoc.toString(), String.format("go-%s.txt", GeneOntologyUtil.Type.cellular_component));
+
+                StringBuilder sbgof = new StringBuilder();
+                sbgof.append(String.join("\t", goHeader)).append("\n");
+                for (String[] cols : goF) {
+                    sbgof.append(String.join("\t", cols)).append("\n");
+                }
+                createFile(sbgof.toString(), String.format("go-%s.txt", GeneOntologyUtil.Type.molecular_function));
+
+            }
+
+            //Calculate column size to formated report
+            HashMap<Field, Integer> mapSize = new HashMap<>();
+            for (Field value : Field.values()) {
+                mapSize.put(value, value.toString().length());
+            }
+            for (Field value : Field.values()) {
+                replaceSize(value.toString(), value, mapSize);
+            }
+
+            int totalWithER = 0;
+            int totalWithNglyc = 0;
+            int totalTransmembrane = 0;
+            int totalSignalp = 0;
+            HashMap<String, Integer> subcellTotalMap = new HashMap<>();
+            HashMap<String, Integer> erretMap = new HashMap<>();
+            HashMap<String, Integer> nglycMap = new HashMap<>();
+
+            ArrayList<Double> listKda = new ArrayList<>();
+            ArrayList<Double> listIso = new ArrayList<>();
+            ArrayList<Double> listHydro = new ArrayList<>();
+            ArrayList<Double> listAro = new ArrayList<>();
+
             for (Protein protein : proteins) {
                 try {
-                    sbOut.append(String.join(out.separator,
-                            protein.getId(),
-                            protein.getLength().toString(),
+                    listKda.add(protein.getKda());
+                    listIso.add(protein.getIsoeletricPointAvg());
+                    listHydro.add(protein.getHydropathy());
+                    listAro.add(protein.getAromaticity());
+
+                    protein.setSubcellularLocalization(wolfpsort.getLocation(protein.getId()));
+                    protein.setTransmembrane(tmhmm2.getTotalTransmembrane(protein.getId()));
+                    protein.setSignalp5(signalp5.getSignal(protein.getId()));
+                    if (protein.getErretTotal() > 0) {
+                        totalWithER++;
+                    }
+                    if (protein.getnGlycTotal() > 0) {
+                        totalWithNglyc++;
+                    }
+                    if (protein.getTransmembrane() > 0) {
+                        totalTransmembrane++;
+                    }
+                    if (!protein.getSignalp5().trim().equalsIgnoreCase("OTHER")) {
+                        totalSignalp++;
+                    }
+
+                    if (subcellTotalMap.containsKey(protein.getSubcellularLocalization())) {
+                        subcellTotalMap.computeIfPresent(protein.getSubcellularLocalization(), (k, v) -> v + 1);
+                    } else {
+                        subcellTotalMap.put(protein.getSubcellularLocalization(), 1);
+                    }
+
+                    for (Domain erretDomain : protein.getErretDomains()) {
+                        if (erretMap.containsKey(erretDomain.getSequence())) {
+                            erretMap.computeIfPresent(erretDomain.getSequence(), (k, v) -> v + 1);
+                        } else {
+                            erretMap.put(erretDomain.getSequence(), 1);
+                        }
+                    }
+                    for (Domain domain : protein.getNglycDomains()) {
+                        if (nglycMap.containsKey(domain.getSequence())) {
+                            nglycMap.computeIfPresent(domain.getSequence(), (k, v) -> v + 1);
+                        } else {
+                            nglycMap.put(domain.getSequence(), 1);
+                        }
+                    }
+
+                    replaceSize(protein.getId(), Field.ID, mapSize);
+                    replaceSize(protein.getLength().toString(), Field.LENGTH, mapSize);
+
+                    replaceSize(protein.getKdaStr(), Field.KDA, mapSize);
+                    replaceSize(protein.getIsoeletricPointAvgStr(), Field.ISOELETRIC_POINT, mapSize);
+                    replaceSize(protein.getHydropathyStr(), Field.HYDROPATHY, mapSize);
+                    replaceSize(protein.getSubcellularLocalization(), Field.SUBCELLULAR_LOCALIZATION, mapSize);
+                    replaceSize(protein.getTransmembrane().toString(), Field.TRANSMEMBRANE, mapSize);
+                    replaceSize(protein.getSignalp5(), Field.SIGNAL_P5, mapSize);
+                    replaceSize(protein.getErretTotal().toString(), Field.ERR_TOTAL, mapSize);
+                    replaceSize(protein.getErretDomainsAsString(), Field.ERR_DOMAINS, mapSize);
+                    replaceSize(protein.getnGlycTotal().toString(), Field.NGLYC_TOTAL, mapSize);
+                    replaceSize(protein.getnGlycDomainsAsString(), Field.NGLYC_DOMAINS, mapSize);
+                    replaceSize(protein.getHeader(), Field.HEADER, mapSize);
+                    replaceSize(protein.getSequence(), Field.SEQUENCE, mapSize);
+
+                } catch (CompoundNotFoundException ex) {
+                    System.err.println("It is not possible to calculate molecular mass, isoelectric point and "
+                            + "hydropathy of the protein" + protein.getId() + ". "
+                            + "The sequence appears to be in error, check the contents of the FASTA file "
+                            + "and run the program again. Check for non-amino acid characters with X and *.");
+                    ex.printStackTrace();
+                    System.exit(1);
+                }
+            }
+
+            //FastProtein Summary
+            StringBuilder sbSummary = new StringBuilder();
+            int qtd = proteins.size();
+            MathCalculator mathKda = new MathCalculator(listKda);
+            MathCalculator mathIso = new MathCalculator(listIso);
+            MathCalculator mathHydro = new MathCalculator(listHydro);
+            MathCalculator mathAro = new MathCalculator(listAro);
+
+            sbSummary.append("#FastProtein-1.0 Summary\n");
+            sbSummary.append(String.format("\nProcessed proteins: %s", qtd));
+            sbSummary.append(String.format("\nMolecular mass (kda) mean: %.2f ± %.2f", mathKda.mean(), mathKda.sd()));
+            sbSummary.append(String.format("\nIsoeletric point mean: %.2f ± %.2f", mathIso.mean(), mathIso.sd()));
+            sbSummary.append(String.format("\nHydrophicity mean: %.2f ± %.2f", mathHydro.mean(), mathHydro.sd()));
+            sbSummary.append(String.format("\nAromaticity mean: %.2f ± %.2f", mathAro.mean(), mathAro.sd()));
+            sbSummary.append(String.format("\nProteins with TM: %s", totalTransmembrane));
+            sbSummary.append(String.format("\nProteins with SP: %s", totalSignalp));
+            sbSummary.append(String.format("\nProteins with E.R Retention domains: %s", totalWithER));
+            sbSummary.append(String.format("\nProteins with NGlycosylation domains: %s", totalWithNglyc));
+
+            MarkdownHelper.appendHeader(outputmd, "Fast-protein Software 1.0", 1);
+            MarkdownHelper.appendHeader(outputmd, "Protein information software", 5);
+            outputmd.append("\n");
+
+            MarkdownHelper.appendLine(outputmd);
+            MarkdownHelper.appendHeader(outputmd, "Summary", 3);
+            LinkedHashMap<String, String> mapOutputmd = new LinkedHashMap<>();
+            mapOutputmd.put("Processed proteins", String.format("%s", qtd));
+            mapOutputmd.put("Molecular mass (kda) mean", String.format("%.2f &#177; %.2f", mathKda.mean(), mathKda.sd()));
+            mapOutputmd.put("Isoeletric point mean", String.format("%.2f &#177; %.2f", mathIso.mean(), mathIso.sd()));
+            mapOutputmd.put("Hydrophicity mean", String.format("%.2f &#177; %.2f", mathHydro.mean(), mathHydro.sd()));
+            mapOutputmd.put("Aromaticity mean", String.format("%.2f &#177; %.2f", mathAro.mean(), mathAro.sd()));
+            mapOutputmd.put("Proteins with TM", String.format("%s", totalTransmembrane));
+            mapOutputmd.put("Proteins with SP", String.format("%s", totalSignalp));
+            mapOutputmd.put("Proteins with E.R Retention domains", String.format("%s", totalWithER));
+            mapOutputmd.put("Proteins with NGlycosylation domains", String.format("%s", totalWithNglyc));
+
+            MarkdownHelper.appendTableFromMap(outputmd, new String[]{"Information", "Value"}, mapOutputmd);
+
+            //File use to build charts
+            StringBuilder kdaisoSb = new StringBuilder();
+            for (Protein protein : proteins) {
+                try {
+                    kdaisoSb.append(String.join(Output.csv.separator,
                             protein.getKdaStr(),
-                            protein.getIsoeletricPointAvgStr(),
-                            protein.getHydropathyStr(),
-                            protein.getAromaticityStr(),
-                            protein.getErretTotal().toString(),
-                            protein.getErretDomains(),
-                            protein.getnGlycTotal().toString(),
-                            protein.getnGlycDomains(),
-                            protein.getHeader(),
-                            protein.getSequence()));
+                            protein.getIsoeletricPointAvgStr()));
+                    kdaisoSb.append("\n");
                 } catch (CompoundNotFoundException ex) {
-                    System.err.println("It is not possible to calculate molecular mass, isoelectric point and hydropathy of the protein" + protein.getId() + ". The sequence appears to be in error, check the contents of the FASTA file and run the program again. Check for non-amino acid characters with X and *.");
+                    System.err.println("It is not possible to calculate molecular mass, isoelectric "
+                            + "point, aromaticity and hydropathy of the protein" + protein.getId() + ". "
+                            + "The sequence appears to be in error, check the contents of the FASTA "
+                            + "file and run the program again. Check for non-amino acid characters with X and *.");
                     ex.printStackTrace();
                     System.exit(1);
                 }
-                sbOut.append("\n");
+            }
+            createFile(kdaisoSb.toString(), "kdaiso.csv");
+
+            boolean charts = createChart();
+            if (charts) {
+                MarkdownHelper.appendHeader(outputmd, "Molecular mass (kDa) vs Isoelectric point (pH)", 3);
+                MarkdownHelper.appendImage(outputmd, "Molecular mass (kDa) vs Isoelectric point (pH)", "kda-vs-pi.png");
+                outputmd.append(MarkdownHelper.getLink("Download in 300dpi", "kda-vs-pi-300dpi.png")).append("\n");
+
+                outputmd.append("\n");
+                MarkdownHelper.appendHeader(outputmd, "Molecular mass (kDa) histogram", 3);
+                MarkdownHelper.appendImage(outputmd, "Molecular mass (kDa) histogram", "his-kda.png");
+                outputmd.append(MarkdownHelper.getLink("Download in 300dpi", "his-kda-300dpi.png")).append("\n").append("\n");
 
             }
-            finalOut = sbOut.toString();
 
-        } else {
-            StringBuilder sbTxt = new StringBuilder();
-            sbTxt.append(String.join(" ", StringUtils.rightPad(Field.ID.toString(), mapSize.get(Field.ID), ' '),
-                    StringUtils.leftPad(Field.LENGTH.toString(), mapSize.get(Field.LENGTH), ' '),
-                    StringUtils.leftPad(Field.KDA.toString(), mapSize.get(Field.KDA), ' '),
-                    StringUtils.leftPad(Field.ISOELETRIC_POINT.toString(), mapSize.get(Field.ISOELETRIC_POINT), ' '),
-                    StringUtils.leftPad(Field.HYDROPATHY.toString(), mapSize.get(Field.HYDROPATHY), ' '),
-                    StringUtils.leftPad(Field.AROMATICITY.toString(), mapSize.get(Field.AROMATICITY), ' '),
-                    StringUtils.leftPad(Field.ERR_TOTAL.toString(), mapSize.get(Field.ERR_TOTAL), ' '),
-                    StringUtils.rightPad(Field.ERR_DOMAINS.toString(), mapSize.get(Field.ERR_DOMAINS), ' '),
-                    StringUtils.leftPad(Field.NGLYC_TOTAL.toString(), mapSize.get(Field.NGLYC_TOTAL), ' '),
-                    StringUtils.rightPad(Field.NGLYC_DOMAINS.toString(), mapSize.get(Field.NGLYC_DOMAINS), ' '),
-                    StringUtils.rightPad(Field.HEADER.toString(), mapSize.get(Field.HEADER), ' '),
-                    Field.SEQUENCE.toString()
-            ));
-            sbTxt.append("\n");
+            MarkdownHelper.appendLine(outputmd);
+
+            MarkdownHelper.appendHeader(outputmd, "Subcellular localization (by WolfPSort) - Organism: " + psortType, 3);
+            if (psortType != WolfPsortConverter.Type.none) {
+                sbSummary.append("\nSubcellular localization (by WolfPSort) - Organism: " + psortType + " summary:\n");
+                HashMap<String, Integer> mapOrdSubcell = sortByValue(subcellTotalMap);
+                for (String subcell : mapOrdSubcell.keySet()) {
+                    sbSummary.append(String.format("\t%s: %s\n", subcell, mapOrdSubcell.get(subcell)));
+                }
+
+                MarkdownHelper.appendTableFromMap(outputmd, new String[]{"Subcellular localization", "Quantity"}, mapOrdSubcell);
+
+                MarkdownHelper.appendLine(outputmd);
+            }
+
+            if (totalWithER > 0) {
+                MarkdownHelper.appendHeader(outputmd, "E.R Retention domain summary", 3);
+
+                sbSummary.append("\nE.R Retention domain summary:\n");
+                HashMap<String, Integer> mapOrdErret = sortByValue(erretMap);
+                int max = mapOrdErret.keySet().size() > 10 ? 10 : mapOrdErret.size();
+                String[] domains = mapOrdErret.keySet().toArray(new String[]{});
+                HashMap<String, Integer> mapErret = new HashMap<>();
+                for (int i = 0; i < mapOrdErret.keySet().size(); i++) {
+                    String domain = domains[i];
+                    if (i < max) {
+                        mapErret.put(domain, mapOrdErret.get(domain));
+                    }
+                    sbSummary.append(String.format("\t%s: %s\n", domain, mapOrdErret.get(domain)));
+                }
+
+                MarkdownHelper.appendTableFromMap(outputmd, new String[]{"Domain", "Quantity"}, mapErret);
+                if (domains.length > 10) {
+                    outputmd.append("Only top 10\n").append("\n");
+                }
+                MarkdownHelper.appendLine(outputmd);
+            }
+            if (totalWithNglyc > 0) {
+
+                MarkdownHelper.appendHeader(outputmd, "NGlyc domain summary", 3);
+
+                sbSummary.append("\nNGlyc Retention domain summary:\n");
+                HashMap<String, Integer> mapOrdNglyc = sortByValue(nglycMap);
+                int max = (mapOrdNglyc.keySet().size() > 10) ? 10 : mapOrdNglyc.size();
+                String[] domains = mapOrdNglyc.keySet().toArray(new String[]{});
+
+                HashMap<String, Integer> mapNGlyc = new HashMap<>();
+                for (int i = 0; i < mapOrdNglyc.keySet().size(); i++) {
+                    String domain = domains[i];
+                    if (i < max) {
+                        mapNGlyc.put(domain, mapOrdNglyc.get(domain));
+                    }
+                    sbSummary.append(String.format("\t%s: %s\n", domain, mapOrdNglyc.get(domain)));
+                }
+
+                MarkdownHelper.appendTableFromMap(outputmd, new String[]{"Domain", "Quantity"}, mapNGlyc);
+                if (domains.length > 10) {
+                    outputmd.append("Only top 10\n").append("\n");
+                }
+
+                MarkdownHelper.appendLine(outputmd);
+            }
+            //Generate output.md
+            String[] headerMd = {
+                Field.ID.toString(),
+                Field.LENGTH.toString(),
+                Field.KDA.toString(),
+                Field.ISOELETRIC_POINT.toString(),
+                Field.HYDROPATHY.toString(),
+                Field.AROMATICITY.toString(),
+                Field.SUBCELLULAR_LOCALIZATION.toString(),
+                Field.TRANSMEMBRANE.toString(),
+                Field.SIGNAL_P5.toString(),
+                Field.ERR_TOTAL.toString(),
+                Field.ERR_DOMAINS.toString(),
+                Field.NGLYC_TOTAL.toString(),
+                Field.NGLYC_DOMAINS.toString(),
+                Field.HEADER.toString(),
+                Field.BLAST_DESC.toString(),
+                Field.GO_ANNOTATION.toString(),
+                Field.INTERPRO_ANNOTATION.toString(),
+                Field.PFAM_ANNOTATION.toString(),
+                Field.PANTHER_ANNOTATION.toString()
+            };
+            Integer[] alignMd = {
+                LEFT, RIGHT, RIGHT, RIGHT, RIGHT, RIGHT, CENTER, CENTER, CENTER, RIGHT, LEFT, RIGHT, LEFT, RIGHT, RIGHT, LEFT, LEFT, LEFT, LEFT};
+
+            ArrayList<String[]> dataOutpumd = new ArrayList<>();
+            int totalOutmod = 0;
             for (Protein protein : proteins) {
                 try {
-                    sbTxt.append(String.join(" ", (StringUtils.rightPad(protein.getId(), mapSize.get(Field.ID), ' ')),
-                            (StringUtils.leftPad(protein.getLength().toString(), mapSize.get(Field.LENGTH), ' ')),
-                            (StringUtils.leftPad(protein.getKdaStr(), mapSize.get(Field.KDA), ' ')),
-                            (StringUtils.leftPad(protein.getIsoeletricPointAvgStr(), mapSize.get(Field.ISOELETRIC_POINT), ' ')),
-                            (StringUtils.leftPad(protein.getHydropathyStr(), mapSize.get(Field.HYDROPATHY), ' ')),
-                            (StringUtils.leftPad(protein.getAromaticityStr(), mapSize.get(Field.AROMATICITY), ' ')),
-                            (StringUtils.leftPad(protein.getErretTotal().toString(), mapSize.get(Field.ERR_TOTAL), ' ')),
-                            (StringUtils.rightPad(protein.getErretDomains(), mapSize.get(Field.ERR_DOMAINS), ' ')),
-                            (StringUtils.leftPad(protein.getnGlycTotal().toString(), mapSize.get(Field.NGLYC_TOTAL), ' ')),
-                            (StringUtils.rightPad(protein.getnGlycDomains(), mapSize.get(Field.NGLYC_DOMAINS), ' ')),
-                            (StringUtils.rightPad(protein.getHeader(), mapSize.get(Field.HEADER), ' ')),
-                            protein.getSequence()
-                    )
-                    );
+                    dataOutpumd.add(new String[]{
+                        protein.getId(),
+                        protein.getLength().toString(),
+                        protein.getKdaStr(),
+                        protein.getIsoeletricPointAvgStr(),
+                        protein.getHydropathyStr(),
+                        protein.getAromaticityStr(),
+                        protein.getSubcellularLocalization(),
+                        protein.getTransmembrane().toString(),
+                        protein.getSignalp5(),
+                        protein.getErretTotal().toString(),
+                        protein.getErretDomainsAsString(),
+                        protein.getnGlycTotal().toString(),
+                        protein.getnGlycDomainsAsString(),
+                        protein.getHeader(),
+                        protein.getBlastHit(),
+                        protein.getCleanFullGO(),
+                        protein.getCleanInterpro(),
+                        protein.getCleanPfam(),
+                        protein.getCleanPanther()
+
+                    });
+                    totalOutmod++;
+
                 } catch (CompoundNotFoundException ex) {
-                    System.err.println("It is not possible to calculate molecular mass, isoelectric point and hydropathy of the protein" + protein.getId() + ". The sequence appears to be in error, check the contents of the FASTA file and run the program again. Check for non-amino acid characters with X and *.");
+                    System.err.println("It is not possible to calculate molecular mass, isoelectric point,"
+                            + " aromaticity and hydropathy of the protein" + protein.getId() + ". "
+                            + "The sequence appears to be in error, check the contents of the FASTA file "
+                            + "and run the program again. Check for non-amino acid characters with X and *.");
                     ex.printStackTrace();
                     System.exit(1);
                 }
-                sbTxt.append("\n");
-            }
-            finalOut = sbTxt.toString();
-        }
-        System.out.println(finalOut);
-        if (console) {
-            System.out.println(finalOut);
-        } else {
-            FileWriter fw = null;
-            try {
-                File outfile = new File(fileOutput);
-                String fout = outfile.getAbsolutePath();
-                fw = new FileWriter(outfile);
-                fw.append(finalOut);
-                fw.close();
-                System.out.println("Generated file: " + fout);
-            } catch (IOException ex) {
-                System.err.println("An error occurred while generating the output file " + fileOutput + ".\nPlease, check write permissions and run again.");
-                try {
-                    fw.close();
-                } catch (IOException ex2) {
-                    System.out.println("An error occurred while closing the " + fileOutput + " file.");
+                if (totalOutmod > 25) {
+                    break;
                 }
             }
+
+            createFile(sbSummary.toString(), "fast-protein-summary.txt");
+
+            StringBuilder sbTxt = new StringBuilder();
+
+            LinkedHashMap<String, String> outMdfiles = new LinkedHashMap<>();
+
+            for (Output output : out) {
+
+                String finalOut = "";
+                //Insert Header
+                if (output == Output.csv || output == Output.tsv) {
+                    StringBuilder sbOut = new StringBuilder();
+                    sbOut.append(String.join(output.getSeparator(),
+                            Field.ID.toString(),
+                            Field.LENGTH.toString(),
+                            Field.KDA.toString(),
+                            Field.ISOELETRIC_POINT.toString(),
+                            Field.HYDROPATHY.toString(),
+                            Field.AROMATICITY.toString(),
+                            Field.SUBCELLULAR_LOCALIZATION.toString(),
+                            Field.TRANSMEMBRANE.toString(),
+                            Field.SIGNAL_P5.toString(),
+                            Field.ERR_TOTAL.toString(),
+                            Field.ERR_DOMAINS.toString(),
+                            Field.NGLYC_TOTAL.toString(),
+                            Field.NGLYC_DOMAINS.toString(),
+                            Field.HEADER.toString(),
+                            Field.GO_ANNOTATION.toString(),
+                            Field.INTERPRO_ANNOTATION.toString(),
+                            Field.PFAM_ANNOTATION.toString(),
+                            Field.PANTHER_ANNOTATION.toString(),
+                            Field.BLAST_DESC.toString(),
+                            Field.SEQUENCE.toString()
+                    ));
+                    sbOut.append("\n");
+                    for (Protein protein : proteins) {
+                        try {
+                            sbOut.append(String.join(output.separator,
+                                    protein.getId(),
+                                    protein.getLength().toString(),
+                                    protein.getKdaStr(),
+                                    protein.getIsoeletricPointAvgStr(),
+                                    protein.getHydropathyStr(),
+                                    protein.getAromaticityStr(),
+                                    protein.getSubcellularLocalization(),
+                                    protein.getTransmembrane().toString(),
+                                    protein.getSignalp5(),
+                                    protein.getErretTotal().toString(),
+                                    protein.getErretDomainsAsString(),
+                                    protein.getnGlycTotal().toString(),
+                                    protein.getnGlycDomainsAsString(),
+                                    protein.getHeader(),
+                                    protein.getBlastHit(),
+                                    protein.getCleanFullGO(),
+                                    protein.getCleanInterpro(),
+                                    protein.getCleanPfam(),
+                                    protein.getCleanPanther(),
+                                    protein.getSequence()));
+
+                            sbOut.append("\n");
+                        } catch (CompoundNotFoundException ex) {
+                            System.err.println("It is not possible to calculate molecular mass, isoelectric "
+                                    + "point, aromaticity and hydropathy of the protein" + protein.getId() + ". "
+                                    + "The sequence appears to be in error, check the contents of the FASTA "
+                                    + "file and run the program again. Check for non-amino acid characters with X and *.");
+                            ex.printStackTrace();
+                            System.exit(1);
+                        }
+                    }
+                    finalOut = sbOut.toString();
+
+                } else if (output == Output.txt) {
+
+                    sbTxt.append(String.join(" ",
+                            StringUtils.rightPad(Field.ID.toString(), mapSize.get(Field.ID), ' '),
+                            StringUtils.leftPad(Field.LENGTH.toString(), mapSize.get(Field.LENGTH), ' '),
+                            StringUtils.leftPad(Field.KDA.toString(), mapSize.get(Field.KDA), ' '),
+                            StringUtils.leftPad(Field.ISOELETRIC_POINT.toString(), mapSize.get(Field.ISOELETRIC_POINT), ' '),
+                            StringUtils.leftPad(Field.HYDROPATHY.toString(), mapSize.get(Field.HYDROPATHY), ' '),
+                            StringUtils.leftPad(Field.AROMATICITY.toString(), mapSize.get(Field.AROMATICITY), ' '),
+                            StringUtils.leftPad(Field.SUBCELLULAR_LOCALIZATION.toString(), mapSize.get(Field.SUBCELLULAR_LOCALIZATION), ' '),
+                            StringUtils.leftPad(Field.TRANSMEMBRANE.toString(), mapSize.get(Field.TRANSMEMBRANE), ' '),
+                            StringUtils.center(Field.SIGNAL_P5.toString(), mapSize.get(Field.SIGNAL_P5), ' '),
+                            StringUtils.leftPad(Field.ERR_TOTAL.toString(), mapSize.get(Field.ERR_TOTAL), ' '),
+                            StringUtils.rightPad(Field.ERR_DOMAINS.toString(), mapSize.get(Field.ERR_DOMAINS), ' '),
+                            StringUtils.leftPad(Field.NGLYC_TOTAL.toString(), mapSize.get(Field.NGLYC_TOTAL), ' '),
+                            StringUtils.rightPad(Field.NGLYC_DOMAINS.toString(), mapSize.get(Field.NGLYC_DOMAINS), ' '),
+                            StringUtils.rightPad(Field.HEADER.toString(), mapSize.get(Field.HEADER), ' '),
+                            StringUtils.rightPad(Field.BLAST_DESC.toString(), mapSize.get(Field.BLAST_DESC), ' '),
+                            StringUtils.rightPad(Field.GO_ANNOTATION.toString(), mapSize.get(Field.GO_ANNOTATION), ' '),
+                            StringUtils.rightPad(Field.INTERPRO_ANNOTATION.toString(), mapSize.get(Field.INTERPRO_ANNOTATION), ' '),
+                            StringUtils.rightPad(Field.PFAM_ANNOTATION.toString(), mapSize.get(Field.PFAM_ANNOTATION), ' '),
+                            StringUtils.rightPad(Field.PANTHER_ANNOTATION.toString(), mapSize.get(Field.PANTHER_ANNOTATION), ' '),
+                            Field.SEQUENCE.toString()
+                    ));
+                    sbTxt.append("\n");
+                    for (Protein protein : proteins) {
+                        try {
+                            sbTxt.append(String.join(" ", (StringUtils.rightPad(protein.getId(), mapSize.get(Field.ID), ' ')),
+                                    (StringUtils.leftPad(protein.getLength().toString(), mapSize.get(Field.LENGTH), ' ')),
+                                    (StringUtils.leftPad(protein.getKdaStr(), mapSize.get(Field.KDA), ' ')),
+                                    (StringUtils.leftPad(protein.getIsoeletricPointAvgStr(), mapSize.get(Field.ISOELETRIC_POINT), ' ')),
+                                    (StringUtils.leftPad(protein.getHydropathyStr(), mapSize.get(Field.HYDROPATHY), ' ')),
+                                    (StringUtils.leftPad(protein.getAromaticityStr(), mapSize.get(Field.AROMATICITY), ' ')),
+                                    (StringUtils.leftPad(protein.getSubcellularLocalization(), mapSize.get(Field.SUBCELLULAR_LOCALIZATION), ' ')),
+                                    (StringUtils.leftPad(protein.getTransmembrane().toString(), mapSize.get(Field.TRANSMEMBRANE), ' ')),
+                                    (StringUtils.center(protein.getSignalp5(), mapSize.get(Field.SIGNAL_P5), ' ')),
+                                    (StringUtils.leftPad(protein.getErretTotal().toString(), mapSize.get(Field.ERR_TOTAL), ' ')),
+                                    (StringUtils.rightPad(protein.getErretDomainsAsString(), mapSize.get(Field.ERR_DOMAINS), ' ')),
+                                    (StringUtils.leftPad(protein.getnGlycTotal().toString(), mapSize.get(Field.NGLYC_TOTAL), ' ')),
+                                    (StringUtils.rightPad(protein.getnGlycDomainsAsString(), mapSize.get(Field.NGLYC_DOMAINS), ' ')),
+                                    (StringUtils.rightPad(protein.getHeader(), mapSize.get(Field.HEADER), ' ')),
+                                    (StringUtils.rightPad(protein.getBlastHit(), mapSize.get(Field.BLAST_DESC), ' ')),
+                                    (StringUtils.rightPad(protein.getCleanFullGO(), mapSize.get(Field.GO_ANNOTATION), ' ')),
+                                    (StringUtils.rightPad(protein.getCleanInterpro(), mapSize.get(Field.INTERPRO_ANNOTATION), ' ')),
+                                    (StringUtils.rightPad(protein.getCleanPfam(), mapSize.get(Field.PFAM_ANNOTATION), ' ')),
+                                    (StringUtils.rightPad(protein.getCleanPanther(), mapSize.get(Field.PANTHER_ANNOTATION), ' ')),
+                                    protein.getSequence()
+                            )
+                            );
+
+                            sbTxt.append("\n");
+                        } catch (CompoundNotFoundException ex) {
+                            System.err.println("It is not possible to calculate molecular mass, isoelectric point,"
+                                    + " aromaticity and hydropathy of the protein" + protein.getId() + ". "
+                                    + "The sequence appears to be in error, check the contents of the FASTA file "
+                                    + "and run the program again. Check for non-amino acid characters with X and *.");
+                            ex.printStackTrace();
+                            System.exit(1);
+                        }
+                    }
+                    finalOut = sbTxt.toString();
+                } else {
+                    StringBuilder sbSep = new StringBuilder();
+                    for (Protein protein : proteins) {
+                        try {
+                            sbSep.append(String.format("%s: %s\n", Field.ID.toString(), protein.getId()));
+                            sbSep.append(String.format("%s: %s\n", Field.LENGTH.toString(), protein.getLength().toString()));
+                            sbSep.append(String.format("%s: %s\n", Field.KDA.toString(), protein.getKdaStr()));
+                            sbSep.append(String.format("%s: %s\n", Field.ISOELETRIC_POINT.toString(), protein.getIsoeletricPointAvgStr()));
+                            sbSep.append(String.format("%s: %s\n", Field.HYDROPATHY.toString(), protein.getHydropathyStr()));
+                            sbSep.append(String.format("%s: %s\n", Field.AROMATICITY.toString(), protein.getAromaticityStr()));
+                            sbSep.append(String.format("%s: %s\n", Field.SUBCELLULAR_LOCALIZATION.toString(), protein.getSubcellularLocalization()));
+                            sbSep.append(String.format("%s: %s\n", Field.TRANSMEMBRANE.toString(), protein.getTransmembrane().toString()));
+                            sbSep.append(String.format("%s: %s\n", Field.SIGNAL_P5.toString(), protein.getSignalp5()));
+                            sbSep.append(String.format("%s: %s\n", Field.ERR_TOTAL.toString(), protein.getErretTotal().toString()));
+                            sbSep.append(String.format("%s: %s\n", Field.ERR_DOMAINS.toString(), protein.getErretDomainsAsString()));
+                            sbSep.append(String.format("%s: %s\n", Field.NGLYC_TOTAL.toString(), protein.getnGlycTotal().toString()));
+                            sbSep.append(String.format("%s: %s\n", Field.NGLYC_DOMAINS.toString(), protein.getnGlycDomainsAsString()));
+                            sbSep.append(String.format("%s: %s\n", Field.HEADER.toString(), protein.getHeader()));
+                            sbSep.append(String.format("%s: %s\n", Field.BLAST_DESC.toString(), protein.getBlastHit()));
+                            sbSep.append(String.format("%s: %s\n", Field.GO_ANNOTATION.toString(), protein.getCleanFullGO()));
+                            sbSep.append(String.format("%s: %s\n", Field.INTERPRO_ANNOTATION.toString(), protein.getCleanInterpro()));
+                            sbSep.append(String.format("%s: %s\n", Field.PFAM_ANNOTATION.toString(), protein.getCleanPfam()));
+                            sbSep.append(String.format("%s: %s\n", Field.PANTHER_ANNOTATION.toString(), protein.getCleanPanther()));
+                            sbSep.append(String.format("%s: %s\n", Field.SEQUENCE.toString(), protein.getSequence()));
+                            sbSep.append("\n");
+                        } catch (CompoundNotFoundException ex) {
+                            System.err.println("It is not possible to calculate molecular mass, isoelectric point,"
+                                    + " aromaticity and hydropathy of the protein" + protein.getId() + ". "
+                                    + "The sequence appears to be in error, check the contents of the FASTA "
+                                    + "file and run the program again. Check for non-amino acid characters with X and *.");
+                            ex.printStackTrace();
+                            System.exit(1);
+                        }
+                    }
+                    finalOut = sbSep.toString();
+                }
+
+                FileWriter fw = null;
+                try {
+                    String file = String.format("%s-%s%s", fileOutput, output, output.getExtension());
+
+                    createFile(finalOut, file);
+                    outMdfiles.put(file, MarkdownHelper.getLink("Download", file));
+
+                } catch (IOException ex) {
+                    System.err.println("An error occurred while generating the output file " + fileOutput + ".\n"
+                            + "Please, check write permissions and run again.");
+                    try {
+                        fw.close();
+                    } catch (IOException ex2) {
+                        System.out.println("An error occurred while closing the " + fileOutput + " file.");
+                    }
+                }
+
+            }
+
+            if (interpro) {
+                MarkdownHelper.appendHeader(outputmd, "Gene Ontology", 2);
+                if (!goF.isEmpty()) {
+                    MarkdownHelper.appendHeader(outputmd, "Molecular Function", 4);
+                    MarkdownHelper.appendTable(outputmd, goHeader, goHeaderAlignments, goF);
+                }
+                if (!goC.isEmpty()) {
+                    MarkdownHelper.appendHeader(outputmd, "Cellular Component", 4);
+                    MarkdownHelper.appendTable(outputmd, goHeader, goHeaderAlignments, goC);
+                }
+
+                if (!goP.isEmpty()) {
+                    MarkdownHelper.appendHeader(outputmd, "Biological Process", 4);
+                    MarkdownHelper.appendTable(outputmd, goHeader, goHeaderAlignments, goP);
+                }
+                MarkdownHelper.appendLine(outputmd);
+            }
+
+            MarkdownHelper.appendTable(outputmd, headerMd, alignMd, dataOutpumd);
+            if (proteins.size() > 25) {
+                MarkdownHelper.appendHeader(outputmd, "Only top 25 proteins\n", 5);
+            }
+
+            MarkdownHelper.appendLine(outputmd);
+
+            MarkdownHelper.appendHeader(outputmd, "Generated files", 3);
+
+            outMdfiles.put("wolfpsort.txt", MarkdownHelper.getLink("Download", "wolfpsort.txt"));
+            outMdfiles.put("tmhmm2.txt", MarkdownHelper.getLink("Download", "tmhmm2.txt"));
+            outMdfiles.put("signalp5.txt", MarkdownHelper.getLink("Download", "signalp5.txt"));
+
+            MarkdownHelper.appendTableFromMap(outputmd, new String[]{"File", "Link"}, outMdfiles);
+
+            outputmd.append("\n");
+            outputmd.append("\n");
+            MarkdownHelper.appendHeader(outputmd, "Do you have a question or tips? Please contact us! E-mail: renato.simoes@ifsc.edu.br", 5);
+
+            outputmd.append("Generated time: " + new Date());
+            createFile(outputmd.toString(), "output.md");
+
+            System.out.println(sbTxt.toString());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            System.out.println("An error occurred when saving some file. " + ex.getMessage());
         }
 
     }
 
-    public static void main(String[] args) throws Exception {
-        run(args);
+    // function to sort hashmap by values
+    public static HashMap<String, Integer> sortByValue(HashMap<String, Integer> hm) {
+        // Create a list from elements of HashMap
+        List<Map.Entry<String, Integer>> list
+                = new LinkedList<Map.Entry<String, Integer>>(
+                        hm.entrySet());
+
+        // Sort the list using lambda expression
+        Collections.sort(
+                list,
+                (i1,
+                        i2) -> i2.getValue().compareTo(i1.getValue()));
+
+        // put data from sorted list to hashmap
+        HashMap<String, Integer> temp
+                = new LinkedHashMap<String, Integer>();
+        for (Map.Entry<String, Integer> aa : list) {
+            temp.put(aa.getKey(), aa.getValue());
+        }
+        return temp;
     }
 
-    
+    public static void createFile(String content, String fileOut) throws IOException {
+        FileWriter fw = null;
+        File outfile = new File(fileOut);
+        fw = new FileWriter(outfile);
+        fw.append(content);
+        fw.close();
+    }
 }

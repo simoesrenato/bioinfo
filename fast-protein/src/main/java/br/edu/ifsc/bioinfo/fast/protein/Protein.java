@@ -5,6 +5,10 @@
  */
 package br.edu.ifsc.bioinfo.fast.protein;
 
+import br.edu.ifsc.bioinfo.fast.util.GeneOntologyUtil;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.TreeSet;
 import org.biojava.nbio.core.exceptions.CompoundNotFoundException;
 
 /**
@@ -13,14 +17,134 @@ import org.biojava.nbio.core.exceptions.CompoundNotFoundException;
  */
 public class Protein {
 
-    private String id;
-    private String header;
-    private String sequence;
+    private String id = "";
+    private String header = "";
+    private String sequence = "";
+    private String subcellularLocalization = "";
+    private Integer transmembrane = 0;
+    private String signalp5 = "";
+    private String blastHit = "";
+    private ArrayList<Domain> nglycDomains = new ArrayList<>();
+    private ArrayList<Domain> erretDomains = new ArrayList<>();
 
-    private Integer erretTotal;
-    private String erretDomains;
-    private Integer nGlycTotal;
-    private String nGlycDomains;
+    private TreeSet<String> interpro = new TreeSet<>();
+    private TreeSet<String> go = new TreeSet<>();
+    private TreeSet<String> pfam = new TreeSet<>();
+    private TreeSet<String> panther = new TreeSet<>();
+
+    public Protein(String id) {
+        this.id = id;
+    }
+
+    public Protein(String id, String sequence) {
+        this.id = id;
+        this.sequence = sequence;
+    }
+
+    public TreeSet<String> getSeparatedGO() {
+        TreeSet<String> gos = new TreeSet<>();
+        for (String rawGo : go) {
+            if (rawGo.contains("|")) {
+                String[] goUnit = rawGo.split("[|]");
+                gos.addAll(Arrays.asList(goUnit));
+            } else {
+                gos.add(rawGo);
+            }
+        }
+        return gos;
+    }
+
+    public TreeSet<String> getFullSeparatedGO() {
+        TreeSet<String> gos = getSeparatedGO();
+        TreeSet<String> newGos = getSeparatedGO();
+        for (String go1 : gos) {
+            newGos.add(String.format("%s:%s - %s", GeneOntologyUtil.getType(go1), go1, GeneOntologyUtil.getOntology(go1)));
+        }
+
+        return newGos;
+    }
+
+    public String getCleanGOWegoFormat() {
+        return String.format("%s\t%s", id, getCleanGO().replaceAll(", ", "\t"));
+    }
+
+    public String getCleanFullGO() {
+
+        return String.join(", ", getFullSeparatedGO());
+    }
+
+    public String getCleanGO() {
+
+        return String.join(", ", getSeparatedGO());
+    }
+
+    public String getCleanInterpro() {
+        return String.join(", ", interpro);
+    }
+
+    public String getCleanPfam() {
+        return String.join(", ", pfam);
+    }
+
+    public String getCleanPanther() {
+        return String.join(", ", panther);
+    }
+
+    public void addInterpro(String interproId, String interproAnnot) {
+        if (!interproId.trim().equals("-")) {
+            interpro.add(String.format("%s - %s", interproId, interproAnnot));
+        }
+    }
+
+    public void addGO(String go) {
+        if (!go.trim().equals("-")) {
+            this.go.add(go);
+        }
+    }
+
+    public void addPfam(String pfam) {
+        if (!pfam.trim().equals("-")) {
+            this.pfam.add(pfam);
+        }
+    }
+
+    public void addPanther(String panther) {
+        if (!panther.trim().equals("-")) {
+            this.panther.add(panther);
+        }
+    }
+
+    public void setBlastHit(String blastHit) {
+        this.blastHit = blastHit;
+    }
+
+    public String getBlastHit() {
+        return blastHit;
+    }
+
+    public void setTransmembrane(Integer transmembrane) {
+        this.transmembrane = transmembrane;
+    }
+
+    public Integer getTransmembrane() {
+        return transmembrane;
+    }
+
+    public void addNglycDomain(Domain domain) {
+        nglycDomains.add(domain);
+    }
+
+    public void addErretDomain(Domain domain) {
+        erretDomains.add(domain);
+    }
+
+    public String getSubcellularLocalization() {
+        return subcellularLocalization;
+    }
+
+    public void setSubcellularLocalization(String subcellularLocalization) {
+        this.subcellularLocalization = subcellularLocalization;
+    }
 
     /**
      * @return the id
@@ -98,7 +222,7 @@ public class Protein {
      * @return the hydropathy
      */
     public Double getHydropathy() throws CompoundNotFoundException {
-        
+
         return ProteomicCalculator.getHydropathy(sequence);
     }
 
@@ -110,62 +234,60 @@ public class Protein {
      * @return the erretTotal
      */
     public Integer getErretTotal() {
-        return erretTotal;
-    }
-
-    /**
-     * @param erretTotal the erretTotal to set
-     */
-    public void setErretTotal(int erretTotal) {
-        this.erretTotal = erretTotal;
+        return erretDomains.size();
     }
 
     /**
      * @return the erretDomains
      */
-    public String getErretDomains() {
-        return erretDomains;
-    }
-
-    /**
-     * @param erretDomains the erretDomains to set
-     */
-    public void setErretDomains(String erretDomains) {
-        this.erretDomains = erretDomains;
+    public String getErretDomainsAsString() {
+        ArrayList<String> domains = new ArrayList<>();
+        for (Domain erretDomain : erretDomains) {
+            domains.add(erretDomain.toString());
+        }
+        return String.join(",", domains);
     }
 
     /**
      * @return the nGlycTotal
      */
     public Integer getnGlycTotal() {
-        return nGlycTotal;
-    }
-
-    /**
-     * @param nGlycTotal the nGlycTotal to set
-     */
-    public void setnGlycTotal(int nGlycTotal) {
-        this.nGlycTotal = nGlycTotal;
+        return nglycDomains.size();
     }
 
     /**
      * @return the nGlycDomains
      */
-    public String getnGlycDomains() {
-        return nGlycDomains;
+    public String getnGlycDomainsAsString() {
+        ArrayList<String> domains = new ArrayList<>();
+        for (Domain nglycDomain : nglycDomains) {
+            domains.add(nglycDomain.toString());
+        }
+        return String.join(",", domains);
     }
 
-    /**
-     * @param nGlycDomains the nGlycDomains to set
-     */
-    public void setnGlycDomains(String nGlycDomains) {
-        this.nGlycDomains = nGlycDomains;
-    }
-
-    public double getAromaticity(){
+    public double getAromaticity() {
         return ProteomicCalculator.getAromaticity(sequence);
     }
+
     public String getAromaticityStr() throws CompoundNotFoundException {
-        return String.format("%.2f", getHydropathy());
+        return String.format("%.2f", getAromaticity());
     }
+
+    public ArrayList<Domain> getNglycDomains() {
+        return nglycDomains;
+    }
+
+    public ArrayList<Domain> getErretDomains() {
+        return erretDomains;
+    }
+
+    public String getSignalp5() {
+        return signalp5;
+    }
+
+    public void setSignalp5(String signalp5) {
+        this.signalp5 = signalp5;
+    }
+
 }

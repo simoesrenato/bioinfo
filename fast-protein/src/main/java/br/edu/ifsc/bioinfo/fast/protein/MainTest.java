@@ -5,6 +5,8 @@
  */
 package br.edu.ifsc.bioinfo.fast.protein;
 
+import java.io.File;
+
 /**
  *
  * @author renato
@@ -12,7 +14,7 @@ package br.edu.ifsc.bioinfo.fast.protein;
 public class MainTest {
 
     public static void main(String[] args) {
-        args = new String[]{"test1.fasta", "-o", "test1.csv"};
-        FastProteinCalculator.run(args);
+        args = new String[]{"-i","/Users/renato/Documents/GitHub/bioinfo/fast-protein/biolib/input.fasta"};
+        Main.main(args);
     }
 }

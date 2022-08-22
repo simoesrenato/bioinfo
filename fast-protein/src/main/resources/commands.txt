@@ -1,0 +1,32 @@
+#Comandos fora do docker
+docker run --name proteomic -it debian
+
+#Instalando wget
+apt-get install wget
+#Instalando python e pip
+apt-get install python3 python3-pip
+pip3 install --upgrade pip
+#Instalando java
+apt-get install default-jdk default-jre
+#Rodar o biolib
+biolib run DTU/BepiPred_6 --help
+biolib run DTU/DeepTMHMM --help
+biolib run DTU/SignalP_6 --help
+
+#instalar o tmhmm, instalar o wolfpsort, instalar o signalp e por na path
+
+#sair do docker
+exit
+
+#Para o interproscan
+pip install xmltramp2
+
+#Comandos fora do docker
+docker container stop proteomic
+docker commit proteomic simoesrenato/proteomic
+docker push simoesrenato/proteomic
+
+
+docker container stop proteomic
+docker commit proteomic simoesrenato/proteomic
+docker push simoesrenato/proteomic
