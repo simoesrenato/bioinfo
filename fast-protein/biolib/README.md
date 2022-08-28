@@ -32,13 +32,16 @@
 
 
 ## Output options
-| Type | Description | Style | Example |
-| ------ | ------ | ------ | ------ |
-| tsv | tab formatted | column | [Link](https://github.com/simoesrenato/bioinfo/blob/master/fast-protein/python/test1.fasta.tsv) |
-| csv | csv file using semicolon by default separator | column | [Link](https://github.com/simoesrenato/bioinfo/blob/master/fast-protein/python/test1.fasta.csv) |
-| txt | formatted file with white space (default) | column | [Link](https://github.com/simoesrenato/bioinfo/blob/master/fast-protein/python/test1.fasta.txt) |
-| sep | individual protein | plain | [Link](https://github.com/simoesrenato/bioinfo/blob/master/fast-protein/python/test1.fasta.sep) |
-| json | full report | plain | [Link](https://github.com/simoesrenato/bioinfo/blob/master/fast-protein/python/test1.fasta.sep) |
+| Type | Description | 
+| ------ | ------ | 
+| tsv | tab formatted | 
+| csv | csv file using semicolon by default separator | 
+| txt | formatted file with white space (default) | 
+| sep | individual protein | 
+| json | full report | 
+and more...
+
+Check it out the ([example output](https://github.com/simoesrenato/bioinfo/tree/master/fast-protein/example))
 
 
 This software was developed in Java ([BioJava](https://biojava.org/)), Python and Perl
