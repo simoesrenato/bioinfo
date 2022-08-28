@@ -68,7 +68,7 @@ public class InterproScanConverter {
 
     public InterproScanConverter(ArrayList<Protein> proteins, int limit) {
         this.proteins = proteins;
-        this.limit=limit;
+        this.limit = limit;
     }
 
     public void execute() {
@@ -77,47 +77,51 @@ public class InterproScanConverter {
         ArrayList<String> lines = new ArrayList<>();
         lines.add(String.join("\t", header));
         System.out.println("Executing Interproscan");
-        try {
+        if (!new File("interpro.tsv").exists()) {
+            try {
 
-            CommandRunner.run("chmod +x interpro.sh");
+                CommandRunner.run("chmod +x interpro.sh");
 
-            List<File> files = FASTASplitter.subfasta(proteins, limit, "interpro");
-            for (File file : files) {
-                CommandRunner.run(String.format("./interpro.sh %s %s", FilenameUtils.getBaseName(file.getName()), file.getCanonicalPath()));
-            }
-
-            for (File fileSplit : files) {
-                File file = new File(String.format("%s.tsv.tsv", FilenameUtils.getBaseName(fileSplit.getName())));
-
-                // File file = new File(String.format("interpro.tsv.tsv"));
-                Scanner s = new Scanner(file);
-                while (s.hasNext()) {
-                    String line = s.nextLine();
-                    String[] cols = line.split("\t");
-                    if (cols.length != header.length) {
-                        String[] newLine = createEmptyArray(header.length);
-                        for (int i = 0; i < cols.length; i++) {
-                            newLine[i] = cols[i];
-                        }
-                        newLine[header.length - 1] = "-";
-                        lines.add(String.join("\t", newLine));
-                    } else {
-                        cols[header.length - 1] = "-";
-                        lines.add(String.join("\t", cols));
-                    }
-
+                List<File> files = FASTASplitter.subfasta(proteins, limit, "interpro");
+                for (File file : files) {
+                    CommandRunner.run(String.format("./interpro.sh %s %s", FilenameUtils.getBaseName(file.getName()), file.getCanonicalPath()));
                 }
-                file.deleteOnExit();
-                fileSplit.deleteOnExit();
-            }
-            File iprFile = new File("interpro.tsv");
-            fw = new FileWriter(iprFile);
-            fw.write(String.join("\n", lines));
-            fw.flush();
 
-        } catch (Exception ex) {
-            System.out.println("Inteproscan not executed, this feature will be skipped.");
-            System.err.println(ex.getMessage());
+                for (File fileSplit : files) {
+                    File file = new File(String.format("%s.tsv.tsv", FilenameUtils.getBaseName(fileSplit.getName())));
+
+                    // File file = new File(String.format("interpro.tsv.tsv"));
+                    Scanner s = new Scanner(file);
+                    while (s.hasNext()) {
+                        String line = s.nextLine();
+                        String[] cols = line.split("\t");
+                        if (cols.length != header.length) {
+                            String[] newLine = createEmptyArray(header.length);
+                            for (int i = 0; i < cols.length; i++) {
+                                newLine[i] = cols[i];
+                            }
+                            newLine[header.length - 1] = "-";
+                            lines.add(String.join("\t", newLine));
+                        } else {
+                            cols[header.length - 1] = "-";
+                            lines.add(String.join("\t", cols));
+                        }
+
+                    }
+                    file.deleteOnExit();
+                    fileSplit.deleteOnExit();
+                }
+                File iprFile = new File("interpro.tsv");
+                fw = new FileWriter(iprFile);
+                fw.write(String.join("\n", lines));
+                fw.flush();
+
+            } catch (Exception ex) {
+                System.out.println("Interproscan not executed, this feature will be skipped.");
+                System.err.println(ex.getMessage());
+            }
+        }else{
+            System.out.println("Interproscan file interpro.tsv already exists. This file will be processed.");
         }
     }
 

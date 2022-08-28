@@ -1,2 +1,2 @@
 #!/bin/bash
-signalp -fasta $1 -org $2 -format short -stdout > signalp5.txt
+signalp -fasta $1 -org $2 -format short

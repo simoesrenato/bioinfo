@@ -6,6 +6,7 @@ import br.edu.ifsc.bioinfo.fast.protein.conversor.WolfPsortConverter;
 import br.edu.ifsc.bioinfo.fast.protein.conversor.SignalP5Converter;
 import br.edu.ifsc.bioinfo.fast.protein.conversor.TMHMM2Converter;
 import br.edu.ifsc.bioinfo.fast.protein.conversor.geneontology.GeneOntologyProcess;
+import static br.edu.ifsc.bioinfo.fast.util.FileUtils.createFile;
 import br.edu.ifsc.bioinfo.fast.util.GeneOntologyUtil;
 import br.edu.ifsc.bioinfo.fast.util.MarkdownHelper;
 import java.io.File;
@@ -26,6 +27,7 @@ import org.biojava.nbio.core.sequence.ProteinSequence;
 import org.biojava.nbio.core.sequence.io.FastaReaderHelper;
 import static br.edu.ifsc.bioinfo.fast.util.MarkdownHelper.*;
 import br.edu.ifsc.bioinfo.fast.util.MathCalculator;
+import br.edu.ifsc.bioinfo.fast.util.Summary;
 import java.util.Date;
 
 /**
@@ -56,7 +58,7 @@ public class FastProteinCalculator {
         }
     }
 
-    private enum Field {
+    public enum Field {
 
         ID("Id"),
         HEADER("Header"),
@@ -129,8 +131,8 @@ public class FastProteinCalculator {
 
     }
 
-    public static void run(File fileSource, 
-            Output out[], 
+    public static void run(File fileSource,
+            Output out[],
             String fileOutput, WolfPsortConverter.Type psortType, SignalP5Converter.Organism signalPOption, boolean blast, BlastConverter.Database blastDb, int blastTimeout, boolean interpro, int interproLimit) {
         StringBuilder outputmd = new StringBuilder();
         LinkedHashMap<String, ProteinSequence> resp = null;
@@ -150,12 +152,11 @@ public class FastProteinCalculator {
         }
 
         System.out.println("#Fast-protein Software 1.0");
-        System.out.println("#Developed by PhD. Renato Simoes Moreira - renato.simoes@ifsc.edu.br");
-        System.out.println("#Protein information software");
-        System.out.println("#Obs:");
+        System.out.println("#Developed - Magic Quintet - Bioinformatic Laboratory - UFSC and IFSC");
+        System.out.println("#An automated pipeline for proteomic analysis");
         System.out.println("#Pattern ER Retention [KRHQSA][DENQ][E][L]");
         System.out.println("#Pattern N-Glyc [N][Xaa(except P)][ST] | Xaa = any aminoacid");
-        System.out.println("");
+        System.out.println("#Questions and issues: renato.simoes@ifsc.edu.br");
 
         ArrayList<Protein> proteins = new ArrayList<>();
 
@@ -184,6 +185,29 @@ public class FastProteinCalculator {
 
             proteins.add(protein);
         }
+        //Generate erret and n-glyc files
+        StringBuilder sbErret = new StringBuilder();
+        StringBuilder sbNglyc = new StringBuilder();
+
+        sbErret.append("#Search for Endoplasmic Reticulum Retention sites by sequence [KRHQSA]-[DENQ]-E-L>.\n");
+        sbErret.append("#Reference: https://prosite.expasy.org/PS00014\n");
+        sbErret.append("ID\tDomains\n");
+
+        sbNglyc.append("#Search for N-glycosylation sites by sequence N-{P}-[ST]-{P}.\n");
+        sbNglyc.append("#Reference: https://prosite.expasy.org/PS00001\n");
+        sbNglyc.append("ID\tDomains\n");
+        for (Protein protein : proteins) {
+            sbErret.append(String.format("%s\t%s\n", protein.getId(), protein.getErretDomainsAsString()));
+            sbNglyc.append(String.format("%s\t%s\n", protein.getId(), protein.getnGlycDomainsAsString()));
+        }
+
+        try {
+            createFile(sbErret.toString(), "erret.txt");
+            createFile(sbNglyc.toString(), "nglyc.txt");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
         try {
             //Generate clean fasta
             File cleanFasta = generateCleanFasta(proteins);
@@ -200,10 +224,12 @@ public class FastProteinCalculator {
 
             SignalP5Converter signalp5 = new SignalP5Converter(cleanFasta);
             if (signalPOption != SignalP5Converter.Organism.none) {
-                signalp5.execute(SignalP5Converter.Organism.euk);
+                signalp5.execute(SignalP5Converter.Organism.euk, proteins);
             } else {
                 System.out.println("Skipping SignalP-5 prediction");
             }
+
+            Summary summary = new Summary();
 
             //Executing InteproScan
             if (interpro) {
@@ -217,15 +243,25 @@ public class FastProteinCalculator {
                 HashMap<String, Integer> mapF = sortByValue(GeneOntologyProcess.getMap(proteins, GeneOntologyUtil.Type.molecular_function));
 
                 for (Map.Entry<String, Integer> go : mapP.entrySet()) {
-                    goP.add(new String[]{go.getKey(), GeneOntologyUtil.getOntology(go.getKey()), go.getValue().toString()});
+
+                    String description = GeneOntologyUtil.getOntology(go.getKey());
+                    goP.add(new String[]{go.getKey(), description, go.getValue().toString()});
+                    summary.addGoP(go.getKey(), description, go.getValue());
+
                 }
 
                 for (Map.Entry<String, Integer> go : mapF.entrySet()) {
-                    goF.add(new String[]{go.getKey(), GeneOntologyUtil.getOntology(go.getKey()), go.getValue().toString()});
+                    String description = GeneOntologyUtil.getOntology(go.getKey());
+
+                    goF.add(new String[]{go.getKey(), description, go.getValue().toString()});
+                    summary.addGoF(go.getKey(), description, go.getValue());
                 }
 
                 for (Map.Entry<String, Integer> go : mapC.entrySet()) {
-                    goC.add(new String[]{go.getKey(), GeneOntologyUtil.getOntology(go.getKey()), go.getValue().toString()});
+                    String description = GeneOntologyUtil.getOntology(go.getKey());
+
+                    goC.add(new String[]{go.getKey(), description, go.getValue().toString()});
+                    summary.addGoC(go.getKey(), description, go.getValue());
                 }
 
                 StringBuilder sbgop = new StringBuilder();
@@ -292,7 +328,7 @@ public class FastProteinCalculator {
                     if (protein.getTransmembrane() > 0) {
                         totalTransmembrane++;
                     }
-                    if (!protein.getSignalp5().trim().equalsIgnoreCase("OTHER")) {
+                    if (!protein.getSignalp5().trim().equalsIgnoreCase("OTHER") && !protein.getSignalp5().trim().equalsIgnoreCase("-")) {
                         totalSignalp++;
                     }
 
@@ -351,16 +387,30 @@ public class FastProteinCalculator {
             MathCalculator mathHydro = new MathCalculator(listHydro);
             MathCalculator mathAro = new MathCalculator(listAro);
 
+            summary.setProteins(proteins);
+            summary.setKdaMean(mathKda.mean());
+            summary.setKdaSd(mathKda.sd());
+            summary.setIsoMean(mathIso.mean());
+            summary.setIsoSd(mathIso.sd());
+            summary.setHydroMean(mathHydro.mean());
+            summary.setHydroSd(mathHydro.sd());
+            summary.setAromacityMean(mathAro.mean());
+            summary.setAromacitySd(mathAro.sd());
+            summary.setTotalMembrane(totalTransmembrane);
+            summary.setTotalSp(totalSignalp);
+            summary.setTotalER(totalWithER);
+            summary.setTotalNGlyc(totalWithNglyc);
+
             sbSummary.append("#FastProtein-1.0 Summary\n");
             sbSummary.append(String.format("\nProcessed proteins: %s", qtd));
-            sbSummary.append(String.format("\nMolecular mass (kda) mean: %.2f ± %.2f", mathKda.mean(), mathKda.sd()));
-            sbSummary.append(String.format("\nIsoeletric point mean: %.2f ± %.2f", mathIso.mean(), mathIso.sd()));
-            sbSummary.append(String.format("\nHydrophicity mean: %.2f ± %.2f", mathHydro.mean(), mathHydro.sd()));
-            sbSummary.append(String.format("\nAromaticity mean: %.2f ± %.2f", mathAro.mean(), mathAro.sd()));
-            sbSummary.append(String.format("\nProteins with TM: %s", totalTransmembrane));
-            sbSummary.append(String.format("\nProteins with SP: %s", totalSignalp));
-            sbSummary.append(String.format("\nProteins with E.R Retention domains: %s", totalWithER));
-            sbSummary.append(String.format("\nProteins with NGlycosylation domains: %s", totalWithNglyc));
+            sbSummary.append(String.format("\nMolecular mass (kda) mean: %.2f ± %.2f", summary.getKdaMean(), summary.getKdaSd()));
+            sbSummary.append(String.format("\nIsoeletric point mean: %.2f ± %.2f", summary.getIsoMean(), summary.getIsoSd()));
+            sbSummary.append(String.format("\nHydrophicity mean: %.2f ± %.2f", summary.getHydroMean(), summary.getHydroSd()));
+            sbSummary.append(String.format("\nAromaticity mean: %.2f ± %.2f", summary.getAromacityMean(), summary.getAromacitySd()));
+            sbSummary.append(String.format("\nProteins with TM: %s", summary.getTotalMembrane()));
+            sbSummary.append(String.format("\nProteins with SP: %s", summary.getTotalSp()));
+            sbSummary.append(String.format("\nProteins with E.R Retention domains: %s", summary.getTotalER()));
+            sbSummary.append(String.format("\nProteins with NGlycosylation domains: %s", summary.getTotalNGlyc()));
 
             MarkdownHelper.appendHeader(outputmd, "Fast-protein Software 1.0", 1);
             MarkdownHelper.appendHeader(outputmd, "Protein information software", 5);
@@ -423,6 +473,7 @@ public class FastProteinCalculator {
                     sbSummary.append(String.format("\t%s: %s\n", subcell, mapOrdSubcell.get(subcell)));
                 }
 
+                summary.setSubcellLocalizations(mapOrdSubcell);
                 MarkdownHelper.appendTableFromMap(outputmd, new String[]{"Subcellular localization", "Quantity"}, mapOrdSubcell);
 
                 MarkdownHelper.appendLine(outputmd);
@@ -443,6 +494,7 @@ public class FastProteinCalculator {
                     }
                     sbSummary.append(String.format("\t%s: %s\n", domain, mapOrdErret.get(domain)));
                 }
+                summary.setErret(mapOrdErret);
 
                 MarkdownHelper.appendTableFromMap(outputmd, new String[]{"Domain", "Quantity"}, mapErret);
                 if (domains.length > 10) {
@@ -468,6 +520,7 @@ public class FastProteinCalculator {
                     sbSummary.append(String.format("\t%s: %s\n", domain, mapOrdNglyc.get(domain)));
                 }
 
+                summary.setNglyc(mapOrdNglyc);
                 MarkdownHelper.appendTableFromMap(outputmd, new String[]{"Domain", "Quantity"}, mapNGlyc);
                 if (domains.length > 10) {
                     outputmd.append("Only top 10\n").append("\n");
@@ -568,11 +621,11 @@ public class FastProteinCalculator {
                             Field.NGLYC_TOTAL.toString(),
                             Field.NGLYC_DOMAINS.toString(),
                             Field.HEADER.toString(),
+                            Field.BLAST_DESC.toString(),
                             Field.GO_ANNOTATION.toString(),
                             Field.INTERPRO_ANNOTATION.toString(),
                             Field.PFAM_ANNOTATION.toString(),
                             Field.PANTHER_ANNOTATION.toString(),
-                            Field.BLAST_DESC.toString(),
                             Field.SEQUENCE.toString()
                     ));
                     sbOut.append("\n");
@@ -675,6 +728,7 @@ public class FastProteinCalculator {
                     finalOut = sbTxt.toString();
                 } else {
                     StringBuilder sbSep = new StringBuilder();
+
                     for (Protein protein : proteins) {
                         try {
                             sbSep.append(String.format("%s: %s\n", Field.ID.toString(), protein.getId()));
@@ -769,7 +823,7 @@ public class FastProteinCalculator {
             outputmd.append("Generated time: " + new Date());
             createFile(outputmd.toString(), "output.md");
 
-            System.out.println(sbTxt.toString());
+            createFile(summary.getJSON(), "fast-protein-summary.json");
         } catch (IOException ex) {
             ex.printStackTrace();
             System.out.println("An error occurred when saving some file. " + ex.getMessage());
@@ -799,11 +853,4 @@ public class FastProteinCalculator {
         return temp;
     }
 
-    public static void createFile(String content, String fileOut) throws IOException {
-        FileWriter fw = null;
-        File outfile = new File(fileOut);
-        fw = new FileWriter(outfile);
-        fw.append(content);
-        fw.close();
-    }
 }

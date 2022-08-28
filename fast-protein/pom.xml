@@ -66,6 +66,11 @@
             <artifactId>tablesaw-core</artifactId>
             <version>0.43.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.javadev</groupId>
+            <artifactId>underscore</artifactId>
+            <version>1.80</version>
+        </dependency>
     </dependencies>
     
    

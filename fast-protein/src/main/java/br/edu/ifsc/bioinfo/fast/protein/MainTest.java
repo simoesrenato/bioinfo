@@ -5,8 +5,6 @@
  */
 package br.edu.ifsc.bioinfo.fast.protein;
 
-import java.io.File;
-
 /**
  *
  * @author renato
@@ -14,7 +12,7 @@ import java.io.File;
 public class MainTest {
 
     public static void main(String[] args) {
-        args = new String[]{"-i","/Users/renato/Documents/GitHub/bioinfo/fast-protein/biolib/input.fasta"};
+        args = new String[]{"-i","trypanosoma_33.prodigal_annotated.faa", "-ipr", "true"};
         Main.main(args);
     }
 }

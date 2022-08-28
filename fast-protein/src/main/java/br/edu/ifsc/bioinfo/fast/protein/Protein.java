@@ -8,7 +8,11 @@ package br.edu.ifsc.bioinfo.fast.protein;
 import br.edu.ifsc.bioinfo.fast.util.GeneOntologyUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.TreeSet;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.biojava.nbio.core.exceptions.CompoundNotFoundException;
 
 /**
@@ -31,6 +35,9 @@ public class Protein {
     private TreeSet<String> go = new TreeSet<>();
     private TreeSet<String> pfam = new TreeSet<>();
     private TreeSet<String> panther = new TreeSet<>();
+
+    private HashMap<String, String> interproMap = new HashMap<>();
+    private HashMap<String, String> goMap = new HashMap<>();
 
     public Protein(String id) {
         this.id = id;
@@ -92,6 +99,7 @@ public class Protein {
 
     public void addInterpro(String interproId, String interproAnnot) {
         if (!interproId.trim().equals("-")) {
+            interproMap.put(interproId, interproAnnot);
             interpro.add(String.format("%s - %s", interproId, interproAnnot));
         }
     }
@@ -99,6 +107,9 @@ public class Protein {
     public void addGO(String go) {
         if (!go.trim().equals("-")) {
             this.go.add(go);
+        }
+        for (String goid : getSeparatedGO()) {
+            goMap.put(goid, GeneOntologyUtil.getOntology(goid));
         }
     }
 
@@ -245,7 +256,7 @@ public class Protein {
         for (Domain erretDomain : erretDomains) {
             domains.add(erretDomain.toString());
         }
-        return String.join(",", domains);
+        return String.join(";", domains);
     }
 
     /**
@@ -263,7 +274,7 @@ public class Protein {
         for (Domain nglycDomain : nglycDomains) {
             domains.add(nglycDomain.toString());
         }
-        return String.join(",", domains);
+        return String.join(";", domains);
     }
 
     public double getAromaticity() {
@@ -288,6 +299,57 @@ public class Protein {
 
     public void setSignalp5(String signalp5) {
         this.signalp5 = signalp5;
+    }
+
+    public String toJson() {
+        JSONObject json = new JSONObject();
+        json.put("id", id);
+        json.put("header", header);
+        json.put("sequence", sequence);
+        json.put("subcellular_localization", subcellularLocalization);
+        json.put("tm", transmembrane);
+        json.put("signalp5", signalp5);
+        json.put("blast_hit", blastHit);
+        JSONArray nglyc = new JSONArray();
+        for (Domain nglycDomain : nglycDomains) {
+            nglyc.add(nglycDomain.toString());
+        }
+        json.put("nglyc", nglyc);
+        JSONArray erret = new JSONArray();
+        for (Domain erretDomain : erretDomains) {
+            erret.add(erretDomain.toString());
+        }
+        json.put("erret", erret);
+
+        JSONArray pfamArray = new JSONArray();
+        for (String pf : pfam) {
+            pfamArray.add(pf);
+        }
+        json.put("pfam", pfamArray);
+        JSONArray pantherArray = new JSONArray();
+        for (String pt : panther) {
+            pantherArray.add(pt);
+        }
+        json.put("panther", pantherArray);
+
+        JSONArray interproIdArray = new JSONArray();
+        JSONArray interproDescArray = new JSONArray();
+        for (Map.Entry<String, String> entry : interproMap.entrySet()) {
+            interproIdArray.add(entry.getKey());
+            interproDescArray.add(entry.getValue());
+        }
+
+        JSONArray goIdArray = new JSONArray();
+        JSONArray goDescArray = new JSONArray();
+        for (Map.Entry<String, String> entry : goMap.entrySet()) {
+            goIdArray.add(entry.getKey());
+            goDescArray.add(entry.getValue());
+        }
+        json.put("interpro_id", interproIdArray);
+        json.put("interpro_desc", interproDescArray);
+        json.put("go_id", goIdArray);
+        json.put("go_desc", goDescArray);
+        return json.toString();
     }
 
 }

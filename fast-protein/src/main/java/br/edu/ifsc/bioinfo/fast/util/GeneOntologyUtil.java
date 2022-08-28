@@ -21,9 +21,21 @@ import org.biojava.nbio.ontology.io.OboParser;
 public class GeneOntologyUtil {
 
     public enum Type {
-        cellular_component,
-        molecular_function,
-        biological_process
+        cellular_component("C"),
+        molecular_function("F"),
+        biological_process("P");
+
+        private String type;
+
+        Type(String type) {
+            this.type = type;
+        }
+
+        @Override
+        public String toString() {
+            return type;
+        }
+
     }
     private static OboParser parser = new OboParser();
     private static Ontology ontology;

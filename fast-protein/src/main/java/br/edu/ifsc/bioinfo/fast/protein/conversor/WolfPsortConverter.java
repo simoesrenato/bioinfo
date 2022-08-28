@@ -6,15 +6,10 @@
 package br.edu.ifsc.bioinfo.fast.protein.conversor;
 
 import br.edu.ifsc.bioinfo.fast.protein.CommandRunner;
-import br.edu.ifsc.bioinfo.fast.util.FileUtils;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -47,10 +42,13 @@ public class WolfPsortConverter {
                 throw new IOException("Fasta file is null");
             }
 
-            //if (!(new File("wolfpsort.txt").exists())) {
-            CommandRunner.run("chmod +x wolfpsort.sh");
-            CommandRunner.run(String.format("./wolfpsort.sh %s %s", type, fasta.getAbsolutePath()));
-            //}
+            if (!(new File("wolfpsort.txt").exists())) {
+                CommandRunner.run("chmod +x wolfpsort.sh");
+                CommandRunner.run(String.format("./wolfpsort.sh %s %s", type, fasta.getAbsolutePath()));
+            } else {
+                System.out.println("WoLF PSORT file wolfpsort.txt already exists. This file will be processed.");
+
+            }
             Scanner s = new Scanner(new File("wolfpsort.txt"));
 
             while (s.hasNext()) {

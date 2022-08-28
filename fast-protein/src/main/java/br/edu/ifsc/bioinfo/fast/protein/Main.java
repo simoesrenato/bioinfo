@@ -59,7 +59,7 @@ public class Main implements Callable<Integer> {
     
     @CommandLine.Option(names = {"-iprLimit", "--interproLimit"}, 
             description = "Interproscan remote search (EBI-WP) limit (max 1000)", 
-            defaultValue = "15")
+            defaultValue = "500")
     int interproLimit;
     
     @CommandLine.Option(names = {"-db", "--blastdb"}, description = "Database for remote query:\n"
