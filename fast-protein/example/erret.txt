@@ -1,0 +1,11 @@
+#Search for Endoplasmic Reticulum Retention sites by sequence [KRHQSA]-[DENQ]-E-L>.
+#Reference: https://prosite.expasy.org/PS00014
+ID	Domains
+RCC1_YEAST	
+RCL1_YEAST	
+RT04_YEAST	SQEL[142-146]
+EF1A_ASHGO	
+EF1A_ASHGO-2	
+GLR1_DROME-Altered	
+CLV3_ARATH	HEEL[65-69]
+NAB2_SCHPO-Altered	

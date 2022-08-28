@@ -10,14 +10,15 @@
 - Aromaticity: aromaticity of the full sequence
 - Subcellular localization prediction ([WoLF PSORT](https://wolfpsort.hgc.jp/))
 - Prediction of transmembrane helices in proteins ([TMHMM-2.0c](https://services.healthtech.dtu.dk/service.php?TMHMM-2.0))
-- Prediction of Signal Peptides ([SignalP-5](https://services.healthtech.dtu.dk/service.php?SignalP-5.0))
+- Prediction of Signal Peptide ([SignalP-5](https://services.healthtech.dtu.dk/service.php?SignalP-5.0))
 - Endoplasmatic Reticulum Retention Total: total domains found with E.R retantion domain
 - Endoplasmatic Reticulum Retention domains: E.R retantion domains found with peptide and position
 - N-Glycosylation Total: total N-Glyc domains found
 - N-Glycosylation domains: NGlyc domains peptide and position
 - Header: protein header
-- Gene ontology, Panther and Pfam: ([InterproScan5](https://www.ebi.ac.uk/interpro/)) 
-- Sequence: protein sequence
+- Blastp search (swiss-prot/NR): ([NCBI](https://blast.ncbi.nlm.nih.gov/))
+- Gene ontology, Interpro, Panther and Pfam: ([InterproScan5](https://www.ebi.ac.uk/interpro/)) 
+
 
 | Domain | Reference |
 | ------ | ------ |
@@ -36,13 +37,14 @@
 | tsv | tab formatted | column | [Link](https://github.com/simoesrenato/bioinfo/blob/master/fast-protein/python/test1.fasta.tsv) |
 | csv | csv file using semicolon by default separator | column | [Link](https://github.com/simoesrenato/bioinfo/blob/master/fast-protein/python/test1.fasta.csv) |
 | txt | formatted file with white space (default) | column | [Link](https://github.com/simoesrenato/bioinfo/blob/master/fast-protein/python/test1.fasta.txt) |
-| sep | individual protein   | plain | [Link](https://github.com/simoesrenato/bioinfo/blob/master/fast-protein/python/test1.fasta.sep) |
+| sep | individual protein | plain | [Link](https://github.com/simoesrenato/bioinfo/blob/master/fast-protein/python/test1.fasta.sep) |
+| json | full report | plain | [Link](https://github.com/simoesrenato/bioinfo/blob/master/fast-protein/python/test1.fasta.sep) |
 
 
 This software was developed in Java ([BioJava](https://biojava.org/)), Python and Perl
 
 Check the [source code](https://github.com/simoesrenato/bioinfo/tree/master/fast-protein) 
-Developed by PhD. Renato Simoes - renato.simoes@ifsc.edu.br
+Developed by Bioinformatic Laboratory - UFSC and IFSC - Questions? -> renato.simoes@ifsc.edu.br
 
 ## License
 

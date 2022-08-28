@@ -1,0 +1,442 @@
+{
+  "software": "FastProtein",
+  "version": "1.0",
+  "date": "Sun Aug 28 04:58:23 UTC 2022",
+  "proteins_size": 8,
+  "kda_mean": 44.49105946249994,
+  "kda_sd": 13.987877249082882,
+  "iso_mean": 7.462053298950195,
+  "iso_sd": 1.6209166154425318,
+  "hydrophobicity_mean": -0.35820076180996013,
+  "hydrophobicity_sd": 0.15216516497850852,
+  "aromaticity_mean": 0.07390177923445782,
+  "aromaticity_sd": 0.012063095814319214,
+  "erret": {
+    "SQEL": 1,
+    "HEEL": 1
+  },
+  "nglyc": {
+    "NIT": 4,
+    "NVS": 3,
+    "NAT": 2,
+    "NAS": 2,
+    "NTS": 2,
+    "NST": 2,
+    "NET": 2,
+    "NES": 2,
+    "NYT": 1,
+    "NYS": 1,
+    "NVT": 1,
+    "NQT": 1,
+    "NMT": 1,
+    "NMS": 1,
+    "NHS": 1,
+    "NGS": 1,
+    "NHT": 1
+  },
+  "subcellular_localization": {
+    "cyto": 4,
+    "extr": 2,
+    "nucl": 1,
+    "mito": 1
+  },
+  "interpro": [
+  ],
+  "go": [
+    {
+      "desc": "membrane",
+      "id": "GO:0016020",
+      "total": 1
+    },
+    {
+      "desc": "small ribosomal subunit",
+      "id": "GO:0015935",
+      "total": 1
+    },
+    {
+      "desc": "nucleolus",
+      "id": "GO:0005730",
+      "total": 1
+    },
+    {
+      "desc": "ribosome",
+      "id": "GO:0005840",
+      "total": 1
+    }
+  ],
+  "proteins": [
+    {
+      "id": "RCC1_YEAST",
+      "header": "RCC1_YEAST",
+      "sequence": "MVKRTVATNGDASGAHRAKKMSKTHASHIINAQEDYKHMYLSVQPLDIFCWGTGSMCELGLGPLAKNKEVKRPRLNPFLPRDEAKIISFAVGGMHTLALDEESNVWSWGCNDVGALGRDTSNAKEQLKDMDADDSSDDEDGDLNELESTPAKIPRESFPPLAEGHKVVQLAATDNMSCALFSNGEVYAWGTFRCNEGILGFYQDKIKIQKTPWKVPTFSKYNIVQLAPGKDHILFLDEEGMVFAWGNGQQNQLGRKVMERFRLKTLDPRPFGLRHVKYIASGENHCFALTKDNKLVSWGLNQFGQCGVSEDVEDGALVTKPKRLALPDNVVIRSIAAGEHHSLILSQDGDLYSCGRLDMFEVGIPKDNLPEYTYKDVHGKARAVPLPTKLNNVPKFKSVAAGSHHSVAVAQNGIAYSWGFGETYAVGLGPFEDDTEVPTRIKNTATQDHNIILVGCGGQFSVSGGVKLSDEDAEKRADEMDD",
+      "subcellular_localization": "nucl",
+      "tm": 0,
+      "signalp5": "OTHER",
+      "blast_hit": "RecName: Full=Guanine nucleotide exchange factor SRM1...",
+      "nglyc": [
+        "NMS[174-177]"
+      ],
+      "erret": [
+      ],
+      "pfam": [
+        "Regulator of chromosome condensation (RCC1) repeat"
+      ],
+      "panther": [
+      ],
+      "interpro_id": [
+        "IPR009091",
+        "IPR000408"
+      ],
+      "interpro_desc": [
+        "Regulator of chromosome condensation 1/beta-lactamase-inhibitor protein II",
+        "Regulator of chromosome condensation, RCC1"
+      ],
+      "go_id": [
+      ],
+      "go_desc": [
+      ]
+    },
+    {
+      "id": "RCL1_YEAST",
+      "header": "RCL1_YEAST",
+      "sequence": "MSSSAPKYTTFQGSQNFRLRIVLATLSGKPIKIEKIRSGDLNPGLKDYEVSFLRLIESVTNGSVIEISYTGTTVIYRPGIIVGGASTHICPSSKPVGYFVEPMLYLAPFSKKKFSILFKGITASHNDAGIEAIKWGLMPVMEKFGVRECALHTLKRGSPPLGGGEVHLVVDSLIAQPITMHEIDRPIISSITGVAYSTRVSPSLVNRMIDGAKKVLKNLQCEVNITADVWRGENSGKSPGWGITLVAQSKQKGWSYFAEDIGDAGSIPEELGEKVACQLLEEISKSAAVGRNQLPLAIVYMVIGKEDIGRLRINKEQIDERFIILLRDIKKIFNTEVFLKPVDEADNEDMIATIKGIGFTNTSKKIA",
+      "subcellular_localization": "mito",
+      "tm": 0,
+      "signalp5": "OTHER",
+      "blast_hit": "No hit - timeout",
+      "nglyc": [
+        "NGS[60-63]",
+        "NIT[223-226]",
+        "NTS[360-363]"
+      ],
+      "erret": [
+      ],
+      "pfam": [
+        "RNA 3'-terminal phosphate cyclase",
+        "RNA 3'-terminal phosphate cyclase (RTC), insert domain"
+      ],
+      "panther": [
+        "RNA 3' TERMINAL PHOSPHATE CYCLASE",
+        "RNA 3'-TERMINAL PHOSPHATE CYCLASE-LIKE PROTEIN"
+      ],
+      "interpro_id": [
+        "IPR000228",
+        "IPR013792",
+        "IPR037136",
+        "IPR036553",
+        "IPR013791",
+        "IPR016443",
+        "IPR020719",
+        "IPR023797"
+      ],
+      "interpro_desc": [
+        "RNA 3'-terminal phosphate cyclase",
+        "RNA 3'-terminal phosphate cyclase/enolpyruvate transferase, alpha/beta",
+        "RNA 3'-terminal phosphate cyclase domain superfamily",
+        "RNA 3'-terminal phosphate cyclase, insert domain superfamily",
+        "RNA 3'-terminal phosphate cyclase, insert domain",
+        "RNA 3'-terminal phosphate cyclase type 2",
+        "RNA 3'-terminal phosphate cyclase-like, conserved site",
+        "RNA 3'-terminal phosphate cyclase domain"
+      ],
+      "go_id": [
+        "GO:0003824",
+        "GO:0042254",
+        "GO:0006396",
+        "GO:0005730"
+      ],
+      "go_desc": [
+        "catalytic activity",
+        "ribosome biogenesis",
+        "RNA processing",
+        "nucleolus"
+      ]
+    },
+    {
+      "id": "RT04_YEAST",
+      "header": "RT04_YEAST",
+      "sequence": "MQRHVFARNFRRLSLLRNPSLTKRFQSSASGAANTPNNNDEVMLLQQKLLYDEIRSELKSLSQVPEDEILPELKKSLEQDKLSDKEQQLEAELSDFFRNYALLNKLFDSKTLDGQSSTTTAAATPTKPYPNLIPSANDKPYSSQELFLRQLNHSMRTAKLGATISKVYYPHKDIFYPPLPENITVESLMSAGVHLGQSTSLWRSSTQSYIYGEYKGIHIIDLNQTLSYLKRAAKVVEGVSESGGIILFLGTRQGQKRGLEEAAKKTHGYYVSTRWIPGTLTNSTEISGIWEKQEIDSNDNPTERALSPNETSKQVKPDLLVVLNPTENRNALLEAIKSRVPTIAIIDTDSEPSLVTYPIPGNDDSLRSVNFLLGVLARAGQRGLQNRLARNNEK",
+      "subcellular_localization": "cyto",
+      "tm": 0,
+      "signalp5": "OTHER",
+      "blast_hit": "No hit - timeout",
+      "nglyc": [
+        "NHS[151-154]",
+        "NIT[181-184]",
+        "NQT[222-225]",
+        "NST[281-284]",
+        "NET[308-311]"
+      ],
+      "erret": [
+        "SQEL[142-146]"
+      ],
+      "pfam": [
+        "Ribosomal protein S2"
+      ],
+      "panther": [
+        "30S RIBOSOMAL PROTEIN S2  PROKARYOTIC AND ORGANELLAR"
+      ],
+      "interpro_id": [
+        "IPR005706",
+        "IPR001865",
+        "IPR023591",
+        "IPR018130"
+      ],
+      "interpro_desc": [
+        "Ribosomal protein S2, bacteria/mitochondria/plastid",
+        "Ribosomal protein S2",
+        "Ribosomal protein S2, flavodoxin-like domain superfamily",
+        "Ribosomal protein S2, conserved site"
+      ],
+      "go_id": [
+        "GO:0003735",
+        "GO:0015935",
+        "GO:0005840",
+        "GO:0006412"
+      ],
+      "go_desc": [
+        "structural constituent of ribosome",
+        "small ribosomal subunit",
+        "ribosome",
+        "translation"
+      ]
+    },
+    {
+      "id": "EF1A_ASHGO",
+      "header": "EF1A_ASHGO",
+      "sequence": "MGKEKTHVNVVVIGHVDSGKSTTTGHLIYKCGGIDKRTIEKFEKEAAELGKGSFKYAWVLDKLKAERERGITIDIALWKFETPKYHVTVIDAPGHRDFIKNMITGTSQADCAILIIAGGVGEFEAGISKDGQTREHALLAYTLGVKQLIVAINKMDSVKWDESRYQEIVKETSNFIKKVGYNPKTVPFVPISGWNGDNMIEATTNAPWYKGWEKETKAGAVKGKTLLEAIDAIEPPVRPTDKALRLPLQDVYKIGGIGTVPVGRVETGVIKPGMVVTFAPSGVTTEVKSVEMHHEQLEEGVPGDNVGFNVKNVSVKEIRRGNVCGDSKNDPPKAAESFNATVIVLNHPGQISAGYSPVLDCHTAHIACKFDELLEKNDRRTGKKLEDSPKFLKAGDAAMVKFVPSKPMCVEAFTDYPPLGRFAVRDMRQTVAVGVIKSVVKSDKAGKVTKAAQKAGKK",
+      "subcellular_localization": "cyto",
+      "tm": 0,
+      "signalp5": "OTHER",
+      "blast_hit": "No hit - timeout",
+      "nglyc": [
+        "NVS[311-314]",
+        "NAT[338-341]"
+      ],
+      "erret": [
+      ],
+      "pfam": [
+        "Elongation factor Tu C-terminal domain",
+        "Elongation factor Tu GTP binding domain",
+        "Elongation factor Tu domain 2"
+      ],
+      "panther": [
+        "ELONGATION FACTOR 1-ALPHA 1",
+        "TRANSLATION FACTOR"
+      ],
+      "interpro_id": [
+        "IPR027417",
+        "IPR004160",
+        "IPR004539",
+        "IPR004161",
+        "IPR009000",
+        "IPR000795",
+        "IPR009001",
+        "IPR031157"
+      ],
+      "interpro_desc": [
+        "P-loop containing nucleoside triphosphate hydrolase",
+        "Translation elongation factor EFTu/EF1A, C-terminal",
+        "Translation elongation factor EF1A, eukaryotic/archaeal",
+        "Translation elongation factor EFTu-like, domain 2",
+        "Translation protein, beta-barrel domain superfamily",
+        "Translational (tr)-type GTP-binding domain",
+        "Translation elongation factor EF1A/initiation factor IF2gamma, C-terminal",
+        "Tr-type G domain, conserved site"
+      ],
+      "go_id": [
+        "GO:0005525",
+        "GO:0003746",
+        "GO:0003924",
+        "GO:0006414"
+      ],
+      "go_desc": [
+        "GTP binding",
+        "translation elongation factor activity",
+        "GTPase activity",
+        "translational elongation"
+      ]
+    },
+    {
+      "id": "EF1A_ASHGO-2",
+      "header": "EF1A_ASHGO-2",
+      "sequence": "MGKEKTHVNVVVIGHVDSGKSTTTGHLIYKCGGIDKRTIEKFEKEAAELGKGSFKYAWVLDKLKAERERGITIDIALWKFETPKYHVTVIDAPGHRDFIKNMITGTSQADCAILIIAGGVGEFEAGISKDGQTREHALLAYTLGVKQLIVAINKMDSVKWDESRYQEIVKETSNFIKKVGYNPKTVPFVPISGWNGDNMIEATTNAPWYKGWEKETKAGAVKGKTLLEAIDAIEPPVRPTDKALRLPLQDVYKIGGIGTVPVGRVETGVIKPGMVVTFAPSGVTTEVKSVEMHHEQLEEGVPGDNVGFNVKNVSVKEIRRGNVCGDSKNDPPKAAESFNATVIVLNHPGQISAGYSPVLDCHTAHIACKFDELLEKNDRRTGKKLEDSPKFLKAGDAAMVKFVPSKPMCVEAFTDYPPLGRFAVRDMRQTVAVGVIKSVVKSDKAGKVTKAAQKAGKK",
+      "subcellular_localization": "cyto",
+      "tm": 0,
+      "signalp5": "OTHER",
+      "blast_hit": "No hit - timeout",
+      "nglyc": [
+        "NVS[311-314]",
+        "NAT[338-341]"
+      ],
+      "erret": [
+      ],
+      "pfam": [
+        "Elongation factor Tu C-terminal domain",
+        "Elongation factor Tu GTP binding domain",
+        "Elongation factor Tu domain 2"
+      ],
+      "panther": [
+        "ELONGATION FACTOR 1-ALPHA 1",
+        "TRANSLATION FACTOR"
+      ],
+      "interpro_id": [
+        "IPR027417",
+        "IPR004160",
+        "IPR004539",
+        "IPR004161",
+        "IPR009000",
+        "IPR000795",
+        "IPR009001",
+        "IPR031157"
+      ],
+      "interpro_desc": [
+        "P-loop containing nucleoside triphosphate hydrolase",
+        "Translation elongation factor EFTu/EF1A, C-terminal",
+        "Translation elongation factor EF1A, eukaryotic/archaeal",
+        "Translation elongation factor EFTu-like, domain 2",
+        "Translation protein, beta-barrel domain superfamily",
+        "Translational (tr)-type GTP-binding domain",
+        "Translation elongation factor EF1A/initiation factor IF2gamma, C-terminal",
+        "Tr-type G domain, conserved site"
+      ],
+      "go_id": [
+        "GO:0005525",
+        "GO:0003746",
+        "GO:0003924",
+        "GO:0006414"
+      ],
+      "go_desc": [
+        "GTP binding",
+        "translation elongation factor activity",
+        "GTPase activity",
+        "translational elongation"
+      ]
+    },
+    {
+      "id": "GLR1_DROME-Altered",
+      "header": "GLR1_DROME-Altered Glutamate receptor 1 OS=Drosophila melanogaster GN=GluRIA PE=1 SV=2",
+      "sequence": "MHSRLKFLAYLHFICASSIFWPEFSSAQQQQQTVSLTEKIPLGAIFEQGTDDVQSAFKYAMLNHNLNVSSRRFELQAYVDVINTADAFKLSRLICNQFSRGVYSMLGAVSPDSFDTLHSYSNTFQMPFVTPWFPEKVLAPSSGLLDFAISMRPDYHQAIIDTIQYYGWQSIIYLYDSHDGLLRLQQIYQELKPGNETFRVQMVKRIANVTMAIEFLHTLEDLGRFSKKRIVLDCPAEMAKEIIVQHVRDIKLGRRTYHYLLSGLVMDNHWPSDVVEFGAINITGFRIVDSNRRAVRDFHDSRKRLEPSGQSQSQNAGGPNSLPAISAQAALMYDAVFVLVEAFNRILRKKPDQFRSNHLQRRSHGGSSSSSATGTNESSALLDCNTSKGWVTPWEQGEKISRVLRKVEIDGLSGEIRFDEDGRRINYTLHVVEMSVNSTLQQVAEWRDDAGLLPLHSHNYASSSRSASASTGDYDRNHTYIVSSLLEEPYLSLKQYTYGESLVGNDRFEGYCKDLADMLAAQLGIKYEIRLVQDGNYGAE",
+      "subcellular_localization": "extr",
+      "tm": 0,
+      "signalp5": "SP(Sec/SPI)",
+      "blast_hit": "No hit - timeout",
+      "nglyc": [
+        "NVS[66-69]",
+        "NET[194-197]",
+        "NVT[207-210]",
+        "NIT[280-283]",
+        "NES[375-378]",
+        "NTS[384-387]",
+        "NYT[425-428]",
+        "NST[436-439]",
+        "NHT[476-479]"
+      ],
+      "erret": [
+      ],
+      "pfam": [
+        "Ligated ion channel L-glutamate- and glycine-binding site",
+        "Receptor family ligand binding region"
+      ],
+      "panther": [
+        "GLUTAMATE RECEPTOR 3",
+        "IONOTROPIC GLUTAMATE RECEPTOR"
+      ],
+      "interpro_id": [
+        "IPR019594",
+        "IPR028082",
+        "IPR001828"
+      ],
+      "interpro_desc": [
+        "Ionotropic glutamate receptor, L-glutamate and glycine-binding domain",
+        "Periplasmic binding protein-like I",
+        "Receptor, ligand binding region"
+      ],
+      "go_id": [
+        "GO:0016020",
+        "GO:0004970"
+      ],
+      "go_desc": [
+        "membrane",
+        "ionotropic glutamate receptor activity"
+      ]
+    },
+    {
+      "id": "CLV3_ARATH",
+      "header": "CLV3_ARATH Protein CLAVATA 3 OS=Arabidopsis thaliana GN=CLV3 PE=1 SV=2",
+      "sequence": "MDSKSFLLLLLLFCFLFLHDASDLTQAHAHVQGLSNRKMMMMKMESEWVGANGEAEKAKTKGLGLHEELRTVPSGPDPLHHHVNPPRQPRNNFQLP",
+      "subcellular_localization": "extr",
+      "tm": 0,
+      "signalp5": "SP(Sec/SPI)",
+      "blast_hit": "No hit - timeout",
+      "nglyc": [
+      ],
+      "erret": [
+        "HEEL[65-69]"
+      ],
+      "pfam": [
+      ],
+      "panther": [
+        "PROTEIN CLAVATA 3"
+      ],
+      "interpro_id": [
+        "IPR039818",
+        "IPR044962"
+      ],
+      "interpro_desc": [
+        "CLAVATA3",
+        "CLV3/ESR signal peptide family"
+      ],
+      "go_id": [
+        "GO:0045168",
+        "GO:0033612"
+      ],
+      "go_desc": [
+        "cell-cell signaling involved in cell fate commitment",
+        "receptor serine/threonine kinase binding"
+      ]
+    },
+    {
+      "id": "NAB2_SCHPO-Altered",
+      "header": "NAB2_SCHPO-Altered",
+      "sequence": "MTTLLETPGYSEKLHDSIEKKLSEYGWGEEAASLADFVLVMLSNGKTQTEINEELVDLIGSDFDTSFSLWLFNQIEELEKSKNASVESVSKIDEIDFIEKESTDKSQQSFSVPETSIQPQSSQTPNITSLREEKELPTGRVGQKLKLTSQKQRFNPMAASFNYSKSVMPAAKRALTQTQEVPLCKYADKCSRANCIFAHPTPAAAPGEGMVLSSEMCASGKECKAADCVKGHPSPATVTTLPPFMSMSTIPIPCKYKPCLNPACRFIHPTKSRNMTWRPPSKTEETSLSERSFAVNESEEMTTLLETPGYSEKLHDSIEKKLSEYGWGEEAASLADFVLVMLSNGKTQTEINEELVDLIGSDFDTSFSLWLFNQIEELEKSKNASVESVSKIDEIDFIEKESTDKSQQSFSVPETSIQPQ",
+      "subcellular_localization": "cyto",
+      "tm": 0,
+      "signalp5": "OTHER",
+      "blast_hit": "No hit - timeout",
+      "nglyc": [
+        "NAS[82-85]",
+        "NIT[125-128]",
+        "NYS[161-164]",
+        "NMT[273-276]",
+        "NES[295-298]",
+        "NAS[382-385]"
+      ],
+      "erret": [
+      ],
+      "pfam": [
+      ],
+      "panther": [
+        "ZINC FINGER CCCH DOMAIN-CONTAINING PROTEIN 14"
+      ],
+      "interpro_id": [
+        "IPR043094",
+        "IPR040366"
+      ],
+      "interpro_desc": [
+        "Nab2/ZC3H14, N-terminal domain superfamily",
+        "Nuclear polyadenylated RNA-binding protein Nab2/ZC3H14"
+      ],
+      "go_id": [
+        "GO:0008143",
+        "GO:1900364",
+        "GO:0043488"
+      ],
+      "go_desc": [
+        "poly(A) binding",
+        "negative regulation of mRNA polyadenylation",
+        "regulation of mRNA stability"
+      ]
+    }
+  ]
+}

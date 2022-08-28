@@ -1,0 +1,660 @@
+<p><!--
+QBlastInfoBegin
+	Status=READY
+QBlastInfoEnd
+--><p>
+<PRE>
+BLASTP 2.13.0+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+Reference for compositional score matrix adjustment: Stephen
+F. Altschul, John C. Wootton, E. Michael Gertz, Richa
+Agarwala, Aleksandr Morgulis, Alejandro A. Schaffer, and
+Yi-Kuo Yu (2005) "Protein database searches using
+compositionally adjusted substitution matrices", FEBS J.
+272:5101-5109.
+
+
+RID: GNWUA4HZ013
+
+
+Database: Non-redundant UniProtKB/SwissProt sequences
+           480,087 sequences; 182,233,107 total letters
+Query= 
+Length=482
+
+
+                                                                   Score     E      Max
+Sequences producing significant alignments:                       (Bits)  Value   Ident
+
+P21827.1 RecName: Full=Guanine nucleotide exchange factor SRM1...  1006    0.0     100%        
+P52499.1 RecName: Full=Protein RCC1 [Candida albicans]             446     9e-153  53%         
+P28745.2 RecName: Full=Protein pim1; AltName: Full=Poly(A)+ RN...  317     1e-101  39%         
+P25183.1 RecName: Full=Regulator of chromosome condensation [X...  161     3e-43   29%         
+P23800.1 RecName: Full=Regulator of chromosome condensation; A...  156     2e-41   27%         
+Q8VE37.1 RecName: Full=Regulator of chromosome condensation; A...  155     4e-41   27%         
+P18754.1 RecName: Full=Regulator of chromosome condensation; A...  154     6e-41   27%         
+P25171.2 RecName: Full=Regulator of chromosome condensation; A...  145     9e-37   28%         
+Q9FN03.1 RecName: Full=Ultraviolet-B receptor UVR8; AltName: F...  110     4e-25   26%         
+Q6PAV2.2 RecName: Full=Probable E3 ubiquitin-protein ligase HE...  108     9e-24   27%         
+Q5GLZ8.1 RecName: Full=Probable E3 ubiquitin-protein ligase HE...  107     2e-23   27%         
+Q5PQN1.1 RecName: Full=Probable E3 ubiquitin-protein ligase HE...  106     4e-23   27%         
+Q18211.1 RecName: Full=Regulator of chromosome condensation; A...  104     1e-22   25%         
+Q9FJG9.1 RecName: Full=RCC1 domain-containing protein RUG3, mi...  94.4    2e-19   27%         
+Q15034.1 RecName: Full=Probable E3 ubiquitin-protein ligase HE...  94.0    5e-19   25%         
+Q9N1T2.1 RecName: Full=X-linked retinitis pigmentosa GTPase re...  92.4    1e-18   28%         
+F2Z461.1 RecName: Full=E3 ISG15--protein ligase Herc6 [Mus mus...  89.0    2e-17   28%         
+Q15751.2 RecName: Full=Probable E3 ubiquitin-protein ligase HE...  89.4    2e-17   26%         
+Q9VR91.3 RecName: Full=Probable E3 ubiquitin-protein ligase HE...  87.4    8e-17   26%         
+Q9R0X5.2 RecName: Full=X-linked retinitis pigmentosa GTPase re...  84.7    5e-16   27%         
+Q4U2R1.3 RecName: Full=E3 ubiquitin-protein ligase HERC2; AltN...  84.3    9e-16   28%         
+Q8IVU3.2 RecName: Full=Probable E3 ubiquitin-protein ligase HE...  84.0    9e-16   26%         
+O95714.2 RecName: Full=E3 ubiquitin-protein ligase HERC2; AltN...  84.0    1e-15   28%         
+Q8K1R7.2 RecName: Full=Serine/threonine-protein kinase Nek9; A...  80.9    8e-15   22%         
+Q8TD19.2 RecName: Full=Serine/threonine-protein kinase Nek9; A...  80.5    1e-14   22%         
+Q7ZZC8.1 RecName: Full=Serine/threonine-protein kinase Nek9; S...  75.9    3e-13   21%         
+Q8SSY6.2 RecName: Full=Bifunctional serine/threonine-protein k...  75.9    4e-13   28%         
+O95199.1 RecName: Full=RCC1 and BTB domain-containing protein ...  74.7    5e-13   24%         
+Q92834.2 RecName: Full=X-linked retinitis pigmentosa GTPase re...  73.9    1e-12   25%         
+Q9UGK8.2 RecName: Full=Secretion-regulating guanine nucleotide...  71.2    6e-12   24%         
+Q6P798.1 RecName: Full=RCC1 and BTB domain-containing protein ...  70.5    1e-11   24%         
+Q80YD6.2 RecName: Full=Secretion-regulating guanine nucleotide...  69.7    1e-11   23%         
+Q54Q89.2 RecName: Full=RCC1 repeat-containing protein DDB_G028...  69.3    2e-11   30%         
+Q947D2.1 RecName: Full=PH, RCC1 and FYVE domains-containing pr...  70.1    2e-11   24%         
+Q99LJ7.1 RecName: Full=RCC1 and BTB domain-containing protein ...  69.3    3e-11   24%         
+Q4R828.1 RecName: Full=RCC1 domain-containing protein 1 [Macac...  67.8    4e-11   26%         
+Q9UII4.2 RecName: Full=E3 ISG15--protein ligase HERC5; AltName...  68.9    5e-11   26%         
+Q86SG6.1 RecName: Full=Serine/threonine-protein kinase Nek8; A...  68.6    5e-11   25%         
+Q8IS20.1 RecName: Full=Ras guanine nucleotide exchange factor ...  68.6    6e-11   27%         
+Q8NDN9.1 RecName: Full=RCC1 and BTB domain-containing protein ...  68.2    6e-11   26%         
+Q9P258.2 RecName: Full=Protein RCC2; AltName: Full=RCC1-like p...  67.8    8e-11   27%         
+Q52KW8.1 RecName: Full=Protein RCC2 homolog [Xenopus laevis]       66.6    2e-10   27%         
+A6NED2.1 RecName: Full=RCC1 domain-containing protein 1 [Homo ...  65.9    2e-10   26%         
+Q6NYE2.1 RecName: Full=Protein RCC2 homolog [Danio rerio]          65.9    3e-10   24%         
+Q6NXM2.1 RecName: Full=RCC1 and BTB domain-containing protein ...  65.5    4e-10   23%         
+Q8BK67.1 RecName: Full=Protein RCC2 [Mus musculus]                 63.9    1e-09   26%         
+Q8BTU7.2 RecName: Full=RCC1 domain-containing protein 1 [Mus m...  63.2    1e-09   26%         
+P0C5Y8.1 RecName: Full=Alsin; AltName: Full=Amyotrophic latera...  64.3    2e-09   26%         
+Q5DX34.2 RecName: Full=X-linked retinitis pigmentosa GTPase re...  63.2    3e-09   23%         
+Q9CYF5.1 RecName: Full=RCC1-like G exchanging factor-like prot...  62.4    3e-09   23%         
+Q3MHW0.1 RecName: Full=Secretion-regulating guanine nucleotide...  62.0    4e-09   28%         
+Q920R0.3 RecName: Full=Alsin; AltName: Full=Amyotrophic latera...  62.8    4e-09   26%         
+Q96Q42.2 RecName: Full=Alsin; AltName: Full=Amyotrophic latera...  59.7    4e-08   36%         
+Q91ZR4.1 RecName: Full=Serine/threonine-protein kinase Nek8; A...  59.3    5e-08   25%         
+Q5BIW4.1 RecName: Full=Alsin; AltName: Full=Amyotrophic latera...  58.9    7e-08   35%         
+O74881.1 RecName: Full=BTB/POZ domain-containing protein 1 [Sc...  58.5    8e-08   26%         
+Q96I51.3 RecName: Full=RCC1-like G exchanging factor-like prot...  56.2    3e-07   23%         
+D3ZGQ5.1 RecName: Full=Serine/threonine-protein kinase Nek8; A...  56.6    3e-07   24%         
+Q54VW7.1 RecName: Full=Rho GTPase-activating protein gacGG; Al...  55.5    7e-07   27%         
+Q90XC2.1 RecName: Full=Serine/threonine-protein kinase Nek8; A...  54.7    1e-06   19%         
+Q54X24.1 RecName: Full=RCC1 domain-containing protein DDB_G027...  51.2    1e-05   28%         
+Q17551.1 RecName: Full=E3 ubiquitin-protein ligase rpm-1; AltN...  48.9    8e-05   27%         
+Q9P2D0.3 RecName: Full=Inhibitor of Bruton tyrosine kinase; Sh...  47.8    2e-04   25%         
+Q6NRS1.1 RecName: Full=Inhibitor of Bruton tyrosine kinase; Sh...  45.8    8e-04   26%         
+Q9NB71.2 RecName: Full=E3 ubiquitin-protein ligase highwire; A...  45.8    0.001   33%         
+O42645.1 RecName: Full=RCC1 repeat-containing protein C10F6.04...  44.7    0.001   21%         
+P38352.2 RecName: Full=SCF-associated factor 1 [Saccharomyces ...  44.7    0.001   26%         
+Q54HT1.1 RecName: Full=Protein tirA; AltName: Full=TIR domain-...  44.7    0.002   30%         
+Q6ZPR6.3 RecName: Full=Inhibitor of Bruton tyrosine kinase; Sh...  42.7    0.006   26%         
+Q9VNZ8.1 RecName: Full=Alsin homolog; AltName: Full=Amyotrophi...  40.8    0.029   32%         
+F1RD40.1 RecName: Full=E3 ubiquitin-protein ligase MYCBP2; Alt...  40.0    0.048   25%         
+P0C7G9.1 RecName: Full=RCC1 domain-containing protein DDB_G029...  40.0    0.048   33%         
+Q7TPH6.3 RecName: Full=E3 ubiquitin-protein ligase MYCBP2; Alt...  37.4    0.38    26%         
+O75592.4 RecName: Full=E3 ubiquitin-protein ligase MYCBP2; Alt...  37.4    0.39    26%         
+P31386.2 RecName: Full=Protein KTI13; AltName: Full=Alpha-tubu...  35.8    0.69    22%         
+Q75J39.1 RecName: Full=Serine/threonine-protein kinase-like pr...  35.4    1.4     24%         
+Q9LTX2.1 RecName: Full=Transport inhibitor response 1-like pro...  33.5    4.7     33%         
+O74381.1 RecName: Full=F-box protein pof9 [Schizosaccharomyces...  33.5    4.7     25%         
+Q5UQS4.1 RecName: Full=Uncharacterized protein R329 [Acanthamo...  32.3    5.9     34%         
+P0A4W1.1 RecName: Full=L-asparagine permease 2; AltName: Full=...  33.1    6.2     23%         
+
+ALIGNMENTS
+>P21827.1 RecName: Full=Guanine nucleotide exchange factor SRM1; AltName: 
+Full=Pheromone response pathway component SRM1; AltName: 
+Full=Pre-mRNA-processing protein 20; AltName: Full=Regulator 
+of chromosome condensation; AltName: Full=Suppressor of receptor 
+mutations 1; AltName: Full=mRNA transport protein 1 [Saccharomyces 
+cerevisiae S288C]
+Length=482
+
+ Score = 1006 bits (2600),  Expect = 0.0, Method: Compositional matrix adjust.
+ Identities = 482/482 (100%), Positives = 482/482 (100%), Gaps = 0/482 (0%)
+
+Query  1    MVKRTVATNGDASGAHRAKKMSKTHASHIINAQEDYKHMYLSVQPLDIFCWGTGSMCELG  60
+            MVKRTVATNGDASGAHRAKKMSKTHASHIINAQEDYKHMYLSVQPLDIFCWGTGSMCELG
+Sbjct  1    MVKRTVATNGDASGAHRAKKMSKTHASHIINAQEDYKHMYLSVQPLDIFCWGTGSMCELG  60
+
+Query  61   LGPLAKNKEVKRPRLNPFLPRDEAKIISFAVGGMHTLALDEESNVWSWGCNDVGALGRDT  120
+            LGPLAKNKEVKRPRLNPFLPRDEAKIISFAVGGMHTLALDEESNVWSWGCNDVGALGRDT
+Sbjct  61   LGPLAKNKEVKRPRLNPFLPRDEAKIISFAVGGMHTLALDEESNVWSWGCNDVGALGRDT  120
+
+Query  121  SNAKEQLKDMDADDSSDDEDGDLNELESTPAKIPRESFPPLAEGHKVVQLAATDNMSCAL  180
+            SNAKEQLKDMDADDSSDDEDGDLNELESTPAKIPRESFPPLAEGHKVVQLAATDNMSCAL
+Sbjct  121  SNAKEQLKDMDADDSSDDEDGDLNELESTPAKIPRESFPPLAEGHKVVQLAATDNMSCAL  180
+
+Query  181  FSNGEVYAWGTFRCNEGILGFYQDKIKIQKTPWKVPTFSKYNIVQLAPGKDHILFLDEEG  240
+            FSNGEVYAWGTFRCNEGILGFYQDKIKIQKTPWKVPTFSKYNIVQLAPGKDHILFLDEEG
+Sbjct  181  FSNGEVYAWGTFRCNEGILGFYQDKIKIQKTPWKVPTFSKYNIVQLAPGKDHILFLDEEG  240
+
+Query  241  MVFAWGNGQQNQLGRKVMERFRLKTLDPRPFGLRHVKYIASGENHCFALTKDNKLVSWGL  300
+            MVFAWGNGQQNQLGRKVMERFRLKTLDPRPFGLRHVKYIASGENHCFALTKDNKLVSWGL
+Sbjct  241  MVFAWGNGQQNQLGRKVMERFRLKTLDPRPFGLRHVKYIASGENHCFALTKDNKLVSWGL  300
+
+Query  301  NQFGQCGVSEDVEDGALVTKPKRLALPDNVVIRSIAAGEHHSLILSQDGDLYSCGRLDMF  360
+            NQFGQCGVSEDVEDGALVTKPKRLALPDNVVIRSIAAGEHHSLILSQDGDLYSCGRLDMF
+Sbjct  301  NQFGQCGVSEDVEDGALVTKPKRLALPDNVVIRSIAAGEHHSLILSQDGDLYSCGRLDMF  360
+
+Query  361  EVGIPKDNLPEYTYKDVHGKARAVPLPTKLNNVPKFKSVAAGSHHSVAVAQNGIAYSWGF  420
+            EVGIPKDNLPEYTYKDVHGKARAVPLPTKLNNVPKFKSVAAGSHHSVAVAQNGIAYSWGF
+Sbjct  361  EVGIPKDNLPEYTYKDVHGKARAVPLPTKLNNVPKFKSVAAGSHHSVAVAQNGIAYSWGF  420
+
+Query  421  GETYAVGLGPFEDDTEVPTRIKNTATQDHNIILVGCGGQFSVSGGVKLSDEDAEKRADEM  480
+            GETYAVGLGPFEDDTEVPTRIKNTATQDHNIILVGCGGQFSVSGGVKLSDEDAEKRADEM
+Sbjct  421  GETYAVGLGPFEDDTEVPTRIKNTATQDHNIILVGCGGQFSVSGGVKLSDEDAEKRADEM  480
+
+Query  481  DD  482
+            DD
+Sbjct  481  DD  482
+
+
+>P52499.1 RecName: Full=Protein RCC1 [Candida albicans]
+Length=464
+
+ Score = 446 bits (1146),  Expect = 9e-153, Method: Compositional matrix adjust.
+ Identities = 240/449 (53%), Positives = 318/449 (71%), Gaps = 20/449 (4%)
+
+Query  45   PLDIFCWGTGSMCELGLGPLAKNKEVKRPRLNPFLPRDE---AKIISFAVGGMHTLALDE  101
+            PLD+F WGTGSMCELGLGP AKNKEVKRPRLNP+L  ++    KI+ FAVGGMHTLALD 
+Sbjct  23   PLDVFVWGTGSMCELGLGPSAKNKEVKRPRLNPYLTEEKLGGTKIVDFAVGGMHTLALDG  82
+
+Query  102  ESNVWSWGCNDVGALGRDTSNAKEQLKDMDADDSSDDEDGDLN----ELESTPAKIPRES  157
+            ++ +WSWG ND   LGRDT  AKE LKD+D  + +DD+D D +    E ESTPA +  E+
+Sbjct  83   KNRIWSWGGNDSEVLGRDTCQAKEVLKDIDGKNGNDDDDDDEDGDLNEAESTPALV--EN  140
+
+Query  158  FPPLAEGHKVVQLAATDNMSCALFSNGEVYAWGTFRCNEGILGFYQDKIKIQKTPWKVPT  217
+             P   EG ++VQLAATDN+S AL SNG+VY+WG FRCNEG+LGF +D+IK+QKTP K+  
+Sbjct  141  LP---EG-EIVQLAATDNLSAALLSNGDVYSWGCFRCNEGLLGFLRDEIKLQKTPLKIKE  196
+
+Query  218  FSKYNIVQLAPGKDHILFLDEEGMVFAWGNGQQNQLGRKVMERFRLKTLDPRPFGLRHVK  277
+              K+  + +   K  +L LD +  +    NGQQ QLGR+++ER R ++L+P+ FGL ++K
+Sbjct  197  LKKHCPI-MRSVKIILLALDSKEWMPGV-NGQQYQLGRRILERHRYRSLEPQQFGLYNIK  254
+
+Query  278  YIASGENHCFALTKDNKLVSWGLNQFGQCGVSED---VEDGALVTKPKRLALPDNVVIRS  334
+            YIASG+ HCFA+   + + +WGLNQ+GQC ++ D   +EDG+++ KP  +    +  I+ 
+Sbjct  255  YIASGDFHCFAIDHSHNVYAWGLNQYGQCALTGDNGELEDGSVLMKPTLIPELSHKGIKE  314
+
+Query  335  IAAGEHHSLILSQDGDLYSCGRLDMFEVGIPKDNLPEYTYKDVHGKARAVPLPTKLNNVP  394
+            IAAGEHH+L L++DG +Y+ GR DM E+GIPKD LP+ T+K   G   +      L  V 
+Sbjct  315  IAAGEHHTLALTEDGQVYAWGRYDMKEIGIPKDKLPKSTFKINTGTHGSFSFLQNLFAV-  373
+
+Query  395  KFKSVAAGSHHSVAVAQNGIAYSWGFGETYAVGLGPFEDDTEVPTRIKNTATQDHNIILV  454
+            K K++  GSHHS AV ++G+ Y+WGF ETY  GLGP  DD E PTRI NTAT++ +I+L+
+Sbjct  374  KIKTIGVGSHHSFAVTEDGVVYAWGFAETYGPGLGPSIDDVEKPTRIVNTATKNEDILLI  433
+
+Query  455  GCGGQFSVSGGVKLSDED-AEKRADEMDD  482
+            G GGQFSVSGGVK  DE+ AE R D+ +D
+Sbjct  434  GAGGQFSVSGGVKFEDEEKAEVRLDKYED  462
+
+
+>P28745.2 RecName: Full=Protein pim1; AltName: Full=Poly(A)+ RNA transport 
+protein 2 [Schizosaccharomyces pombe 972h-]
+Length=539
+
+ Score = 317 bits (813),  Expect = 1e-101, Method: Compositional matrix adjust.
+ Identities = 169/435 (39%), Positives = 256/435 (59%), Gaps = 25/435 (6%)
+
+Query  41   LSVQPLDIFCWGTGSMCELGLGPLAKNKEVKRPRLNPFLPRDEAKIISFAVGGMHTLALD  100
+            L  + L+++ +G+GSM ELG+G    +  V RPRLNP L  D+  ++  AVGGMH+ AL 
+Sbjct  66   LPTERLNVYVFGSGSMNELGMGEEEMDV-VYRPRLNPILSTDKVGVVDLAVGGMHSAALS  124
+
+Query  101  EESNVWSWGCNDVGALGRDTSNAKEQLKDMDADDSSDDEDGDLNELESTPAKIPRESFPP  160
+             +  V++WG ND  ALGR T + K        D++ D  D DL  LE TP+K+       
+Sbjct  125  HDGRVYTWGVNDDYALGRLTKDQK--------DENGDKVDNDL--LEGTPSKVEG-----  169
+
+Query  161  LAEGH-KVVQLAATDNMSCALFSNGEVYAWGTFRCNEGILGFYQDKIKI-QKTPWKVPTF  218
+             A  H +V ++  +DN++ A+  NG  + WGTFRC++G+LG+   + +  + T  ++P  
+Sbjct  170  -ALSHLRVTKVICSDNLTAAITDNGCCFTWGTFRCSDGVLGYSDSQKRTAEPTQMRLP--  226
+
+Query  219  SKYNIVQLAPGKDHILFLDEEGMVFAWGNGQQNQLGRKVMERFRLKTLDPRPFGLRHVKY  278
+                I QLA G DHI+ L   G V+ WGNGQQ QLGR+++ER RL+ L P+P  L+++  
+Sbjct  227  ---EICQLATGTDHIIALTTTGKVYTWGNGQQFQLGRRMLERRRLQGLTPQPLALKNIIS  283
+
+Query  279  IASGENHCFALTKDNKLVSWGLNQFGQCGVS-EDVEDGALVTKPKRLALPDNVVIRSIAA  337
+            + +G  H FA+    ++ +WGLN   QCG+  ED E+GA++TKP  +   +   ++SI  
+Sbjct  284  VGAGSYHSFAIDNKGRVYAWGLNITRQCGIEVEDEEEGAVITKPTLVDALEGYNVKSITG  343
+
+Query  338  GEHHSLILSQDGDLYSCGRLDMFEVGIPKDNLPEYTYKDVHGKARAVPLPTKLNNVPKFK  397
+            GEHH+L L +DG + + GR D  ++GIP + LPE   KD  G    +  PT +  +    
+Sbjct  344  GEHHTLALLEDGRVLAWGRDDRHQLGIPDNALPETVVKDEKGNNYYLSTPTIIPGLTNVI  403
+
+Query  398  SVAAGSHHSVAVAQNGIAYSWGFGETYAVGLGPFEDDTEVPTRIKNTATQDHNIILVGCG  457
+             V  G+HH++AV  +G  YSWG  E Y VG G  ++D  VPT +++ A ++  I + G G
+Sbjct  404  QVVCGTHHNLAVTSDGKVYSWGSAENYEVGQGDNDEDVAVPTLVRSKAIKEVAIRVAGAG  463
+
+Query  458  GQFSVSGGVKLSDED  472
+            GQFS+  G+  + E+
+Sbjct  464  GQFSIIAGIPNASEE  478
+
+
+>P25183.1 RecName: Full=Regulator of chromosome condensation [Xenopus laevis]
+Length=424
+
+ Score = 161 bits (407),  Expect = 3e-43, Method: Compositional matrix adjust.
+ Identities = 138/483 (29%), Positives = 222/483 (46%), Gaps = 94/483 (19%)
+
+Query  2    VKRTVATNGDASGAHRAKKMSK----THASH-IINAQEDYKHMYLSVQPLDIFCWGTGSM  56
+            +KRT+A   +++G    KK       TH SH  +  Q              +   G G +
+Sbjct  7    LKRTIAAE-ESNGTSDVKKTKALPIVTHPSHGTVGGQ--------------VLTLGQGDV  51
+
+Query  57   CELGLGPLAKNKEVKRPRLNPFLPRDEAKIISFAVGGMHTLALDEESNVWSWGCNDVGAL  116
+             +LGLG      E    R  P L      I+  A GGMHT+ L    +++++GCND GAL
+Sbjct  52   GQLGLG------EDIMERKKPALVTLTEDIVQAAAGGMHTVCLGASGSIYTFGCNDEGAL  105
+
+Query  117  GRDTSNAKEQLKDMDADDSSDDEDGDLNELESTPAKIPRESFPPLAEGHKVVQLAATDNM  176
+            GRDTS                 E+G     E  P K+       LAE  KVVQ++A D+ 
+Sbjct  106  GRDTS-----------------EEGS----EMQPGKV------ELAE--KVVQVSAGDSH  136
+
+Query  177  SCALFSNGEVYAWGTFRCNEGILGFYQDKIKIQKTPWKVPTFSKYNIVQLAPGKDHILFL  236
+            + AL  +G V+ +G+FR N G++G   + +K    P +V   +   ++++A G DH++ L
+Sbjct  137  TAALTEDGRVFVFGSFRDNNGVIGLL-EPMKKSMVPVQVQINTP--VIKIASGNDHLVLL  193
+
+Query  237  DEEGMVFAWGNGQQNQLGRKVMERF----------RLKT-----LDPRPFGLRHVKYIAS  281
+              +G ++  G G+Q QLGR V ERF          RL       L  +  G  H + +  
+Sbjct  194  TVDGDLYTSGCGEQGQLGR-VPERFTNRGGRKGLERLLVPQCIHLKAKGSGRVHFQDVFC  252
+
+Query  282  GENHCFALTKDNKLVSWGLNQFGQCGVSEDVEDGALVTKPKRLALPDNVVIRSI--AAGE  339
+            G    FA++++  +  +GL+ + Q G     ++      P+ L    N     I  + G+
+Sbjct  253  GAYFTFAVSQEGHVYGFGLSNYHQLG----TKNTQACYAPQNLTSFKNSTKSWIGFSGGQ  308
+
+Query  340  HHSLILSQDGDLYSCGRLDMFEVGIPKDNLPEYTYKDVHGKARAVPLPTKLNNVPKFKSV  399
+            HH++ +  +G  YS GR +   +G+ ++             A     PT + ++PK  SV
+Sbjct  309  HHTVCVDSEGKAYSLGRAEYGRLGLGEN-------------AEEQSEPTPIPDLPKINSV  355
+
+Query  400  AAGSHHSVAVAQNGIAYSWGFGETYAVGLGPFEDDTEVPTRIKNTATQDHNIILVGCGGQ  459
+            A+G+  S AV+ +G  ++WG G    +G G  E+D   P ++     +D  ++ V  GGQ
+Sbjct  356  ASGASVSYAVSTDGCVFAWGMGTNLQLGTGE-EEDVWSPEQMTGKHLEDREVLSVSSGGQ  414
+
+Query  460  FSV  462
+             +V
+Sbjct  415  HTV  417
+
+
+>P23800.1 RecName: Full=Regulator of chromosome condensation; AltName: 
+Full=Chromosome condensation protein 1 [Mesocricetus auratus]
+Length=421
+
+ Score = 156 bits (394),  Expect = 2e-41, Method: Compositional matrix adjust.
+ Identities = 124/463 (27%), Positives = 210/463 (45%), Gaps = 86/463 (19%)
+
+Query  17   RAKKMSKTHASHIINAQEDYKHMYLSVQPLDIFCWGTGSMCELGLGPLAKNKEVKRPRLN  76
+            ++KK+  +H SH               +P  +   G G + +LGLG      E K+P L 
+Sbjct  19   KSKKVKVSHRSH-------------KTEPGLVLTLGQGDVGQLGLG--ESVLERKKPALV  63
+
+Query  77   PFLPRDEAKIISFAVGGMHTLALDEESNVWSWGCNDVGALGRDTSNAKEQLKDMDADDSS  136
+            P L      ++    GGMHT+ L++   V+S+GCND GALGRDTS               
+Sbjct  64   PLL----QDVVQAEAGGMHTVCLNQSGQVYSFGCNDEGALGRDTS---------------  104
+
+Query  137  DDEDGDLNELESTPAKIPRESFPPLAEGHKVVQLAATDNMSCALFSNGEVYAWGTFRCNE  196
+                  +   E  P K+  +         KVVQ++A D+ + AL  +G V+ WG+FR N 
+Sbjct  105  ------VEGSEMVPGKVELQ--------EKVVQVSAGDSHTAALTEDGRVFLWGSFRDNN  150
+
+Query  197  GILGFYQDKIKIQKTPWKVPTFSKYNIVQLAPGKDHILFLDEEGMVFAWGNGQQNQLGR-  255
+            G++G  +    ++K+   V       +V++A G DH++ L  +G ++  G G+Q QLGR 
+Sbjct  151  GVIGLLE---PMKKSMVPVQVQLDMPVVKVASGNDHLVMLTTDGDLYTLGCGEQGQLGRV  207
+
+Query  256  ----------KVMERFRL-KTLDPRPFGLR-HVKY--IASGENHCFALTKDNKLVSWGLN  301
+                      + +ER  + K +  +  G R  V++     G    FA++++  +  +GL+
+Sbjct  208  PELFANRGGRQGLERLLVPKCVLLKSRGSRGRVRFQDAFCGAYLTFAISREGHVYGFGLS  267
+
+Query  302  QFGQCGVSEDVEDGALVTKPKRLALPDNVVIR--SIAAGEHHSLILSQDGDLYSCGRLDM  359
+             + Q G        A    P+ L    N        + G+HH++ +  +G  YS GR + 
+Sbjct  268  NYHQLGTPGT----ASCFIPQNLTSFKNSTKSWVGFSGGQHHTICMDSEGKAYSLGRAEY  323
+
+Query  360  FEVGIPKDNLPEYTYKDVHGKARAVPLPTKLNNVPKFKSVAAGSHHSVAVAQNGIAYSWG  419
+              +G+ +              A    +PT ++ +P   SVA G+    AV+++G  ++WG
+Sbjct  324  GRLGLGEG-------------AEEKSIPTLISRLPVVSSVACGASVGYAVSKDGRVFAWG  370
+
+Query  420  FGETYAVGLGPFEDDTEVPTRIKNTATQDHNIILVGCGGQFSV  462
+             G  Y +G G  ++D   P  +     ++  ++ V  GGQ +V
+Sbjct  371  MGTNYQLGTGQ-DEDAWSPVEMTGKQLENRVVLTVSSGGQHTV  412
+
+
+>Q8VE37.1 RecName: Full=Regulator of chromosome condensation; AltName: 
+Full=Chromosome condensation protein 1 [Mus musculus]
+Length=421
+
+ Score = 155 bits (391),  Expect = 4e-41, Method: Compositional matrix adjust.
+ Identities = 127/464 (27%), Positives = 211/464 (45%), Gaps = 88/464 (19%)
+
+Query  17   RAKKMSKTHASHIINAQEDYKHMYLSVQPLDIFCWGTGSMCELGLGPLAKNKEVKRPRLN  76
+            ++KK+  +H SH             + +P  +   G G + +LGLG      E K+P L 
+Sbjct  19   KSKKVKVSHRSH-------------NTEPGLVLTLGQGDVGQLGLG--ESVLERKKPALV  63
+
+Query  77   PFLPRDEAKIISFAVGGMHTLALDEESNVWSWGCNDVGALGRDTSNAKEQLKDMDADDSS  136
+            P L      ++    GGMHT+ L +   V+S+GCND GALGRDTS               
+Sbjct  64   PLL----QDVVQAEAGGMHTVCLSQSGQVYSFGCNDEGALGRDTS---------------  104
+
+Query  137  DDEDGDLNELESTPAKIPRESFPPLAEGHKVVQLAATDNMSCALFSNGEVYAWGTFRCNE  196
+                  +   E  P K+  +         KVVQ++A D+ + AL  +G V+ WG+FR N 
+Sbjct  105  ------VEGSEMVPGKVELQ--------EKVVQVSAGDSHTAALTEDGRVFLWGSFRDNN  150
+
+Query  197  GILGFYQDKIKIQKTPWKVPTFSKYNIVQLAPGKDHILFLDEEGMVFAWGNGQQNQLGRK  256
+            G++G   + +K    P +V   +   +V++A G DH++ L  +G ++  G G+Q QLGR 
+Sbjct  151  GVIGLL-EPMKKSMVPVQVQLDAP--VVKVASGNDHLVMLTNDGDLYTLGCGEQGQLGR-  206
+
+Query  257  VMERFR--------LKTLDPRPFGLR------HVKY--IASGENHCFALTKDNKLVSWGL  300
+            V E F          + L PR   L+       V++     G    FA++++  +  +GL
+Sbjct  207  VPELFANRGGRQGLGRLLVPRCVLLKSRGTRGRVRFQDAFCGAYFTFAISREGHVYGFGL  266
+
+Query  301  NQFGQCGVSEDVEDGALVTKPKRLALPDNVVIR--SIAAGEHHSLILSQDGDLYSCGRLD  358
+            + + Q G       G+    P+ L    N        + G+HH++ +  +G  YS GR +
+Sbjct  267  SNYHQLGTP---GTGSCFI-PQNLTSFKNSTKSWVGFSGGQHHTVCMDSEGKAYSLGRAE  322
+
+Query  359  MFEVGIPKDNLPEYTYKDVHGKARAVPLPTKLNNVPKFKSVAAGSHHSVAVAQNGIAYSW  418
+               +G+ +              A    +PT ++ +P   SVA G+    AV+++G  ++W
+Sbjct  323  YGRLGLGEG-------------AEEKSIPTLISRLPVVSSVACGASVGYAVSKDGRVFAW  369
+
+Query  419  GFGETYAVGLGPFEDDTEVPTRIKNTATQDHNIILVGCGGQFSV  462
+            G G  Y +G G  ++D   P  +     ++  ++ V  GGQ +V
+Sbjct  370  GMGTNYQLGTGQ-DEDAWSPVEMTGKQLENRVVLTVSSGGQHTV  412
+
+
+>P18754.1 RecName: Full=Regulator of chromosome condensation; AltName: 
+Full=Cell cycle regulatory protein; AltName: Full=Chromosome 
+condensation protein 1 [Homo sapiens]
+Length=421
+
+ Score = 154 bits (390),  Expect = 6e-41, Method: Compositional matrix adjust.
+ Identities = 126/463 (27%), Positives = 212/463 (46%), Gaps = 86/463 (19%)
+
+Query  17   RAKKMSKTHASHIINAQEDYKHMYLSVQPLDIFCWGTGSMCELGLGPLAKNKEVKRPRLN  76
+            ++KK+  +H SH             S +P  +   G G + +LGLG      E K+P L 
+Sbjct  19   KSKKVKVSHRSH-------------STEPGLVLTLGQGDVGQLGLG--ENVMERKKPALV  63
+
+Query  77   PFLPRDEAKIISFAVGGMHTLALDEESNVWSWGCNDVGALGRDTSNAKEQLKDMDADDSS  136
+              +P D   ++    GGMHT+ L +   V+S+GCND GALGRDTS               
+Sbjct  64   S-IPED---VVQAEAGGMHTVCLSKSGQVYSFGCNDEGALGRDTS---------------  104
+
+Query  137  DDEDGDLNELESTPAKIPRESFPPLAEGHKVVQLAATDNMSCALFSNGEVYAWGTFRCNE  196
+                  +   E  P K+  +         KVVQ++A D+ + AL  +G V+ WG+FR N 
+Sbjct  105  ------VEGSEMVPGKVELQ--------EKVVQVSAGDSHTAALTDDGRVFLWGSFRDNN  150
+
+Query  197  GILGFYQDKIKIQKTPWKVPTFSKYNIVQLAPGKDHILFLDEEGMVFAWGNGQQNQL---  253
+            G++G  +    ++K+   V       +V++A G DH++ L  +G ++  G G+Q QL   
+Sbjct  151  GVIGLLE---PMKKSMVPVQVQLDVPVVKVASGNDHLVMLTADGDLYTLGCGEQGQLGRV  207
+
+Query  254  --------GRKVMERFRL-KTLDPRPFGLR-HVKY--IASGENHCFALTKDNKLVSWGLN  301
+                    GR+ +ER  + K +  +  G R HV++     G    FA++ +  +  +GL+
+Sbjct  208  PELFANRGGRQGLERLLVPKCVMLKSRGSRGHVRFQDAFCGAYFTFAISHEGHVYGFGLS  267
+
+Query  302  QFGQCGVSEDVEDGALVTKPKRLALPDNVVIR--SIAAGEHHSLILSQDGDLYSCGRLDM  359
+             + Q G +   E   +   P+ L    N        + G+HH++ +  +G  YS GR + 
+Sbjct  268  NYHQLG-TPGTESCFI---PQNLTSFKNSTKSWVGFSGGQHHTVCMDSEGKAYSLGRAEY  323
+
+Query  360  FEVGIPKDNLPEYTYKDVHGKARAVPLPTKLNNVPKFKSVAAGSHHSVAVAQNGIAYSWG  419
+              +G+ +              A    +PT ++ +P   SVA G+    AV ++G  ++WG
+Sbjct  324  GRLGLGEG-------------AEEKSIPTLISRLPAVSSVACGASVGYAVTKDGRVFAWG  370
+
+Query  420  FGETYAVGLGPFEDDTEVPTRIKNTATQDHNIILVGCGGQFSV  462
+             G  Y +G G  ++D   P  +     ++  ++ V  GGQ +V
+Sbjct  371  MGTNYQLGTGQ-DEDAWSPVEMMGKQLENRVVLSVSSGGQHTV  412
+
+
+>P25171.2 RecName: Full=Regulator of chromosome condensation; AltName: 
+Full=Chromatin-binding protein Bj1; AltName: Full=Regulator 
+of chromosome condensation 1 ortholog [Drosophila melanogaster]
+Length=547
+
+ Score = 145 bits (366),  Expect = 9e-37, Method: Compositional matrix adjust.
+ Identities = 135/474 (28%), Positives = 202/474 (43%), Gaps = 74/474 (16%)
+
+Query  1    MVKRTVATNGDASGAHRAKKMSKTHASHIINAQEDYKHMYLSVQPLDIFCWGTGSMCELG  60
+            M +R   TN + +G    +      A    + +   +   L     ++   G G + +LG
+Sbjct  1    MPRRKALTNNNNAGEAEQQPPKAKRARIAFHLELPKRRTVLG----NVLVCGNGDVGQLG  56
+
+Query  61   LGPLAKNKEVKRPRLNPFLPRDEAKIISFAVGGMHTLALDEESNVWSWGCNDVGALGRDT  120
+            LG       ++R RL+P     +A  +  + GGMH L L +  +++S+GCND GALGRDT
+Sbjct  57   LG----EDILERKRLSPVAGIPDA--VDISAGGMHNLVLTKSGDIYSFGCNDEGALGRDT  110
+
+Query  121  SNAKEQLKDMDADDSSDDEDGDLNELESTPAKIPRESFPPLAEGHKVVQLAATDNMSCAL  180
+            S                 EDG     ES P  I     P      K + ++A D+ S  L
+Sbjct  111  S-----------------EDGS----ESKPDLI---DLP-----GKALCISAGDSHSACL  141
+
+Query  181  FSNGEVYAWGTFRCNEGILGFYQDKIKIQKTPWKVPTFSKYNIVQLAPGKDHILFLDEEG  240
+              +G V+AWG+FR + G +G   D  K  +TP  +          +A G DH++ L   G
+Sbjct  142  LEDGRVFAWGSFRDSHGNMGLTIDGNK--RTP--IDLMEGTVCCSIASGADHLVILTTAG  197
+
+Query  241  MVFAWGNGQQNQLGRKVM-------ERFRLKTLDPRPFGLRHVKYIAS--GENHCFALTK  291
+             VF  G  +Q QLGR           R +   L P    +   K   +    N+C  + +
+Sbjct  198  KVFTVGCAEQGQLGRLSERSISGEGRRGKRDLLRPTQLIITRAKPFEAIWATNYCTFMRE  257
+
+Query  292  DNKLVSW--GLNQFGQCGVSEDVEDGALVTKPKRLALPDNVVIRSIAAGEHHSLILSQDG  349
+                V W  GLN F Q  ++ + +       P +  L D   IR IA G+HH++IL+ D 
+Sbjct  258  SQTQVIWATGLNNFKQ--LAHETKGKEFALTPIKTELKD---IRHIAGGQHHTVILTTDL  312
+
+Query  350  DLYSCGRLDMFEVGIPKDNLPEYTYKDVHGKARAVPLPTKLNNVP-KFKSVAAGSHHSVA  408
+                 GR             PEY    +      V  PT +  +  K  SV  G   S A
+Sbjct  313  KCSVVGR-------------PEYGRLGLGDVKDVVEKPTIVKKLTEKIVSVGCGEVCSYA  359
+
+Query  409  VAQNGIAYSWGFGETYAVGLGPFEDDTEVPTRIKNTATQDHNIILVGCGGQFSV  462
+            V  +G  YSWG G    +G+G  +D+ E P  + +  TQ  +++L   GGQ ++
+Sbjct  360  VTIDGKLYSWGSGVNNQLGVGDGDDELE-PIVVVSKNTQGKHMLLASGGGQHAI  412
+
+
+>Q9FN03.1 RecName: Full=Ultraviolet-B receptor UVR8; AltName: Full=Protein 
+UV-B RESISTANCE 8; AltName: Full=RCC1 domain-containing 
+protein UVR8 [Arabidopsis thaliana]
+Length=440
+
+ Score = 110 bits (276),  Expect = 4e-25, Method: Compositional matrix adjust.
+ Identities = 110/417 (26%), Positives = 170/417 (41%), Gaps = 80/417 (19%)
+
+Query  29   IINAQEDYKHMYLSVQPLDIFC-WGTGSMCELGLGPLAKNKEVKRPRLNPFLPRDEAKII  87
+            II+A   +    LS    DI C WG G   +LG G         RP        D  +I+
+Sbjct  19   IISAGASHSVALLSG---DIVCSWGRGEDGQLGHGDAED-----RPSPTQLSALDGHQIV  70
+
+Query  88   SFAVGGMHTLALDEES-NVWSWGCNDVGALGRDTSNAKEQLKDMDADDSSDDEDGDLNEL  146
+            S   G  HT+A  +    V+SWG  D G LG   S+                   DL   
+Sbjct  71   SVTCGADHTVAYSQSGMEVYSWGWGDFGRLGHGNSS-------------------DL---  108
+
+Query  147  ESTPAKIPRESFPPLA----EGHKVVQLAATDNMSCALFSNGEVYAWGTFRCNEGILGFY  202
+                       F PL      G ++ Q+A  D+   A+   GEV +WG  +  +  LG  
+Sbjct  109  -----------FTPLPIKALHGIRIKQIACGDSHCLAVTMEGEVQSWGRNQNGQLGLGDT  157
+
+Query  203  QDKIKIQKTPWKVPTFSKYNIVQLAPGKDHILFLDEEGMVFAWGNGQQNQLG------RK  256
+            +D +     P K+  F    I  +A G +H   + E+G ++ WG G+   LG      R 
+Sbjct  158  EDSL----VPQKIQAFEGIRIKMVAAGAEHTAAVTEDGDLYGWGWGRYGNLGLGDRTDRL  213
+
+Query  257  VMERFRLKTLDPRPFGLRHVKYIASGENHCFALTKDNKLVSWGLNQFGQCGVSEDVEDGA  316
+            V ER           G   +  +A G  H  +++    L ++G +++GQ G   D+ED  
+Sbjct  214  VPERVT-------STGGEKMSMVACGWRHTISVSYSGALYTYGWSKYGQLG-HGDLEDHL  265
+
+Query  317  LVTKPKRLALPDNVVIRSIAAGEHHSLILSQDGDLYSCGRLDMFEVGIPKDNLPEYTYKD  376
+            +   P +L    N  I  I+ G  H++ L+ DG LY  G     +VG+  +NL + +   
+Sbjct  266  I---PHKLEALSNSFISQISGGWRHTMALTSDGKLYGWGWNKFGQVGV-GNNLDQCS---  318
+
+Query  377  VHGKARAVPLPTKLNNVPKFKSVAAGSHHSVAVAQNGIAYSWGFGETYAVGLGPFED  433
+                    P+  +  +  K   V+ G  H++AV +    ++WG G    +G+G   D
+Sbjct  319  --------PVQVRFPDDQKVVQVSCGWRHTLAVTERNNVFAWGRGTNGQLGIGESVD  367
+
+
+ Score = 107 bits (266),  Expect = 6e-24, Method: Compositional matrix adjust.
+ Identities = 83/274 (30%), Positives = 132/274 (48%), Gaps = 32/274 (12%)
+
+Query  166  KVVQLAATDNMSCALFSNGEVYAWGTFRCNEGILGFYQDKIKIQKTPWKVPTFSKYNIVQ  225
+            KV+ ++A  + S AL S   V +WG  R  +G LG      + + +P ++     + IV 
+Sbjct  16   KVLIISAGASHSVALLSGDIVCSWG--RGEDGQLG--HGDAEDRPSPTQLSALDGHQIVS  71
+
+Query  226  LAPGKDHILFLDEEGM-VFAWGNGQQNQLGRKVMERFRLKTLDPRPFGLRH---VKYIAS  281
+            +  G DH +   + GM V++WG G   +LG             P P    H   +K IA 
+Sbjct  72   VTCGADHTVAYSQSGMEVYSWGWGDFGRLGHGNSSDL----FTPLPIKALHGIRIKQIAC  127
+
+Query  282  GENHCFALTKDNKLVSWGLNQFGQCGVSEDVEDGALVTKPKRLALPDNVVIRSIAAGEHH  341
+            G++HC A+T + ++ SWG NQ GQ G+  D ED +LV  P+++   + + I+ +AAG  H
+Sbjct  128  GDSHCLAVTMEGEVQSWGRNQNGQLGLG-DTED-SLV--PQKIQAFEGIRIKMVAAGAEH  183
+
+Query  342  SLILSQDGDLY--SCGRLDMFEVGIPKDNLPEYTYKDVHGKARAVPLPTKLNNVPKFKSV  399
+            +  +++DGDLY    GR     +G   D              R VP         K   V
+Sbjct  184  TAAVTEDGDLYGWGWGRYGNLGLGDRTD--------------RLVPERVTSTGGEKMSMV  229
+
+Query  400  AAGSHHSVAVAQNGIAYSWGFGETYAVGLGPFED  433
+            A G  H+++V+ +G  Y++G+ +   +G G  ED
+Sbjct  230  ACGWRHTISVSYSGALYTYGWSKYGQLGHGDLED  263
+
+
+ Score = 40.8 bits (94),  Expect = 0.018, Method: Compositional matrix adjust.
+ Identities = 25/69 (36%), Positives = 36/69 (52%), Gaps = 3/69 (4%)
+
+Query  395  KFKSVAAGSHHSVAVAQNGIAYSWGFGETYAVGLGPFEDDTEVPTRIKNTATQDHNIILV  454
+            K   ++AG+ HSVA+    I  SWG GE   +G G  ED    P+  + +A   H I+ V
+Sbjct  16   KVLIISAGASHSVALLSGDIVCSWGRGEDGQLGHGDAEDR---PSPTQLSALDGHQIVSV  72
+
+Query  455  GCGGQFSVS  463
+             CG   +V+
+Sbjct  73   TCGADHTVA  81
+
+
+>Q6PAV2.2 RecName: Full=Probable E3 ubiquitin-protein ligase HERC4; AltName: 
+Full=HECT domain and RCC1-like domain-containing protein 
+4; AltName: Full=HECT-type E3 ubiquitin transferase HERC4 
+[Mus musculus]
+Length=1057
+
+ Score = 108 bits (270),  Expect = 9e-24, Method: Compositional matrix adjust.
+ Identities = 106/391 (27%), Positives = 166/391 (42%), Gaps = 70/391 (18%)
+
+Query  48   IFCWGTGSMCELGLGPLAKNKEVKRPRLNPFLPRDEAKIISFAVGGMHTLALDEESNVWS  107
+            + CWG  S  +LGLG + + + V  PR + F      K+     G  HT+ + ++  V++
+Sbjct  1    MLCWGNASYGQLGLGGIDE-EIVLEPRRSDFFVNK--KVRDVGCGLRHTVFVLDDGTVYT  57
+
+Query  108  WGCNDVGALGRDTSNAK-EQLKDMDADDSSDDEDGDLNELESTPAKIPRESFPPLAEGHK  166
+             GCND+G LG + S  K EQ+  +DA +                                
+Sbjct  58   CGCNDLGQLGHEKSRKKPEQVVALDAQN--------------------------------  85
+
+Query  167  VVQLAATDNMSCALFSNGEVYAWGTFRCNEGILGFYQDKIKIQKTPWKVPTFSKYNIVQL  226
+            +V +A  +  + AL   G+VYAWG    ++G LG  Q   +  + P  + + S   IVQ+
+Sbjct  86   IVAVACGEAHTLALNDKGQVYAWGL--DSDGQLGL-QGSEECIRVPRNIKSLSDIQIVQV  142
+
+Query  227  APGKDHILFLDEEGMVFAWGNGQQNQLG-----RKVMERFRLKTLDPRPFGLRHVKYIAS  281
+            A G  H L L +   VF WG  +  QLG     +K      +K+L   PF       +A+
+Sbjct  143  ACGYYHSLALSKASEVFCWGQNKYGQLGLGIDCQKQTSPQLIKSLLGIPF-----MQVAA  197
+
+Query  282  GENHCFALTKDNKLVSWGLNQFGQCGVSEDVEDGALVTKPKRLALPDNVVIRSIAAGEHH  341
+            G  H F LT    +  WG N+FGQ G++++ +       P  L    +  I  I  GE H
+Sbjct  198  GGAHSFVLTLSGAIFGWGRNKFGQLGLNDENDRYV----PNLLKSLRSQKIVYICCGEDH  253
+
+Query  342  SLILSQDGDLYSCGRLDMFEVGIPKDNLPEYTYKDVHGKARAVPLPTKLNNV--PKFKSV  399
+            +  L+++G +++ G     ++G              H        P K+  +       V
+Sbjct  254  TAALTKEGGVFTFGAGGYGQLG--------------HNSTSHEINPRKVFELMGSIVTQV  299
+
+Query  400  AAGSHHSVA-VAQNGIAYSWGFGETYAVGLG  429
+            A G  H+ A V  +G  YS+G G    +G G
+Sbjct  300  ACGRQHTSAFVPSSGRIYSFGLGGNGQLGTG  330
+
+
+ Score = 80.9 bits (198),  Expect = 9e-15, Method: Compositional matrix adjust.
+ Identities = 73/287 (25%), Positives = 123/287 (43%), Gaps = 29/287 (10%)
+
+Query  188  AWGTFRCNEGILGFYQDKIKIQKTPWKVPTFSKYNIVQLAPGKDHILFLDEEGMVFAWGN  247
+             WG     +  LG   ++I ++  P +   F    +  +  G  H +F+ ++G V+  G 
+Sbjct  3    CWGNASYGQLGLGGIDEEIVLE--PRRSDFFVNKKVRDVGCGLRHTVFVLDDGTVYTCGC  60
+
+Query  248  GQQNQLGRKVMERFRLKTLDPRPFGLRHVKYIASGENHCFALTKDNKLVSWGLNQFGQCG  307
+                QLG    E+ R K         +++  +A GE H  AL    ++ +WGL+  GQ G
+Sbjct  61   NDLGQLGH---EKSRKKPEQVVALDAQNIVAVACGEAHTLALNDKGQVYAWGLDSDGQLG  117
+
+Query  308  VSEDVEDGALVTKPKRLALPDNVVIRSIAAGEHHSLILSQDGDLYSCGRLDMFEVGIPKD  367
+            +    E    +  P+ +    ++ I  +A G +HSL LS+  +++  G+    ++G+  D
+Sbjct  118  LQGSEE---CIRVPRNIKSLSDIQIVQVACGYYHSLALSKASEVFCWGQNKYGQLGLGID  174
+
+Query  368  NLPEYTYKDVHGKARAVPLPTKLNNVPKFKSVAAGSHHSVAVAQNGIAYSWGFGETYAVG  427
+                        K  +  L   L  +P F  VAAG  HS  +  +G  + WG  +   +G
+Sbjct  175  C----------QKQTSPQLIKSLLGIP-FMQVAAGGAHSFVLTLSGAIFGWGRNKFGQLG  223
+
+Query  428  LGPFEDDTEVPTRIKNTATQ---------DHNIILVGCGGQFSVSGG  465
+            L   E+D  VP  +K+  +Q         DH   L   GG F+   G
+Sbjct  224  LND-ENDRYVPNLLKSLRSQKIVYICCGEDHTAALTKEGGVFTFGAG  269
+
+
+ Score = 68.2 bits (165),  Expect = 8e-11, Method: Compositional matrix adjust.
+ Identities = 46/169 (27%), Positives = 78/169 (46%), Gaps = 18/169 (11%)
+
+Query  295  LVSWGLNQFGQCGVSEDVEDGALVTKPKRLALPDNVVIRSIAAGEHHSLILSQDGDLYSC  354
+            ++ WG   +GQ G+    E+  +V +P+R     N  +R +  G  H++ +  DG +Y+C
+Sbjct  1    MLCWGNASYGQLGLGGIDEE--IVLEPRRSDFFVNKKVRDVGCGLRHTVFVLDDGTVYTC  58
+
+Query  355  GRLDMFEVGIPKDNLPEYTYKDVHGKARAVPLPTKLNNVPKFKSVAAGSHHSVAVAQNGI  414
+            G  D+ ++G              H K+R  P      +     +VA G  H++A+   G 
+Sbjct  59   GCNDLGQLG--------------HEKSRKKPEQVVALDAQNIVAVACGEAHTLALNDKGQ  104
+
+Query  415  AYSWGFGETYAVGLGPFEDDTEVPTRIKNTATQDHNIILVGCGGQFSVS  463
+             Y+WG      +GL   E+   VP  IK+ +  D  I+ V CG   S++
+Sbjct  105  VYAWGLDSDGQLGLQGSEECIRVPRNIKSLS--DIQIVQVACGYYHSLA  151
+
+
+ Score = 48.1 bits (113),  Expect = 1e-04, Method: Compositional matrix adjust.
+ Identities = 52/228 (23%), Positives = 86/228 (38%), Gaps = 38/228 (17%)
+
+Query  28   HIINAQEDYKHMYLSVQPLDIFCWGTGSMCELGLGPLAKNKEVKRPRLNPFLPRDEAKII  87
+             I+     Y H     +  ++FCWG     +LGLG +   K+     +   L       +
+Sbjct  138  QIVQVACGYYHSLALSKASEVFCWGQNKYGQLGLG-IDCQKQTSPQLIKSLLG---IPFM  193
+
+Query  88   SFAVGGMHTLALDEESNVWSWGCNDVGALGRDTSNAKEQLKDMDADDSSDDEDGDLNELE  147
+              A GG H+  L     ++ WG N  G LG +  N +                   N L+
+Sbjct  194  QVAAGGAHSFVLTLSGAIFGWGRNKFGQLGLNDENDRYV----------------PNLLK  237
+
+Query  148  STPAKIPRESFPPLAEGHKVVQLAATDNMSCALFSNGEVYAWGTFRCNEGILGFYQDKIK  207
+            S  ++             K+V +   ++ + AL   G V+ +G      G LG   +   
+Sbjct  238  SLRSQ-------------KIVYICCGEDHTAALTKEGGVFTFGA--GGYGQLG--HNSTS  280
+
+Query  208  IQKTPWKVPTFSKYNIVQLAPGKDHI-LFLDEEGMVFAWGNGQQNQLG  254
+             +  P KV       + Q+A G+ H   F+   G ++++G G   QLG
+Sbjct  281  HEINPRKVFELMGSIVTQVACGRQHTSAFVPSSGRIYSFGLGGNGQLG  328
+
+
+  Database: Non-redundant UniProtKB/SwissProt sequences
+    Posted date:  Aug 24, 2022  5:41 AM
+  Number of letters in database: 182,233,107
+  Number of sequences in database:  480,087
+
+Lambda      K        H
+   0.316    0.135    0.411 
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Number of Sequences: 480087
+Number of Hits to DB: 18524787
+Number of extensions: 844311
+Number of successful extensions: 2510
+Number of sequences better than 100: 56
+Number of HSP's better than 100 without gapping: 0
+Number of HSP's gapped: 2310
+Number of HSP's successfully gapped: 88
+Length of query: 482
+Length of database: 182233107
+Length adjustment: 121
+Effective length of query: 361
+Effective length of database: 124142580
+Effective search space: 44815471380
+Effective search space used: 44815471380
+T: 11
+A: 40
+X1: 16 (7.3 bits)
+X2: 38 (14.6 bits)
+X3: 64 (24.7 bits)
+S1: 41 (20.4 bits)
+S2: 63 (28.9 bits)
+ka-blk-alpha gapped: 1.9
+ka-blk-alpha ungapped: 0.7916
+ka-blk-alpha_v gapped: 42.6028
+ka-blk-alpha_v ungapped: 4.96466
+ka-blk-sigma gapped: 43.6362
+
+

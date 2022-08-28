@@ -1,0 +1,168 @@
+Id: RCC1_YEAST
+Length: 482
+kDa: 53.01
+Isoelectric Point: 5.71
+Hydropathy: -0.44
+Aromaticity: 0.08
+Subcell Localization: nucl
+Transmembrane: 0
+SignalP5: OTHER
+E.R Retention Total: 0
+E.R Retention Domains: 
+NGlyc Total: 1
+NGlyc Domains: NMS[174-177]
+Header: RCC1_YEAST
+Blast description: RecName: Full=Guanine nucleotide exchange factor SRM1...
+Gene Ontology: 
+Interpro Annotation: IPR000408 - Regulator of chromosome condensation, RCC1, IPR009091 - Regulator of chromosome condensation 1/beta-lactamase-inhibitor protein II
+PFAM Annotation: Regulator of chromosome condensation (RCC1) repeat
+Panther Annotation: 
+Sequence: MVKRTVATNGDASGAHRAKKMSKTHASHIINAQEDYKHMYLSVQPLDIFCWGTGSMCELGLGPLAKNKEVKRPRLNPFLPRDEAKIISFAVGGMHTLALDEESNVWSWGCNDVGALGRDTSNAKEQLKDMDADDSSDDEDGDLNELESTPAKIPRESFPPLAEGHKVVQLAATDNMSCALFSNGEVYAWGTFRCNEGILGFYQDKIKIQKTPWKVPTFSKYNIVQLAPGKDHILFLDEEGMVFAWGNGQQNQLGRKVMERFRLKTLDPRPFGLRHVKYIASGENHCFALTKDNKLVSWGLNQFGQCGVSEDVEDGALVTKPKRLALPDNVVIRSIAAGEHHSLILSQDGDLYSCGRLDMFEVGIPKDNLPEYTYKDVHGKARAVPLPTKLNNVPKFKSVAAGSHHSVAVAQNGIAYSWGFGETYAVGLGPFEDDTEVPTRIKNTATQDHNIILVGCGGQFSVSGGVKLSDEDAEKRADEMDD
+
+Id: RCL1_YEAST
+Length: 367
+kDa: 40.17
+Isoelectric Point: 8.95
+Hydropathy: -0.03
+Aromaticity: 0.07
+Subcell Localization: mito
+Transmembrane: 0
+SignalP5: OTHER
+E.R Retention Total: 0
+E.R Retention Domains: 
+NGlyc Total: 3
+NGlyc Domains: NGS[60-63];NIT[223-226];NTS[360-363]
+Header: RCL1_YEAST
+Blast description: No hit - timeout
+Gene Ontology: C:GO:0005730 - nucleolus, F:GO:0003824 - catalytic activity, GO:0003824, GO:0005730, GO:0006396, GO:0042254, P:GO:0006396 - RNA processing, P:GO:0042254 - ribosome biogenesis
+Interpro Annotation: IPR000228 - RNA 3'-terminal phosphate cyclase, IPR013791 - RNA 3'-terminal phosphate cyclase, insert domain, IPR013792 - RNA 3'-terminal phosphate cyclase/enolpyruvate transferase, alpha/beta, IPR016443 - RNA 3'-terminal phosphate cyclase type 2, IPR020719 - RNA 3'-terminal phosphate cyclase-like, conserved site, IPR023797 - RNA 3'-terminal phosphate cyclase domain, IPR036553 - RNA 3'-terminal phosphate cyclase, insert domain superfamily, IPR037136 - RNA 3'-terminal phosphate cyclase domain superfamily
+PFAM Annotation: RNA 3'-terminal phosphate cyclase, RNA 3'-terminal phosphate cyclase (RTC), insert domain
+Panther Annotation: RNA 3' TERMINAL PHOSPHATE CYCLASE, RNA 3'-TERMINAL PHOSPHATE CYCLASE-LIKE PROTEIN
+Sequence: MSSSAPKYTTFQGSQNFRLRIVLATLSGKPIKIEKIRSGDLNPGLKDYEVSFLRLIESVTNGSVIEISYTGTTVIYRPGIIVGGASTHICPSSKPVGYFVEPMLYLAPFSKKKFSILFKGITASHNDAGIEAIKWGLMPVMEKFGVRECALHTLKRGSPPLGGGEVHLVVDSLIAQPITMHEIDRPIISSITGVAYSTRVSPSLVNRMIDGAKKVLKNLQCEVNITADVWRGENSGKSPGWGITLVAQSKQKGWSYFAEDIGDAGSIPEELGEKVACQLLEEISKSAAVGRNQLPLAIVYMVIGKEDIGRLRINKEQIDERFIILLRDIKKIFNTEVFLKPVDEADNEDMIATIKGIGFTNTSKKIA
+
+Id: RT04_YEAST
+Length: 394
+kDa: 44.15
+Isoelectric Point: 8.74
+Hydropathy: -0.55
+Aromaticity: 0.07
+Subcell Localization: cyto
+Transmembrane: 0
+SignalP5: OTHER
+E.R Retention Total: 1
+E.R Retention Domains: SQEL[142-146]
+NGlyc Total: 5
+NGlyc Domains: NHS[151-154];NIT[181-184];NQT[222-225];NST[281-284];NET[308-311]
+Header: RT04_YEAST
+Blast description: No hit - timeout
+Gene Ontology: C:GO:0005840 - ribosome, C:GO:0015935 - small ribosomal subunit, F:GO:0003735 - structural constituent of ribosome, GO:0003735, GO:0005840, GO:0006412, GO:0015935, P:GO:0006412 - translation
+Interpro Annotation: IPR001865 - Ribosomal protein S2, IPR005706 - Ribosomal protein S2, bacteria/mitochondria/plastid, IPR018130 - Ribosomal protein S2, conserved site, IPR023591 - Ribosomal protein S2, flavodoxin-like domain superfamily
+PFAM Annotation: Ribosomal protein S2
+Panther Annotation: 30S RIBOSOMAL PROTEIN S2  PROKARYOTIC AND ORGANELLAR
+Sequence: MQRHVFARNFRRLSLLRNPSLTKRFQSSASGAANTPNNNDEVMLLQQKLLYDEIRSELKSLSQVPEDEILPELKKSLEQDKLSDKEQQLEAELSDFFRNYALLNKLFDSKTLDGQSSTTTAAATPTKPYPNLIPSANDKPYSSQELFLRQLNHSMRTAKLGATISKVYYPHKDIFYPPLPENITVESLMSAGVHLGQSTSLWRSSTQSYIYGEYKGIHIIDLNQTLSYLKRAAKVVEGVSESGGIILFLGTRQGQKRGLEEAAKKTHGYYVSTRWIPGTLTNSTEISGIWEKQEIDSNDNPTERALSPNETSKQVKPDLLVVLNPTENRNALLEAIKSRVPTIAIIDTDSEPSLVTYPIPGNDDSLRSVNFLLGVLARAGQRGLQNRLARNNEK
+
+Id: EF1A_ASHGO
+Length: 458
+kDa: 49.93
+Isoelectric Point: 9.09
+Hydropathy: -0.30
+Aromaticity: 0.07
+Subcell Localization: cyto
+Transmembrane: 0
+SignalP5: OTHER
+E.R Retention Total: 0
+E.R Retention Domains: 
+NGlyc Total: 2
+NGlyc Domains: NVS[311-314];NAT[338-341]
+Header: EF1A_ASHGO
+Blast description: No hit - timeout
+Gene Ontology: F:GO:0003746 - translation elongation factor activity, F:GO:0003924 - GTPase activity, F:GO:0005525 - GTP binding, GO:0003746, GO:0003924, GO:0005525, GO:0006414, P:GO:0006414 - translational elongation
+Interpro Annotation: IPR000795 - Translational (tr)-type GTP-binding domain, IPR004160 - Translation elongation factor EFTu/EF1A, C-terminal, IPR004161 - Translation elongation factor EFTu-like, domain 2, IPR004539 - Translation elongation factor EF1A, eukaryotic/archaeal, IPR009000 - Translation protein, beta-barrel domain superfamily, IPR009001 - Translation elongation factor EF1A/initiation factor IF2gamma, C-terminal, IPR027417 - P-loop containing nucleoside triphosphate hydrolase, IPR031157 - Tr-type G domain, conserved site
+PFAM Annotation: Elongation factor Tu C-terminal domain, Elongation factor Tu GTP binding domain, Elongation factor Tu domain 2
+Panther Annotation: ELONGATION FACTOR 1-ALPHA 1, TRANSLATION FACTOR
+Sequence: MGKEKTHVNVVVIGHVDSGKSTTTGHLIYKCGGIDKRTIEKFEKEAAELGKGSFKYAWVLDKLKAERERGITIDIALWKFETPKYHVTVIDAPGHRDFIKNMITGTSQADCAILIIAGGVGEFEAGISKDGQTREHALLAYTLGVKQLIVAINKMDSVKWDESRYQEIVKETSNFIKKVGYNPKTVPFVPISGWNGDNMIEATTNAPWYKGWEKETKAGAVKGKTLLEAIDAIEPPVRPTDKALRLPLQDVYKIGGIGTVPVGRVETGVIKPGMVVTFAPSGVTTEVKSVEMHHEQLEEGVPGDNVGFNVKNVSVKEIRRGNVCGDSKNDPPKAAESFNATVIVLNHPGQISAGYSPVLDCHTAHIACKFDELLEKNDRRTGKKLEDSPKFLKAGDAAMVKFVPSKPMCVEAFTDYPPLGRFAVRDMRQTVAVGVIKSVVKSDKAGKVTKAAQKAGKK
+
+Id: EF1A_ASHGO-2
+Length: 458
+kDa: 49.93
+Isoelectric Point: 9.09
+Hydropathy: -0.30
+Aromaticity: 0.07
+Subcell Localization: cyto
+Transmembrane: 0
+SignalP5: OTHER
+E.R Retention Total: 0
+E.R Retention Domains: 
+NGlyc Total: 2
+NGlyc Domains: NVS[311-314];NAT[338-341]
+Header: EF1A_ASHGO-2
+Blast description: No hit - timeout
+Gene Ontology: F:GO:0003746 - translation elongation factor activity, F:GO:0003924 - GTPase activity, F:GO:0005525 - GTP binding, GO:0003746, GO:0003924, GO:0005525, GO:0006414, P:GO:0006414 - translational elongation
+Interpro Annotation: IPR000795 - Translational (tr)-type GTP-binding domain, IPR004160 - Translation elongation factor EFTu/EF1A, C-terminal, IPR004161 - Translation elongation factor EFTu-like, domain 2, IPR004539 - Translation elongation factor EF1A, eukaryotic/archaeal, IPR009000 - Translation protein, beta-barrel domain superfamily, IPR009001 - Translation elongation factor EF1A/initiation factor IF2gamma, C-terminal, IPR027417 - P-loop containing nucleoside triphosphate hydrolase, IPR031157 - Tr-type G domain, conserved site
+PFAM Annotation: Elongation factor Tu C-terminal domain, Elongation factor Tu GTP binding domain, Elongation factor Tu domain 2
+Panther Annotation: ELONGATION FACTOR 1-ALPHA 1, TRANSLATION FACTOR
+Sequence: MGKEKTHVNVVVIGHVDSGKSTTTGHLIYKCGGIDKRTIEKFEKEAAELGKGSFKYAWVLDKLKAERERGITIDIALWKFETPKYHVTVIDAPGHRDFIKNMITGTSQADCAILIIAGGVGEFEAGISKDGQTREHALLAYTLGVKQLIVAINKMDSVKWDESRYQEIVKETSNFIKKVGYNPKTVPFVPISGWNGDNMIEATTNAPWYKGWEKETKAGAVKGKTLLEAIDAIEPPVRPTDKALRLPLQDVYKIGGIGTVPVGRVETGVIKPGMVVTFAPSGVTTEVKSVEMHHEQLEEGVPGDNVGFNVKNVSVKEIRRGNVCGDSKNDPPKAAESFNATVIVLNHPGQISAGYSPVLDCHTAHIACKFDELLEKNDRRTGKKLEDSPKFLKAGDAAMVKFVPSKPMCVEAFTDYPPLGRFAVRDMRQTVAVGVIKSVVKSDKAGKVTKAAQKAGKK
+
+Id: GLR1_DROME-Altered
+Length: 540
+kDa: 61.22
+Isoelectric Point: 6.29
+Hydropathy: -0.33
+Aromaticity: 0.10
+Subcell Localization: extr
+Transmembrane: 0
+SignalP5: SP(Sec/SPI)
+E.R Retention Total: 0
+E.R Retention Domains: 
+NGlyc Total: 9
+NGlyc Domains: NVS[66-69];NET[194-197];NVT[207-210];NIT[280-283];NES[375-378];NTS[384-387];NYT[425-428];NST[436-439];NHT[476-479]
+Header: GLR1_DROME-Altered Glutamate receptor 1 OS=Drosophila melanogaster GN=GluRIA PE=1 SV=2
+Blast description: No hit - timeout
+Gene Ontology: C:GO:0016020 - membrane, F:GO:0004970 - ionotropic glutamate receptor activity, GO:0004970, GO:0016020
+Interpro Annotation: IPR001828 - Receptor, ligand binding region, IPR019594 - Ionotropic glutamate receptor, L-glutamate and glycine-binding domain, IPR028082 - Periplasmic binding protein-like I
+PFAM Annotation: Ligated ion channel L-glutamate- and glycine-binding site, Receptor family ligand binding region
+Panther Annotation: GLUTAMATE RECEPTOR 3, IONOTROPIC GLUTAMATE RECEPTOR
+Sequence: MHSRLKFLAYLHFICASSIFWPEFSSAQQQQQTVSLTEKIPLGAIFEQGTDDVQSAFKYAMLNHNLNVSSRRFELQAYVDVINTADAFKLSRLICNQFSRGVYSMLGAVSPDSFDTLHSYSNTFQMPFVTPWFPEKVLAPSSGLLDFAISMRPDYHQAIIDTIQYYGWQSIIYLYDSHDGLLRLQQIYQELKPGNETFRVQMVKRIANVTMAIEFLHTLEDLGRFSKKRIVLDCPAEMAKEIIVQHVRDIKLGRRTYHYLLSGLVMDNHWPSDVVEFGAINITGFRIVDSNRRAVRDFHDSRKRLEPSGQSQSQNAGGPNSLPAISAQAALMYDAVFVLVEAFNRILRKKPDQFRSNHLQRRSHGGSSSSSATGTNESSALLDCNTSKGWVTPWEQGEKISRVLRKVEIDGLSGEIRFDEDGRRINYTLHVVEMSVNSTLQQVAEWRDDAGLLPLHSHNYASSSRSASASTGDYDRNHTYIVSSLLEEPYLSLKQYTYGESLVGNDRFEGYCKDLADMLAAQLGIKYEIRLVQDGNYGAE
+
+Id: CLV3_ARATH
+Length: 96
+kDa: 10.87
+Isoelectric Point: 7.06
+Hydropathy: -0.41
+Aromaticity: 0.06
+Subcell Localization: extr
+Transmembrane: 0
+SignalP5: SP(Sec/SPI)
+E.R Retention Total: 1
+E.R Retention Domains: HEEL[65-69]
+NGlyc Total: 0
+NGlyc Domains: 
+Header: CLV3_ARATH Protein CLAVATA 3 OS=Arabidopsis thaliana GN=CLV3 PE=1 SV=2
+Blast description: No hit - timeout
+Gene Ontology: F:GO:0033612 - receptor serine/threonine kinase binding, GO:0033612, GO:0045168, P:GO:0045168 - cell-cell signaling involved in cell fate commitment
+Interpro Annotation: IPR039818 - CLAVATA3, IPR044962 - CLV3/ESR signal peptide family
+PFAM Annotation: 
+Panther Annotation: PROTEIN CLAVATA 3
+Sequence: MDSKSFLLLLLLFCFLFLHDASDLTQAHAHVQGLSNRKMMMMKMESEWVGANGEAEKAKTKGLGLHEELRTVPSGPDPLHHHVNPPRQPRNNFQLP
+
+Id: NAB2_SCHPO-Altered
+Length: 420
+kDa: 46.65
+Isoelectric Point: 4.77
+Hydropathy: -0.50
+Aromaticity: 0.07
+Subcell Localization: cyto
+Transmembrane: 0
+SignalP5: OTHER
+E.R Retention Total: 0
+E.R Retention Domains: 
+NGlyc Total: 6
+NGlyc Domains: NAS[82-85];NIT[125-128];NYS[161-164];NMT[273-276];NES[295-298];NAS[382-385]
+Header: NAB2_SCHPO-Altered
+Blast description: No hit - timeout
+Gene Ontology: F:GO:0008143 - poly(A) binding, GO:0008143, GO:0043488, GO:1900364, P:GO:0043488 - regulation of mRNA stability, P:GO:1900364 - negative regulation of mRNA polyadenylation
+Interpro Annotation: IPR040366 - Nuclear polyadenylated RNA-binding protein Nab2/ZC3H14, IPR043094 - Nab2/ZC3H14, N-terminal domain superfamily
+PFAM Annotation: 
+Panther Annotation: ZINC FINGER CCCH DOMAIN-CONTAINING PROTEIN 14
+Sequence: MTTLLETPGYSEKLHDSIEKKLSEYGWGEEAASLADFVLVMLSNGKTQTEINEELVDLIGSDFDTSFSLWLFNQIEELEKSKNASVESVSKIDEIDFIEKESTDKSQQSFSVPETSIQPQSSQTPNITSLREEKELPTGRVGQKLKLTSQKQRFNPMAASFNYSKSVMPAAKRALTQTQEVPLCKYADKCSRANCIFAHPTPAAAPGEGMVLSSEMCASGKECKAADCVKGHPSPATVTTLPPFMSMSTIPIPCKYKPCLNPACRFIHPTKSRNMTWRPPSKTEETSLSERSFAVNESEEMTTLLETPGYSEKLHDSIEKKLSEYGWGEEAASLADFVLVMLSNGKTQTEINEELVDLIGSDFDTSFSLWLFNQIEELEKSKNASVESVSKIDEIDFIEKESTDKSQQSFSVPETSIQPQ
+

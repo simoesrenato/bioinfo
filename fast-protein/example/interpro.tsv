@@ -1,0 +1,147 @@
+Protein_accession	Sequence_MD5_digest	Sequence_length	Analysis	Signature_accession	Signature_description	Start_location	Stop_location	Score	Status	Date	InterPro_annotations_accession	InterPro_annotations_description	GO_annotations	Additional
+RT04_YEAST	c0c1fd885df1978619dd382ad1a9d485	394	ProSitePatterns	PS00963	Ribosomal protein S2 signature 2.	317	341	-	T	28-08-2022	IPR018130	Ribosomal protein S2, conserved site	GO:0003735|GO:0005840|GO:0006412	-
+RT04_YEAST	c0c1fd885df1978619dd382ad1a9d485	394	SUPERFAMILY	SSF52313	Ribosomal protein S2	185	389	2.22E-62	T	28-08-2022	IPR023591	Ribosomal protein S2, flavodoxin-like domain superfamily	-	-
+RT04_YEAST	c0c1fd885df1978619dd382ad1a9d485	394	Hamap	MF_00291_B	30S ribosomal protein S2 [rpsB].	181	381	21.83675	T	28-08-2022	IPR005706	Ribosomal protein S2, bacteria/mitochondria/plastid	GO:0003735|GO:0006412|GO:0015935	-
+RT04_YEAST	c0c1fd885df1978619dd382ad1a9d485	394	ProSitePatterns	PS00962	Ribosomal protein S2 signature 1.	185	196	-	T	28-08-2022	IPR018130	Ribosomal protein S2, conserved site	GO:0003735|GO:0005840|GO:0006412	-
+RT04_YEAST	c0c1fd885df1978619dd382ad1a9d485	394	PANTHER	PTHR12534	30S RIBOSOMAL PROTEIN S2  PROKARYOTIC AND ORGANELLAR	176	387	1.1E-67	T	28-08-2022	IPR005706	Ribosomal protein S2, bacteria/mitochondria/plastid	GO:0003735|GO:0006412|GO:0015935	-
+RT04_YEAST	c0c1fd885df1978619dd382ad1a9d485	394	CDD	cd01425	RPS2	188	382	3.94274E-81	T	28-08-2022	IPR001865	Ribosomal protein S2	GO:0003735|GO:0005840|GO:0006412	-
+RT04_YEAST	c0c1fd885df1978619dd382ad1a9d485	394	TIGRFAM	TIGR01011	rpsB_bact: ribosomal protein uS2	183	288	1.0E-26	T	28-08-2022	IPR005706	Ribosomal protein S2, bacteria/mitochondria/plastid	GO:0003735|GO:0006412|GO:0015935	-
+RT04_YEAST	c0c1fd885df1978619dd382ad1a9d485	394	Pfam	PF00318	Ribosomal protein S2	188	383	1.2E-68	T	28-08-2022	IPR001865	Ribosomal protein S2	GO:0003735|GO:0005840|GO:0006412	-
+RT04_YEAST	c0c1fd885df1978619dd382ad1a9d485	394	Gene3D	G3DSA:3.40.50.10490	-	187	394	4.9E-64	T	28-08-2022	-	-	-	-
+RT04_YEAST	c0c1fd885df1978619dd382ad1a9d485	394	PRINTS	PR00395	Ribosomal protein S2 signature	185	203	1.8E-29	T	28-08-2022	IPR001865	Ribosomal protein S2	GO:0003735|GO:0005840|GO:0006412	-
+RT04_YEAST	c0c1fd885df1978619dd382ad1a9d485	394	PRINTS	PR00395	Ribosomal protein S2 signature	216	225	1.8E-29	T	28-08-2022	IPR001865	Ribosomal protein S2	GO:0003735|GO:0005840|GO:0006412	-
+RT04_YEAST	c0c1fd885df1978619dd382ad1a9d485	394	PRINTS	PR00395	Ribosomal protein S2 signature	266	283	1.8E-29	T	28-08-2022	IPR001865	Ribosomal protein S2	GO:0003735|GO:0005840|GO:0006412	-
+RT04_YEAST	c0c1fd885df1978619dd382ad1a9d485	394	PRINTS	PR00395	Ribosomal protein S2 signature	317	334	1.8E-29	T	28-08-2022	IPR001865	Ribosomal protein S2	GO:0003735|GO:0005840|GO:0006412	-
+RT04_YEAST	c0c1fd885df1978619dd382ad1a9d485	394	PRINTS	PR00395	Ribosomal protein S2 signature	334	345	1.8E-29	T	28-08-2022	IPR001865	Ribosomal protein S2	GO:0003735|GO:0005840|GO:0006412	-
+RT04_YEAST	c0c1fd885df1978619dd382ad1a9d485	394	PRINTS	PR00395	Ribosomal protein S2 signature	355	369	1.8E-29	T	28-08-2022	IPR001865	Ribosomal protein S2	GO:0003735|GO:0005840|GO:0006412	-
+RT04_YEAST	c0c1fd885df1978619dd382ad1a9d485	394	SignalP_GRAM_POSITIVE	SignalP-TM	SignalP-TM	1	32	-	T	28-08-2022	-	-	-	-
+NAB2_SCHPO-Altered	8ae39f88d4765f3382e664819eb982a3	420	MobiDBLite	mobidb-lite	consensus disorder prediction	102	135	-	T	28-08-2022	-	-	-	-
+NAB2_SCHPO-Altered	8ae39f88d4765f3382e664819eb982a3	420	Gene3D	G3DSA:4.10.1000.40	-	176	248	1.2E-18	T	28-08-2022	-	-	-	-
+NAB2_SCHPO-Altered	8ae39f88d4765f3382e664819eb982a3	420	MobiDBLite	mobidb-lite	consensus disorder prediction	400	420	-	T	28-08-2022	-	-	-	-
+NAB2_SCHPO-Altered	8ae39f88d4765f3382e664819eb982a3	420	MobiDBLite	mobidb-lite	consensus disorder prediction	104	131	-	T	28-08-2022	-	-	-	-
+NAB2_SCHPO-Altered	8ae39f88d4765f3382e664819eb982a3	420	MobiDBLite	mobidb-lite	consensus disorder prediction	404	420	-	T	28-08-2022	-	-	-	-
+NAB2_SCHPO-Altered	8ae39f88d4765f3382e664819eb982a3	420	Gene3D	G3DSA:1.10.340.40	-	7	109	9.3E-16	T	28-08-2022	IPR043094	Nab2/ZC3H14, N-terminal domain superfamily	-	-
+NAB2_SCHPO-Altered	8ae39f88d4765f3382e664819eb982a3	420	Gene3D	G3DSA:1.10.340.40	-	307	408	9.8E-16	T	28-08-2022	IPR043094	Nab2/ZC3H14, N-terminal domain superfamily	-	-
+NAB2_SCHPO-Altered	8ae39f88d4765f3382e664819eb982a3	420	PANTHER	PTHR14738:SF29	ZINC FINGER CCCH DOMAIN-CONTAINING PROTEIN 14	311	416	2.1E-45	T	28-08-2022	-	-	-	-
+NAB2_SCHPO-Altered	8ae39f88d4765f3382e664819eb982a3	420	PANTHER	PTHR14738:SF29	ZINC FINGER CCCH DOMAIN-CONTAINING PROTEIN 14	11	131	2.1E-45	T	28-08-2022	-	-	-	-
+NAB2_SCHPO-Altered	8ae39f88d4765f3382e664819eb982a3	420	PANTHER	PTHR14738	ZINC FINGER CCCH DOMAIN-CONTAINING PROTEIN 14	311	416	2.1E-45	T	28-08-2022	IPR040366	Nuclear polyadenylated RNA-binding protein Nab2/ZC3H14	GO:0008143|GO:0043488|GO:1900364	-
+NAB2_SCHPO-Altered	8ae39f88d4765f3382e664819eb982a3	420	PANTHER	PTHR14738	ZINC FINGER CCCH DOMAIN-CONTAINING PROTEIN 14	11	131	2.1E-45	T	28-08-2022	IPR040366	Nuclear polyadenylated RNA-binding protein Nab2/ZC3H14	GO:0008143|GO:0043488|GO:1900364	-
+NAB2_SCHPO-Altered	8ae39f88d4765f3382e664819eb982a3	420	PANTHER	PTHR14738	ZINC FINGER CCCH DOMAIN-CONTAINING PROTEIN 14	162	282	2.1E-45	T	28-08-2022	IPR040366	Nuclear polyadenylated RNA-binding protein Nab2/ZC3H14	GO:0008143|GO:0043488|GO:1900364	-
+NAB2_SCHPO-Altered	8ae39f88d4765f3382e664819eb982a3	420	PANTHER	PTHR14738:SF29	ZINC FINGER CCCH DOMAIN-CONTAINING PROTEIN 14	162	282	2.1E-45	T	28-08-2022	-	-	-	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	SUPERFAMILY	SSF50447	Translation proteins	241	332	5.74E-29	T	28-08-2022	IPR009000	Translation protein, beta-barrel domain superfamily	-	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	CDD	cd03693	EF1_alpha_II	240	330	8.00112E-61	T	28-08-2022	-	-	-	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	Gene3D	G3DSA:2.40.30.10	Translation factors	333	439	4.6E-45	T	28-08-2022	-	-	-	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	ProSiteProfiles	PS51722	Translational (tr)-type guanine nucleotide-binding (G) domain profile.	5	240	64.335442	T	28-08-2022	IPR000795	Translational (tr)-type GTP-binding domain	GO:0003924|GO:0005525	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	CDD	cd01883	EF1_alpha	9	237	0.0	T	28-08-2022	-	-	-	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	Pfam	PF03143	Elongation factor Tu C-terminal domain	332	439	7.6E-32	T	28-08-2022	IPR004160	Translation elongation factor EFTu/EF1A, C-terminal	-	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	ProSitePatterns	PS00301	Translational (tr)-type guanine nucleotide-binding (G) domain signature.	61	76	-	T	28-08-2022	IPR031157	Tr-type G domain, conserved site	-	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	PANTHER	PTHR23115	TRANSLATION FACTOR	1	456	0.0	T	28-08-2022	-	-	-	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	Pfam	PF00009	Elongation factor Tu GTP binding domain	5	232	1.5E-54	T	28-08-2022	IPR000795	Translational (tr)-type GTP-binding domain	GO:0003924|GO:0005525	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	TIGRFAM	TIGR00483	EF-1_alpha: translation elongation factor EF-1, subunit alpha	1	443	0.0	T	28-08-2022	IPR004539	Translation elongation factor EF1A, eukaryotic/archaeal	GO:0003746|GO:0005525|GO:0006414	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	Gene3D	G3DSA:3.40.50.300	-	1	236	3.9E-98	T	28-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase	-	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	Gene3D	G3DSA:2.40.30.10	Translation factors	239	326	5.2E-36	T	28-08-2022	-	-	-	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	PRINTS	PR00315	GTP-binding elongation factor signature	9	22	1.1E-24	T	28-08-2022	IPR000795	Translational (tr)-type GTP-binding domain	GO:0003924|GO:0005525	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	PRINTS	PR00315	GTP-binding elongation factor signature	68	76	1.1E-24	T	28-08-2022	IPR000795	Translational (tr)-type GTP-binding domain	GO:0003924|GO:0005525	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	PRINTS	PR00315	GTP-binding elongation factor signature	88	98	1.1E-24	T	28-08-2022	IPR000795	Translational (tr)-type GTP-binding domain	GO:0003924|GO:0005525	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	PRINTS	PR00315	GTP-binding elongation factor signature	104	115	1.1E-24	T	28-08-2022	IPR000795	Translational (tr)-type GTP-binding domain	GO:0003924|GO:0005525	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	PRINTS	PR00315	GTP-binding elongation factor signature	148	157	1.1E-24	T	28-08-2022	IPR000795	Translational (tr)-type GTP-binding domain	GO:0003924|GO:0005525	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	SUPERFAMILY	SSF50465	EF-Tu/eEF-1alpha/eIF2-gamma C-terminal domain	336	440	3.17E-44	T	28-08-2022	IPR009001	Translation elongation factor EF1A/initiation factor IF2gamma, C-terminal	-	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	Pfam	PF03144	Elongation factor Tu domain 2	258	324	5.0E-15	T	28-08-2022	IPR004161	Translation elongation factor EFTu-like, domain 2	GO:0005525	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	PANTHER	PTHR23115:SF236	ELONGATION FACTOR 1-ALPHA 1	1	456	0.0	T	28-08-2022	-	-	-	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	CDD	cd03705	EF1_alpha_III	333	436	3.70247E-69	T	28-08-2022	-	-	-	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	SUPERFAMILY	SSF52540	P-loop containing nucleoside triphosphate hydrolases	3	259	4.63E-80	T	28-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase	-	-
+EF1A_ASHGO-2	d6cec99f5f2695454860205c714abd45	458	Hamap	MF_00118_A	Elongation factor Tu [tuf].	2	442	51.233429	T	28-08-2022	IPR004539	Translation elongation factor EF1A, eukaryotic/archaeal	GO:0003746|GO:0005525|GO:0006414	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	SUPERFAMILY	SSF50447	Translation proteins	241	332	5.74E-29	T	28-08-2022	IPR009000	Translation protein, beta-barrel domain superfamily	-	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	CDD	cd03693	EF1_alpha_II	240	330	8.00112E-61	T	28-08-2022	-	-	-	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	Gene3D	G3DSA:2.40.30.10	Translation factors	333	439	4.6E-45	T	28-08-2022	-	-	-	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	ProSiteProfiles	PS51722	Translational (tr)-type guanine nucleotide-binding (G) domain profile.	5	240	64.335442	T	28-08-2022	IPR000795	Translational (tr)-type GTP-binding domain	GO:0003924|GO:0005525	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	CDD	cd01883	EF1_alpha	9	237	0.0	T	28-08-2022	-	-	-	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	Pfam	PF03143	Elongation factor Tu C-terminal domain	332	439	7.6E-32	T	28-08-2022	IPR004160	Translation elongation factor EFTu/EF1A, C-terminal	-	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	ProSitePatterns	PS00301	Translational (tr)-type guanine nucleotide-binding (G) domain signature.	61	76	-	T	28-08-2022	IPR031157	Tr-type G domain, conserved site	-	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	PANTHER	PTHR23115	TRANSLATION FACTOR	1	456	0.0	T	28-08-2022	-	-	-	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	Pfam	PF00009	Elongation factor Tu GTP binding domain	5	232	1.5E-54	T	28-08-2022	IPR000795	Translational (tr)-type GTP-binding domain	GO:0003924|GO:0005525	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	TIGRFAM	TIGR00483	EF-1_alpha: translation elongation factor EF-1, subunit alpha	1	443	0.0	T	28-08-2022	IPR004539	Translation elongation factor EF1A, eukaryotic/archaeal	GO:0003746|GO:0005525|GO:0006414	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	Gene3D	G3DSA:3.40.50.300	-	1	236	3.9E-98	T	28-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase	-	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	Gene3D	G3DSA:2.40.30.10	Translation factors	239	326	5.2E-36	T	28-08-2022	-	-	-	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	PRINTS	PR00315	GTP-binding elongation factor signature	9	22	1.1E-24	T	28-08-2022	IPR000795	Translational (tr)-type GTP-binding domain	GO:0003924|GO:0005525	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	PRINTS	PR00315	GTP-binding elongation factor signature	68	76	1.1E-24	T	28-08-2022	IPR000795	Translational (tr)-type GTP-binding domain	GO:0003924|GO:0005525	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	PRINTS	PR00315	GTP-binding elongation factor signature	88	98	1.1E-24	T	28-08-2022	IPR000795	Translational (tr)-type GTP-binding domain	GO:0003924|GO:0005525	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	PRINTS	PR00315	GTP-binding elongation factor signature	104	115	1.1E-24	T	28-08-2022	IPR000795	Translational (tr)-type GTP-binding domain	GO:0003924|GO:0005525	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	PRINTS	PR00315	GTP-binding elongation factor signature	148	157	1.1E-24	T	28-08-2022	IPR000795	Translational (tr)-type GTP-binding domain	GO:0003924|GO:0005525	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	SUPERFAMILY	SSF50465	EF-Tu/eEF-1alpha/eIF2-gamma C-terminal domain	336	440	3.17E-44	T	28-08-2022	IPR009001	Translation elongation factor EF1A/initiation factor IF2gamma, C-terminal	-	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	Pfam	PF03144	Elongation factor Tu domain 2	258	324	5.0E-15	T	28-08-2022	IPR004161	Translation elongation factor EFTu-like, domain 2	GO:0005525	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	PANTHER	PTHR23115:SF236	ELONGATION FACTOR 1-ALPHA 1	1	456	0.0	T	28-08-2022	-	-	-	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	CDD	cd03705	EF1_alpha_III	333	436	3.70247E-69	T	28-08-2022	-	-	-	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	SUPERFAMILY	SSF52540	P-loop containing nucleoside triphosphate hydrolases	3	259	4.63E-80	T	28-08-2022	IPR027417	P-loop containing nucleoside triphosphate hydrolase	-	-
+EF1A_ASHGO	d6cec99f5f2695454860205c714abd45	458	Hamap	MF_00118_A	Elongation factor Tu [tuf].	2	442	51.233429	T	28-08-2022	IPR004539	Translation elongation factor EF1A, eukaryotic/archaeal	GO:0003746|GO:0005525|GO:0006414	-
+CLV3_ARATH	9d93f0d9cc64b40828131b1def5cbbb7	96	Phobius	SIGNAL_PEPTIDE	Signal peptide region	1	29	-	T	28-08-2022	-	-	-	-
+CLV3_ARATH	9d93f0d9cc64b40828131b1def5cbbb7	96	PANTHER	PTHR36349:SF2	PROTEIN CLAVATA 3	3	91	1.6E-16	T	28-08-2022	IPR039818	CLAVATA3	GO:0045168	-
+CLV3_ARATH	9d93f0d9cc64b40828131b1def5cbbb7	96	Phobius	SIGNAL_PEPTIDE_N_REGION	N-terminal region of a signal peptide.	1	5	-	T	28-08-2022	-	-	-	-
+CLV3_ARATH	9d93f0d9cc64b40828131b1def5cbbb7	96	SignalP_GRAM_NEGATIVE	SignalP-noTM	SignalP-noTM	1	20	-	T	28-08-2022	-	-	-	-
+CLV3_ARATH	9d93f0d9cc64b40828131b1def5cbbb7	96	MobiDBLite	mobidb-lite	consensus disorder prediction	68	96	-	T	28-08-2022	-	-	-	-
+CLV3_ARATH	9d93f0d9cc64b40828131b1def5cbbb7	96	SignalP_GRAM_NEGATIVE	SignalP-noTM	SignalP-noTM	1	21	-	T	28-08-2022	-	-	-	-
+CLV3_ARATH	9d93f0d9cc64b40828131b1def5cbbb7	96	Phobius	NON_CYTOPLASMIC_DOMAIN	Region of a membrane-bound protein predicted to be outside the membrane, in the extracellular region.	30	96	-	T	28-08-2022	-	-	-	-
+CLV3_ARATH	9d93f0d9cc64b40828131b1def5cbbb7	96	SignalP_GRAM_POSITIVE	SignalP-TM	SignalP-TM	1	29	-	T	28-08-2022	-	-	-	-
+CLV3_ARATH	9d93f0d9cc64b40828131b1def5cbbb7	96	PANTHER	PTHR36349	PROTEIN CLAVATA 3	3	91	1.6E-16	T	28-08-2022	IPR044962	CLV3/ESR signal peptide family	GO:0033612|GO:0045168	-
+CLV3_ARATH	9d93f0d9cc64b40828131b1def5cbbb7	96	Phobius	SIGNAL_PEPTIDE_H_REGION	Hydrophobic region of a signal peptide.	6	17	-	T	28-08-2022	-	-	-	-
+CLV3_ARATH	9d93f0d9cc64b40828131b1def5cbbb7	96	Phobius	SIGNAL_PEPTIDE_C_REGION	C-terminal region of a signal peptide.	18	29	-	T	28-08-2022	-	-	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	Phobius	NON_CYTOPLASMIC_DOMAIN	Region of a membrane-bound protein predicted to be outside the membrane, in the extracellular region.	28	540	-	T	28-08-2022	-	-	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	Phobius	SIGNAL_PEPTIDE_C_REGION	C-terminal region of a signal peptide.	20	27	-	T	28-08-2022	-	-	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	MobiDBLite	mobidb-lite	consensus disorder prediction	360	379	-	T	28-08-2022	-	-	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	SUPERFAMILY	SSF53850	Periplasmic binding protein-like II	487	539	1.3E-5	T	28-08-2022	-	-	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	PANTHER	PTHR18966	IONOTROPIC GLUTAMATE RECEPTOR	53	539	2.5E-48	T	28-08-2022	-	-	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	Gene3D	G3DSA:3.40.50.2300	-	154	446	6.9E-113	T	28-08-2022	-	-	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	MobiDBLite	mobidb-lite	consensus disorder prediction	307	321	-	T	28-08-2022	-	-	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	Pfam	PF10613	Ligated ion channel L-glutamate- and glycine-binding site	479	539	3.1E-12	T	28-08-2022	IPR019594	Ionotropic glutamate receptor, L-glutamate and glycine-binding domain	GO:0004970|GO:0016020	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	SUPERFAMILY	SSF53822	Periplasmic binding protein-like I	37	447	1.0E-34	T	28-08-2022	IPR028082	Periplasmic binding protein-like I	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	Gene3D	G3DSA:3.40.50.2300	-	42	426	6.9E-113	T	28-08-2022	-	-	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	SignalP_GRAM_POSITIVE	SignalP-TM	SignalP-TM	1	27	-	T	28-08-2022	-	-	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	Pfam	PF01094	Receptor family ligand binding region	53	436	3.1E-86	T	28-08-2022	IPR001828	Receptor, ligand binding region	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	MobiDBLite	mobidb-lite	consensus disorder prediction	300	321	-	T	28-08-2022	-	-	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	CDD	cd06380	PBP1_iGluR_AMPA	41	456	3.02792E-159	T	28-08-2022	-	-	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	SMART	SM00918	Lig_chan_Glu_bd_2	489	540	2.2E-13	T	28-08-2022	IPR019594	Ionotropic glutamate receptor, L-glutamate and glycine-binding domain	GO:0004970|GO:0016020	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	Gene3D	G3DSA:3.40.190.10	-	473	540	6.0E-14	T	28-08-2022	-	-	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	SignalP_EUK	SignalP-noTM	SignalP-noTM	1	27	-	T	28-08-2022	-	-	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	MobiDBLite	mobidb-lite	consensus disorder prediction	354	379	-	T	28-08-2022	-	-	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	Phobius	SIGNAL_PEPTIDE	Signal peptide region	1	27	-	T	28-08-2022	-	-	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	Coils	Coil	Coil	539	540	-	T	28-08-2022	-	-	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	Phobius	SIGNAL_PEPTIDE_N_REGION	N-terminal region of a signal peptide.	1	7	-	T	28-08-2022	-	-	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	Phobius	SIGNAL_PEPTIDE_H_REGION	Hydrophobic region of a signal peptide.	8	19	-	T	28-08-2022	-	-	-	-
+GLR1_DROME-Altered	a496105077739fa0b4c171840ef890b8	540	PANTHER	PTHR18966:SF151	GLUTAMATE RECEPTOR 3	53	539	2.5E-48	T	28-08-2022	-	-	-	-
+RCL1_YEAST	27d01c37b8c36d04d7e12e0e33955f77	367	SUPERFAMILY	SSF55205	EPT/RTPC-like	13	234	2.22E-61	T	28-08-2022	IPR013792	RNA 3'-terminal phosphate cyclase/enolpyruvate transferase, alpha/beta	GO:0003824	-
+RCL1_YEAST	27d01c37b8c36d04d7e12e0e33955f77	367	TIGRFAM	TIGR03400	18S_RNA_Rcl1p: 18S rRNA biogenesis protein RCL1	10	367	0.0	T	28-08-2022	IPR016443	RNA 3'-terminal phosphate cyclase type 2	GO:0005730|GO:0042254	-
+RCL1_YEAST	27d01c37b8c36d04d7e12e0e33955f77	367	ProSitePatterns	PS01287	RNA 3'-terminal phosphate cyclase signature.	156	166	-	T	28-08-2022	IPR020719	RNA 3'-terminal phosphate cyclase-like, conserved site	-	-
+RCL1_YEAST	27d01c37b8c36d04d7e12e0e33955f77	367	Pfam	PF05189	RNA 3'-terminal phosphate cyclase (RTC), insert domain	184	284	5.5E-29	T	28-08-2022	IPR013791	RNA 3'-terminal phosphate cyclase, insert domain	-	-
+RCL1_YEAST	27d01c37b8c36d04d7e12e0e33955f77	367	Pfam	PF01137	RNA 3'-terminal phosphate cyclase	10	336	6.7E-45	T	28-08-2022	IPR023797	RNA 3'-terminal phosphate cyclase domain	-	-
+RCL1_YEAST	27d01c37b8c36d04d7e12e0e33955f77	367	PANTHER	PTHR11096	RNA 3' TERMINAL PHOSPHATE CYCLASE	7	366	7.9E-104	T	28-08-2022	IPR000228	RNA 3'-terminal phosphate cyclase	GO:0006396	-
+RCL1_YEAST	27d01c37b8c36d04d7e12e0e33955f77	367	Gene3D	G3DSA:3.65.10.20	-	11	344	0.0	T	28-08-2022	IPR037136	RNA 3'-terminal phosphate cyclase domain superfamily	-	-
+RCL1_YEAST	27d01c37b8c36d04d7e12e0e33955f77	367	Gene3D	G3DSA:3.30.360.20	-	184	280	0.0	T	28-08-2022	IPR036553	RNA 3'-terminal phosphate cyclase, insert domain superfamily	-	-
+RCL1_YEAST	27d01c37b8c36d04d7e12e0e33955f77	367	CDD	cd00875	RNA_Cyclase_Class_I	6	341	0.0	T	28-08-2022	IPR016443	RNA 3'-terminal phosphate cyclase type 2	GO:0005730|GO:0042254	-
+RCL1_YEAST	27d01c37b8c36d04d7e12e0e33955f77	367	PANTHER	PTHR11096:SF1	RNA 3'-TERMINAL PHOSPHATE CYCLASE-LIKE PROTEIN	7	366	7.9E-104	T	28-08-2022	IPR016443	RNA 3'-terminal phosphate cyclase type 2	GO:0005730|GO:0042254	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	MobiDBLite	mobidb-lite	consensus disorder prediction	1	22	-	T	28-08-2022	-	-	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	PRINTS	PR00633	Chromosome condensation regulator RCC1 signature	47	63	1.7E-61	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	PRINTS	PR00633	Chromosome condensation regulator RCC1 signature	86	99	1.7E-61	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	PRINTS	PR00633	Chromosome condensation regulator RCC1 signature	105	121	1.7E-61	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	PRINTS	PR00633	Chromosome condensation regulator RCC1 signature	184	200	1.7E-61	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	PRINTS	PR00633	Chromosome condensation regulator RCC1 signature	226	242	1.7E-61	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	PRINTS	PR00633	Chromosome condensation regulator RCC1 signature	242	256	1.7E-61	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	PRINTS	PR00633	Chromosome condensation regulator RCC1 signature	338	356	1.7E-61	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	PRINTS	PR00633	Chromosome condensation regulator RCC1 signature	408	429	1.7E-61	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	PANTHER	PTHR45982	-	31	472	1.2E-101	T	28-08-2022	-	-	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	ProSiteProfiles	PS50012	Regulator of chromosome condensation (RCC1) repeat profile.	349	412	11.227699	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	ProSiteProfiles	PS50012	Regulator of chromosome condensation (RCC1) repeat profile.	413	467	12.1121	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	ProSiteProfiles	PS50012	Regulator of chromosome condensation (RCC1) repeat profile.	46	102	13.900999	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	ProSiteProfiles	PS50012	Regulator of chromosome condensation (RCC1) repeat profile.	103	183	10.102099	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	ProSiteProfiles	PS50012	Regulator of chromosome condensation (RCC1) repeat profile.	240	292	14.2829	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	ProSitePatterns	PS00626	Regulator of chromosome condensation (RCC1) signature 2.	399	409	-	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	SUPERFAMILY	SSF50985	RCC1/BLIP-II	38	462	1.83E-87	T	28-08-2022	IPR009091	Regulator of chromosome condensation 1/beta-lactamase-inhibitor protein II	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	Pfam	PF00415	Regulator of chromosome condensation (RCC1) repeat	104	180	2.7E-6	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	Pfam	PF00415	Regulator of chromosome condensation (RCC1) repeat	413	462	4.3E-8	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	Pfam	PF00415	Regulator of chromosome condensation (RCC1) repeat	48	99	3.3E-6	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	Pfam	PF00415	Regulator of chromosome condensation (RCC1) repeat	348	409	1.3E-5	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	Pfam	PF13540	Regulator of chromosome condensation (RCC1) repeat	276	305	4.4E-8	T	28-08-2022	-	-	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	ProSitePatterns	PS00625	Regulator of chromosome condensation (RCC1) signature 1.	109	120	-	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	Gene3D	G3DSA:2.130.10.30	-	19	482	0.0	T	28-08-2022	IPR009091	Regulator of chromosome condensation 1/beta-lactamase-inhibitor protein II	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	ProSiteProfiles	PS50012	Regulator of chromosome condensation (RCC1) repeat profile.	184	239	14.745199	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	ProSiteProfiles	PS50012	Regulator of chromosome condensation (RCC1) repeat profile.	293	348	14.9261	T	28-08-2022	IPR000408	Regulator of chromosome condensation, RCC1	-	-
+RCC1_YEAST	be2b40976724a1cefde344db3305679c	482	MobiDBLite	mobidb-lite	consensus disorder prediction	128	158	-	T	28-08-2022	-	-	-	-

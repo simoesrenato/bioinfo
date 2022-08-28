@@ -1,0 +1,8 @@
+RCC1_YEAST	len=482	ExpAA=0.10	First60=0.07	PredHel=0	Topology=o
+RCL1_YEAST	len=367	ExpAA=0.07	First60=0.00	PredHel=0	Topology=o
+RT04_YEAST	len=394	ExpAA=0.00	First60=0.00	PredHel=0	Topology=o
+EF1A_ASHGO	len=458	ExpAA=0.07	First60=0.03	PredHel=0	Topology=o
+EF1A_ASHGO-2	len=458	ExpAA=0.07	First60=0.03	PredHel=0	Topology=o
+GLR1_DROME-Altered	len=540	ExpAA=1.64	First60=1.48	PredHel=0	Topology=o
+CLV3_ARATH	len=96	ExpAA=7.51	First60=7.51	PredHel=0	Topology=o
+NAB2_SCHPO-Altered	len=420	ExpAA=0.00	First60=0.00	PredHel=0	Topology=o

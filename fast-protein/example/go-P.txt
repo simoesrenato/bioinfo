@@ -1,0 +1,8 @@
+GO	Description	Total
+GO:0006414	translational elongation	2
+GO:1900364	negative regulation of mRNA polyadenylation	1
+GO:0042254	ribosome biogenesis	1
+GO:0006396	RNA processing	1
+GO:0045168	cell-cell signaling involved in cell fate commitment	1
+GO:0043488	regulation of mRNA stability	1
+GO:0006412	translation	1

@@ -1,0 +1,39 @@
+#FastProtein-1.0 Summary
+
+Processed proteins: 8
+Molecular mass (kda) mean: 44.49 ? 13.99
+Isoeletric point mean: 7.46 ? 1.62
+Hydrophicity mean: -0.36 ? 0.15
+Aromaticity mean: 0.07 ? 0.01
+Proteins with TM: 0
+Proteins with SP: 2
+Proteins with E.R Retention domains: 2
+Proteins with NGlycosylation domains: 7
+Subcellular localization (by WolfPSort) - Organism: animal summary:
+	cyto: 4
+	extr: 2
+	nucl: 1
+	mito: 1
+
+E.R Retention domain summary:
+	SQEL: 1
+	HEEL: 1
+
+NGlyc Retention domain summary:
+	NIT: 4
+	NVS: 3
+	NAT: 2
+	NAS: 2
+	NTS: 2
+	NST: 2
+	NET: 2
+	NES: 2
+	NYT: 1
+	NYS: 1
+	NVT: 1
+	NQT: 1
+	NMT: 1
+	NMS: 1
+	NHS: 1
+	NGS: 1
+	NHT: 1

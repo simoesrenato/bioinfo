@@ -1,0 +1,9 @@
+# k used for kNN is: 32
+RCC1_YEAST nucl 30.5, cyto_nucl 17.5
+RCL1_YEAST mito 22.5, cyto_mito 15, cyto 6.5
+RT04_YEAST cyto 15, mito 15, cyto_mito 15
+EF1A_ASHGO cyto 27, mito 4
+EF1A_ASHGO-2 cyto 27, mito 4
+GLR1_DROME-Altered extr 18, nucl 5.5, cyto_nucl 4.5, cyto 2.5, mito 2, E.R. 2, E.R._mito 2
+CLV3_ARATH extr 27, mito 2, E.R. 2, E.R._mito 2
+NAB2_SCHPO-Altered cyto 17.5, cyto_nucl 15, nucl 11.5

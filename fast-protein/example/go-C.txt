@@ -1,0 +1,5 @@
+GO	Description	Total
+GO:0016020	membrane	1
+GO:0015935	small ribosomal subunit	1
+GO:0005730	nucleolus	1
+GO:0005840	ribosome	1
