@@ -8,14 +8,13 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.concurrent.Callable;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.StringUtils;
 
 @Command(name = "EpiBuilder-1.1", requiredOptionMarker = '*', abbreviateSynopsis = true,
-        description = "Does something useful.", version = "1.0", sortOptions = false)
+        description = "A Tool for Assembling, Searching, and Classifying B-Cell Epitopes", version = "1.1", sortOptions = false)
 public class BiolibMain implements Callable<Integer> {
 
     public enum FileType {
@@ -26,7 +25,7 @@ public class BiolibMain implements Callable<Integer> {
     File input;
     @Option(names = {"-min", "--min-length"}, description = "Minimum epitope length. Default: ${DEFAULT-VALUE}", defaultValue = "10")
     Integer minLength;
-    @Option(names = {"-max", "--max-length"}, description = "Max epitope length. Default: ${DEFAULT-VALUE}", defaultValue = "15")
+    @Option(names = {"-max", "--max-length"}, description = "Max epitope length. Default: ${DEFAULT-VALUE}", defaultValue = "30")
     Integer maxLength;
     @Option(names = {"-f", "--features", "--features_biolib"}, description = "Peptides chemical properties (default is all selected):\n"
             + "chou - Kolaskar & Tongaonkar Antigenicity\n"
@@ -74,6 +73,10 @@ public class BiolibMain implements Callable<Integer> {
     String proteome6;
     @Option(names = {"-p6a", "--proteome6-alias"}, description = "Proteome 6 alias - appears in the report file", defaultValue = "proteome6")
     String proteome6Alias;
+
+    @Option(names = {"-proteomes","--proteomes"}, required = false, description = "Input proteome files format (separated by ;) <alias1>=<fasta1>;<alias2>=<fasta2>")
+    String proteomes;
+
     @Option(names = {"-so", "--system"}, description = "Operational System ${COMPLETION-CANDIDATES}. Default: ${DEFAULT-VALUE}", defaultValue = "linux")
     Parameters.SO operationalSystem;
 
@@ -140,6 +143,17 @@ public class BiolibMain implements Callable<Integer> {
             addProteome(proteomeFiles, proteome4, proteome4Alias, 4);
             addProteome(proteomeFiles, proteome5, proteome5Alias, 5);
             addProteome(proteomeFiles, proteome6, proteome6Alias, 6);
+            int totalProt = proteomeFiles.size();
+
+            if (!StringUtils.isBlank(proteomes)) {
+                String[] proteomas = proteomes.split(";");
+                for (String proteoma : proteomas) {
+                    proteoma = proteoma.trim();
+                    String[] st = proteoma.split("=");
+                    addProteome(proteomeFiles, st[1], st[0].trim(), ++totalProt);
+                }
+
+            }
             if (proteomeFiles.isEmpty()) {
                 System.out.println("ERROR: Choose at least one proteome to perform the search");
                 System.exit(0);
