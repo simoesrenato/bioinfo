@@ -25,7 +25,7 @@ public class BepiPred3Converter {
      * @throws FileNotFoundException
      * @throws InputException
      */
-    public static ArrayList<ProteinConverter> getBepipred3FromBiolab(File csvFile) throws FileNotFoundException, InputException {
+    public static ArrayList<ProteinConverter> getBepipred3FromBiolib(File csvFile) throws FileNotFoundException, InputException {
         Scanner s = new Scanner(csvFile);
         ArrayList<ProteinConverter> proteins = new ArrayList<>();
         ProteinConverter protein = new ProteinConverter("");
@@ -34,15 +34,10 @@ public class BepiPred3Converter {
             try {
                 String val = s.nextLine();
 
-                int lastComma = val.lastIndexOf(",");
-                double score = Double.parseDouble(val.substring(lastComma + 1));
-                String remaining = val.substring(0, lastComma);
-                lastComma = remaining.lastIndexOf(",");
-                String aa = remaining.substring(lastComma + 1);
-                String id = remaining.substring(0,lastComma);
-                if (remaining.contains(" ")) {
-                    id = remaining.substring(0, remaining.indexOf(" "));
-                }
+                String[] fields = val.split(",");
+                String id = fields[0];
+                String aa = fields[1];
+                double score = Double.parseDouble(fields[2]);
 
                 if (!protein.getId().equals(id)) {
                     protein = new ProteinConverter(id);
@@ -59,8 +54,8 @@ public class BepiPred3Converter {
     }
 
     public static void main(String[] args) throws Exception, InputException {
-        File f = new File("/tese/resultados/epitope/bepipred3/biolib-online/secretome.csv");
-        ArrayList<ProteinConverter> proteins = getBepipred3FromBiolab(f);
+        File f = new File("/bioinformatic/epibuilder2/raw_output.csv");
+        ArrayList<ProteinConverter> proteins = getBepipred3FromBiolib(f);
         for (ProteinConverter protein : proteins) {
             System.out.println(">" + protein.getId());
             System.out.println(protein.getSequenceFromMap());

@@ -46,7 +46,7 @@ public class Parameters {
     }
 
     public enum BEPIPRED_TYPE {
-        BCELL_STANDALONE("bcell_bepipred2"), ONLINE("online"), JOB_ID("job_id"), LOCAL("local"), BEPIPRED3_BIOLIB("bepipred3_biolib");
+        BCELL_STANDALONE("bcell_bepipred2"), ONLINE("online"), JOB_ID("job_id"), LOCAL("local"), BEPIPRED3_BIOLIB("bepipred3_biolib"), FASTA("fasta");
         private final String name;
 
         private BEPIPRED_TYPE(String name) {

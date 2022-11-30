@@ -8,6 +8,10 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
 import org.apache.commons.io.FilenameUtils;
@@ -18,30 +22,25 @@ import org.apache.commons.lang3.StringUtils;
 public class BiolibMain implements Callable<Integer> {
 
     public enum FileType {
-        csv, tsv
+        csv, fasta
     }
 
     @Option(names = {"-i", "--input"}, required = true, description = "Input file")
     File input;
+    @Option(names = {"-f", "--format"}, description = "Input file type (csv for BepiPred generated or fasta to execute BepiPred-3)", defaultValue = "fasta")
+    FileType type;
     @Option(names = {"-min", "--min-length"}, description = "Minimum epitope length. Default: ${DEFAULT-VALUE}", defaultValue = "10")
     Integer minLength;
     @Option(names = {"-max", "--max-length"}, description = "Max epitope length. Default: ${DEFAULT-VALUE}", defaultValue = "30")
     Integer maxLength;
-    @Option(names = {"-f", "--features", "--features_biolib"}, description = "Peptides chemical properties (default is all selected):\n"
-            + "chou - Kolaskar & Tongaonkar Antigenicity\n"
-            + "emini - Emini Surface Accessibility Prediction\n"
-            + "karplus - Karplus & Schulz Flexibility Prediction\n"
-            + "kolaskar - Kolaskar & Tongaonkar Antigenicity\n"
-            + "parker - Parker Hydrophilicity Prediction", defaultValue = "emini,kolaskar,chou,karplus,parker", split = ",")
-    Feature[] features;
     @Option(names = {"-t", "--threshold"}, description = "Threshold default: ${DEFAULT-VALUE}", defaultValue = "0.1512")
     Double threshold;
 
-    @Option(names = {"-b", "--basename"}, description = "The common base name for the initial output files. Default: ${DEFAULT-VALUE}", defaultValue = "epibuilder")
+    @Option(names = {"-b", "--basename"}, description = "The common base name for the initial output files. Default: ${DEFAULT-VALUE}", defaultValue = "main")
     String basename;
     @Option(names = {"-search", "--search"}, description = "Method of search in the given proteome(s): ${COMPLETION-CANDIDATES}. Default: ${DEFAULT-VALUE}", defaultValue = "none")
     Search search;
-    @Option(names = {"-bt", "--task"}, description = "Blast -task argment(blastp-short, blastp, blastp-fast). Default: ${DEFAULT-VALUE}", defaultValue = "blastp-short")
+    @Option(names = {"-bt", "--task"}, description = "Blast -task argument(blastp-short, blastp, blastp-fast). Default: ${DEFAULT-VALUE}", defaultValue = "blastp-short")
     String blastTask;
     @Option(names = {"-bi", "--ident"}, description = "Minimum identity cutoff. Default: ${DEFAULT-VALUE}", defaultValue = "90")
     Integer blastIdentity;
@@ -81,62 +80,43 @@ public class BiolibMain implements Callable<Integer> {
     Parameters.SO operationalSystem;
 
     @Override
-    public Integer call() {
+    public Integer call() throws IOException {
+        Parameters.FASTA = input;
         Parameters.BEPIPRED_FILE = input;
-        Parameters.BEPIPRED_INPUT = Parameters.BEPIPRED_TYPE.BEPIPRED3_BIOLIB;
+        if(type == FileType.fasta) {
+            Parameters.BEPIPRED_INPUT = Parameters.BEPIPRED_TYPE.FASTA;
+        }else{
+            Parameters.BEPIPRED_INPUT = Parameters.BEPIPRED_TYPE.BEPIPRED3_BIOLIB;
+        }
+
         Parameters.THRESHOLD_BEPIPRED = threshold;
         Parameters.MIN_LENGTH_BEPIPRED2 = minLength;
         Parameters.MAX_LENGTH_BEPIPRED2 = maxLength;
 
-        System.out.println("Features");
-        for (int i = 0; i < features.length; i++) {
-            Feature feature = features[i];
-            switch (feature) {
-                case emini:
-                    Parameters.MAP_SOFTWARES.put(SoftwareBcellEnum.EMINI, null);
-                    break;
-                case kolaskar:
-                    Parameters.MAP_SOFTWARES.put(SoftwareBcellEnum.KOLASKAR, null);
-                    break;
-                case chou:
-                    Parameters.MAP_SOFTWARES.put(SoftwareBcellEnum.CHOU_FOSMAN, null);
-                    break;
-                case karplus:
-                    Parameters.MAP_SOFTWARES.put(SoftwareBcellEnum.KARPLUS_SCHULZ, null);
-                    break;
-                case parker:
-                    Parameters.MAP_SOFTWARES.put(SoftwareBcellEnum.PARKER, null);
-                    break;
-            }
-        }
+        Parameters.MAP_SOFTWARES.put(SoftwareBcellEnum.EMINI, null);
+        Parameters.MAP_SOFTWARES.put(SoftwareBcellEnum.KOLASKAR, null);
+        Parameters.MAP_SOFTWARES.put(SoftwareBcellEnum.CHOU_FOSMAN, null);
+        Parameters.MAP_SOFTWARES.put(SoftwareBcellEnum.KARPLUS_SCHULZ, null);
+        Parameters.MAP_SOFTWARES.put(SoftwareBcellEnum.PARKER, null);
+
         Parameters.BASENAME = basename;
+        Path p1 = Paths.get(Parameters.BASENAME);
+        Files.createDirectories(p1);
+
+        Parameters.BASENAME += "/"+Parameters.BASENAME;
+
         if (search != Search.none) {
             if (search == Search.direct_blast) {
-                try {
-                    Parameters.SEARCH_BLAST = true;
-                    Parameters.BLAST_TASK = blastTask;
-                    Parameters.BLAST_IDENTITY = blastIdentity;
-                    Parameters.BLAST_COVER = blastCover;
-                    Parameters.BLAST_WORD_SIZE = blastWordsize;
-
-                    if (operationalSystem == Parameters.SO.windows) {
-                        Parameters.BLASTP_PATH = String.format("%s/%s", operationalSystem.toString(), "blastp.exe");
-                        Parameters.MAKEBLASTDB_PATH = String.format("%s/%s", operationalSystem.toString(), "makeblastdb.exe");;
-                    } else if (operationalSystem == Parameters.SO.macos) {
-                        Parameters.BLASTP_PATH = String.format("blastp");
-                        Parameters.MAKEBLASTDB_PATH = String.format("makeblastdb");
-                    } else if (operationalSystem == Parameters.SO.linux) {
-                        Parameters.BLASTP_PATH = String.format("%s/%s", operationalSystem.toString(), "./blastp");
-                        Parameters.MAKEBLASTDB_PATH = String.format("%s/%s", operationalSystem.toString(), "./makeblastdb");
-                        BlastRunner.chmodBlast(operationalSystem);
-                    }
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                    System.out.println("Permission denied. EpiBuilder will continue without blast");
-                    Parameters.SEARCH_BLAST = false;
-                }
+                Parameters.SEARCH_BLAST = true;
+                Parameters.BLAST_TASK = blastTask;
+                Parameters.BLAST_IDENTITY = blastIdentity;
+                Parameters.BLAST_COVER = blastCover;
+                Parameters.BLAST_WORD_SIZE = blastWordsize;
+                Parameters.BLASTP_PATH = String.format("blastp");
+                Parameters.MAKEBLASTDB_PATH = String.format("makeblastdb");
             }
             ArrayList<Proteome> proteomeFiles = new ArrayList<>();
+
             addProteome(proteomeFiles, proteome1, proteome1Alias, 1);
             addProteome(proteomeFiles, proteome2, proteome2Alias, 2);
             addProteome(proteomeFiles, proteome3, proteome3Alias, 3);
@@ -152,7 +132,6 @@ public class BiolibMain implements Callable<Integer> {
                     String[] st = proteoma.split("=");
                     addProteome(proteomeFiles, st[1], st[0].trim(), ++totalProt);
                 }
-
             }
             if (proteomeFiles.isEmpty()) {
                 System.out.println("ERROR: Choose at least one proteome to perform the search");
@@ -160,7 +139,7 @@ public class BiolibMain implements Callable<Integer> {
             }
             Parameters.PROTEOMES = proteomeFiles;
         }
-        Parameters.OUTPUT_FILE = true;
+        Parameters.OUTPUT_FILE = false;
         EpitopeFinder.process();
         return 0;
     }
@@ -178,7 +157,7 @@ public class BiolibMain implements Callable<Integer> {
     }
 
     public static void main(String... args) {
-        System.out.println("EpiBuilder - Executing from Biolib");
+        System.out.println("EpiBuilder - Executing");
         System.out.println("Arguments");
         ArrayList<String> newArgs = new ArrayList<>();
         for (int i = 0; i < args.length; i++) {
@@ -189,14 +168,10 @@ public class BiolibMain implements Callable<Integer> {
             } else {
                 newArgs.add(arg);
             }
-            System.out.println(i + " - " + arg);
+            //System.out.println(i + " - " + arg);
         }
+
         args = newArgs.toArray(new String[0]);
-        System.out.println("New Arguments");
-        for (int i = 0; i < args.length; i++) {
-            String arg = args[i];
-            System.out.println(i + " - " + arg);
-        }
 
         System.out.println("Execution started");
         System.exit(new CommandLine(new BiolibMain()).execute(args));
@@ -245,7 +220,6 @@ public class BiolibMain implements Callable<Integer> {
     }
 
     private enum Search {
-        direct,
         direct_blast,
         none
     }

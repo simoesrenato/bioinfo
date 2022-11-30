@@ -2,6 +2,7 @@
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/Main.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/converter/BCellBepipred1Converter.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/entity/report/FormatHelper.java
+/Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/BiolibMainTest.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/BiolibMain.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/converter/ProteinConverter.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/converter/BepiPred3Converter.java
@@ -11,6 +12,7 @@
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/entity/SoftwareBCellMap.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/converter/IEDBBcellCalculator.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/entity/report/Report.java
+/Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/BepiPred3Runner.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/EpitopeFinder.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/gui/Main2.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/entity/Topology.java
@@ -20,6 +22,7 @@
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/converter/BCellBepipred2Converter.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/entity/report/ExcelReport.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/EpitopeCount.java
+/Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/CommandRunner.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/udesc/epibuilder/blast/Blast.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/udesc/cav/tese/glycosylation/Motif.java
 /Users/renato/Documents/GitHub/bioinfo/epibuilder/epibuilder-main/src/main/java/br/ufsc/epibuilder/proteomics/FastaAdjust.java

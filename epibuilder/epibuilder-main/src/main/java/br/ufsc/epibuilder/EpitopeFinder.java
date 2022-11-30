@@ -41,7 +41,6 @@ import br.ufsc.epibuilder.entity.report.FormatHelper;
 import br.ufsc.epibuilder.entity.report.Report;
 import br.ufsc.epibuilder.proteomics.ProteomicCalculator;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -180,19 +179,21 @@ public class EpitopeFinder {
             sout("Process started: ");
             ArrayList<ProteinConverter> proteins = new ArrayList<>();
 
-            sout("Reading BepiPred-2.0 Files");
-            if (Parameters.BEPIPRED_INPUT == Parameters.BEPIPRED_TYPE.JOB_ID) {
+            sout("Executing BepiPred-3.0");
+            if(Parameters.BEPIPRED_INPUT == BEPIPRED_TYPE.FASTA){
+                BepiPred3Runner.execute();
+                proteins = BepiPred3Converter.getBepipred3FromBiolib(BEPIPRED_FILE);
+            }else if (Parameters.BEPIPRED_INPUT == Parameters.BEPIPRED_TYPE.JOB_ID) {
                 proteins = BCellBepipred2Converter.getAllByJobID();
             }else if (Parameters.BEPIPRED_INPUT == Parameters.BEPIPRED_TYPE.BEPIPRED3_BIOLIB){
-                proteins = BepiPred3Converter.getBepipred3FromBiolab(BEPIPRED_FILE);
-            } 
-            else {
+                proteins = BepiPred3Converter.getBepipred3FromBiolib(BEPIPRED_FILE);
+            } else {
                 if(Parameters.BEPIPRED_INPUT == Parameters.BEPIPRED_TYPE.LOCAL){
                     BEPIPRED_FILE = BepiPredRunner.getBepiPred2Results(FASTA, BEPIPRED_TYPE.LOCAL);
                 }
                 proteins = BCellBepipred2Converter.getAll(BEPIPRED_FILE, Parameters.BEPIPRED_INPUT);
             }
-            sout("Reading BepiPred-2.0 Files - Done");
+            sout("BepiPred-3.0 - Done");
 
             Map<String, ProteinConverter> bepipredMap = getMap(proteins);
 

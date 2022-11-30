@@ -3,6 +3,7 @@ biolib_version: 2
 modules:
     main:
         image: 'dockerhub://clearlinux/openjdk:latest'
+#        image: 'dockerhub://simoesrenato/proteomic:latest'
         command: java -cp "epibuilder1.jar" BiolibMain
         working_directory: /home/biolib/
         input_files:

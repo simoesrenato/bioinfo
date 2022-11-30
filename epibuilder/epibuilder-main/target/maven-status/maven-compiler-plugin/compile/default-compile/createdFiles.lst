@@ -19,6 +19,7 @@ br/ufsc/epibuilder/entity/Epitopo$1.class
 br/ufsc/epibuilder/gui/Main2$37.class
 br/ufsc/epibuilder/gui/Main2$34.class
 br/ufsc/epibuilder/gui/Main2$14.class
+BiolibMainTest.class
 br/ufsc/epibuilder/EpitopeFinder.class
 br/ufsc/epibuilder/gui/Main2$48.class
 br/udesc/epibuilder/bepipred/BepiPredOnlineRunner$1.class
@@ -31,6 +32,7 @@ br/ufsc/epibuilder/Parameters$SO.class
 br/ufsc/epibuilder/gui/Main2$35.class
 br/ufsc/epibuilder/gui/Main2$25.class
 br/ufsc/epibuilder/proteomics/FastaAdjust.class
+br/ufsc/epibuilder/BepiPred3Runner.class
 br/ufsc/epibuilder/entity/report/ExcelReport.class
 br/ufsc/epibuilder/gui/Main2$3.class
 br/udesc/epibuilder/blast/ReportBlastJoiner.class
@@ -48,7 +50,6 @@ br/udesc/cav/tese/glycosylation/Motif.class
 br/ufsc/epibuilder/entity/report/FormatHelper.class
 br/ufsc/epibuilder/converter/ProteinConverter.class
 br/udesc/epibuilder/blast/Peptide.class
-BiolibMain$1.class
 br/ufsc/epibuilder/gui/Main2$24.class
 br/ufsc/epibuilder/entity/SoftwareBcellEnum.class
 br/ufsc/epibuilder/Parameters.class
@@ -81,6 +82,7 @@ br/ufsc/epibuilder/Main.class
 br/udesc/epibuilder/bepipred/BepiPredOnlineRunner.class
 br/ufsc/epibuilder/EpitopeCount.class
 br/ufsc/epibuilder/gui/Main2$7.class
+br/ufsc/epibuilder/CommandRunner.class
 br/ufsc/epibuilder/gui/Main2$38.class
 br/ufsc/epibuilder/gui/Main2$21.class
 br/ufsc/epibuilder/gui/Main2$15.class
