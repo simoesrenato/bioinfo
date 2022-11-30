@@ -36,7 +36,7 @@ public class BepiPred3Converter {
 
                 String[] fields = val.split(",");
                 String id = fields[0];
-                String aa = fields[1];
+                String aa = fields[1].toUpperCase();
                 double score = Double.parseDouble(fields[2]);
 
                 if (!protein.getId().equals(id)) {

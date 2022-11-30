@@ -36,3 +36,4 @@ RUN mkdir epibuilder/
 COPY example_antigens.fasta .
 COPY raw_output.csv .
 COPY epibuilder-2.jar epibuilder/
+CMD ["bash"]

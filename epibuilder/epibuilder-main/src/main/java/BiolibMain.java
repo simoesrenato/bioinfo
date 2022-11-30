@@ -17,7 +17,7 @@ import java.util.concurrent.Callable;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 
-@Command(name = "EpiBuilder-1.1", requiredOptionMarker = '*', abbreviateSynopsis = true,
+@Command(name = "EpiBuilder-2.0", requiredOptionMarker = '*', abbreviateSynopsis = true,
         description = "A Tool for Assembling, Searching, and Classifying B-Cell Epitopes", version = "1.1", sortOptions = false)
 public class BiolibMain implements Callable<Integer> {
 
