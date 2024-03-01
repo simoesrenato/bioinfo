@@ -27,7 +27,7 @@ public class FastaAdjust {
         while (s.hasNext()) {
             String ln = s.nextLine();
             if (ln.startsWith(">")) {
-                proteina = new ProteinConverter(ln.substring(1));
+                proteina = new ProteinConverter(ln.substring(1, ln.indexOf(" ")));
                 proteins.add(proteina);
             } else {
                 proteina.append(ln);
@@ -35,4 +35,5 @@ public class FastaAdjust {
         }
         return proteins;
     }
+
 }

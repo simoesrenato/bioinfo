@@ -7,8 +7,8 @@
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>19</maven.compiler.source>
+        <maven.compiler.target>19</maven.compiler.target>
     </properties>
     
     <build>
@@ -26,18 +26,18 @@
                             <archive>
                                 <index>true</index>
                                 <manifest>
-                                    <mainClass>BiolibMain</mainClass>
+                                    <mainClass>Main</mainClass>
                                 </manifest>
                                 <manifestEntries>
                                     <Multi-Release>true</Multi-Release>
                                 </manifestEntries>
                                 <manifestSections>
                                     <manifestSection>
-                                        <name>fast-protein</name>
+                                        <name>epibuilder</name>
                                         <manifestEntries>
                                             <Project-Name>${project.artifactId}</Project-Name>
                                             <Project-Version>${project.version}</Project-Version>
-                                            <Project-Built-Date>${build.timestamp}</Project-Built-Date>
+                                            <Project-Built-Date>${maven.build.timestamp}</Project-Built-Date>
                                         </manifestEntries>
                                     </manifestSection>
                                 </manifestSections>
@@ -45,17 +45,7 @@
                             <descriptorRefs>
                                 <descriptorRef>jar-with-dependencies</descriptorRef>
                             </descriptorRefs>
-                            
-                            <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>BiolibMain</mainClass>
-                                    <manifestEntries>
-                                        <Multi-Release>true</Multi-Release>
-                                    </manifestEntries>
-                                </transformer>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
-                            </transformers>
-                        </configuration>
+                         </configuration>
                     </execution>
                 </executions>
             </plugin>

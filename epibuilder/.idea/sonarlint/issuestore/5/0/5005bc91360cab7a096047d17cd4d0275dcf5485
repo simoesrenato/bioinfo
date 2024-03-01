@@ -1,0 +1,32 @@
+
+†
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Ùãşê
+‹
+java:S1319O"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(‹îº şÿÿÿÿ
+‚
+java:S1319Œ"kThe type of "list_values" should be an interface such as "List" rather than the implementation "ArrayList".(ä†É
+‚
+java:S1319“"kThe type of "list_values" should be an interface such as "List" rather than the implementation "ArrayList".(Ì¿Ì£
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™¦¿Ÿùÿÿÿÿ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÇÉÕ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾†òµ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Å¨ğ¶üÿÿÿÿ
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶•İüÿÿÿÿ
+e	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êùÚD
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†öØÓøÿÿÿÿ
+k	java:S117Q"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†öØÓøÿÿÿÿ
+f	java:S117]"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“‚É¶
+g	java:S117Œ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ä†É
+g	java:S117“"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ì¿Ì£
+2
+java:S16438"Use a StringBuilder instead.(”šÕ¼
+2
+java:S1643b"Use a StringBuilder instead.(”šÕ¼
+U
+java:S1118":Add a private constructor to hide the implicit public one.(ùœ˜·úÿÿÿÿ
+h
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(Ùãşê
+m
+java:S3776O"RRefactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed.(‹îº şÿÿÿÿ
+A	java:S106"+Replace this use of System.out by a logger.(òÎò­
+F	java:S106"+Replace this use of System.out by a logger.(¢­Ë‡ıÿÿÿÿ

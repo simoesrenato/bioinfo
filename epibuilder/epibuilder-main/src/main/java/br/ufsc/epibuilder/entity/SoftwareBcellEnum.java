@@ -15,7 +15,7 @@ public enum SoftwareBcellEnum {
     EMINI("Emini", 6, 3),
     KARPLUS_SCHULZ("Karplus Schulz", 7, 4), 
     KOLASKAR("Kolaskar", 7, 4), 
-    BEPIPRED2("BepiPred-2.0", 0, 0);
+    BEPIPRED("BepiPred-3.0", 0, 0);
 
     public int window;
     public int center;

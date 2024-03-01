@@ -15,7 +15,7 @@ public class CommandRunner {
 
     public static void run(String command) throws IOException, InterruptedException {
         String s;
-        // System.out.println("Executing: " + command);
+        System.out.println("Executing: " + command);
         Process p = Runtime.getRuntime().exec(command);
         p.waitFor();
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));

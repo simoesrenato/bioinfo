@@ -69,7 +69,7 @@ public class ProteinConverter {
     }
 
     public void append(String ln) {
-        sequence.append(ln);
+        sequence.append(ln.trim());
     }
 
     public class Amino {

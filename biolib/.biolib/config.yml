@@ -1,0 +1,21 @@
+biolib_version: 2
+
+modules:
+    main:
+        image: 'dockerhub://simoesrenato/proteomic:latest'        
+        command: java -cp "TesteJava-0.1.jar" TesteMain
+        working_directory: /home/biolib/
+        input_files:
+            - COPY / /home/biolib/
+        output_files:
+            - COPY /home/biolib/ /
+        source_files:
+            - COPY / /home/biolib/
+
+arguments:
+    -
+        default_value: 'Renato'
+        description: 'Qual seu nome?'
+        key: '--input'
+        required: true
+        type: text

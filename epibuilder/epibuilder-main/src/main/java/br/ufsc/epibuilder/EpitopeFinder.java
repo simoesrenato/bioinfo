@@ -6,12 +6,10 @@ package br.ufsc.epibuilder;
  * and open the template in the editor.
  */
 import br.udesc.cav.tese.glycosylation.Motif;
-import br.udesc.epibuilder.bepipred.BepiPredRunner;
 import br.udesc.epibuilder.blast.Blast;
 import static br.udesc.epibuilder.blast.BlastRunner.getBlastResults;
 import br.udesc.epibuilder.blast.ReportBlastJoiner;
 import br.ufsc.epibuilder.entity.Proteome;
-import br.ufsc.epibuilder.converter.BCellBepipred2Converter;
 import br.ufsc.epibuilder.converter.IEDBBcellCalculator;
 import br.ufsc.epibuilder.converter.ProteinConverter;
 
@@ -179,20 +177,15 @@ public class EpitopeFinder {
             sout("Process started: ");
             ArrayList<ProteinConverter> proteins = new ArrayList<>();
 
-            sout("Executing BepiPred-3.0");
+            sout("Reading BepiPred-3.0 file");
             if(Parameters.BEPIPRED_INPUT == BEPIPRED_TYPE.FASTA){
+                sout("Source file: FASTA");
+                sout("Executing BepiPred-3.0");
                 BepiPred3Runner.execute();
-                proteins = BepiPred3Converter.getBepipred3FromBiolib(BEPIPRED_FILE);
-            }else if (Parameters.BEPIPRED_INPUT == Parameters.BEPIPRED_TYPE.JOB_ID) {
-                proteins = BCellBepipred2Converter.getAllByJobID();
-            }else if (Parameters.BEPIPRED_INPUT == Parameters.BEPIPRED_TYPE.BEPIPRED3_BIOLIB){
-                proteins = BepiPred3Converter.getBepipred3FromBiolib(BEPIPRED_FILE);
-            } else {
-                if(Parameters.BEPIPRED_INPUT == Parameters.BEPIPRED_TYPE.LOCAL){
-                    BEPIPRED_FILE = BepiPredRunner.getBepiPred2Results(FASTA, BEPIPRED_TYPE.LOCAL);
-                }
-                proteins = BCellBepipred2Converter.getAll(BEPIPRED_FILE, Parameters.BEPIPRED_INPUT);
+                sout("BepiPred-3.0 finished");
             }
+            sout("Loading BepiPred-3.0 - CSV file");
+            proteins = BepiPred3Converter.getBepipred3FromBiolib(BEPIPRED_FILE);
             sout("BepiPred-3.0 - Done");
 
             Map<String, ProteinConverter> bepipredMap = getMap(proteins);
@@ -253,7 +246,7 @@ public class EpitopeFinder {
 
             sout("Building epitopes");
             for (Protein re : proteinList) {
-                re.process(THRESHOLD_BEPIPRED, MIN_LENGTH_BEPIPRED2, MAX_LENGTH_BEPIPRED2);
+                re.process(THRESHOLD_BEPIPRED, MIN_LENGTH_BEPIPRED, MAX_LENGTH_BEPIPRED);
                 for (Epitopo epitopo : re.getEpitopes()) {
                     totalEpitopes++;
                     if (epitopo.isNglycolised()) {
@@ -353,9 +346,9 @@ public class EpitopeFinder {
             sout("\t Parameters\t");
             StringBuilder stParameters = new StringBuilder();
             stParameters.append("\n---- Running Parameters ----");
-            stParameters.append("\nBepiPred-2.0 Threshold : " + THRESHOLD_BEPIPRED);
-            stParameters.append("\nMin epitope length     : " + MIN_LENGTH_BEPIPRED2);
-            stParameters.append("\nMax epitope length     : " + MAX_LENGTH_BEPIPRED2);
+            stParameters.append("\nBepiPred-3.0 Threshold : " + THRESHOLD_BEPIPRED);
+            stParameters.append("\nMin epitope length     : " + MIN_LENGTH_BEPIPRED);
+            stParameters.append("\nMax epitope length     : " + MAX_LENGTH_BEPIPRED);
             stParameters.append("\n");
             stParameters.append("\n---- Softwares Threshold ----");
             if (Parameters.MAP_SOFTWARES.containsKey(EMINI)) {
@@ -390,9 +383,9 @@ public class EpitopeFinder {
             }
             stParameters.append("\n\n---- Stats ----");
             stParameters.append("\nProcessed proteins     : " + proteinList.size());
-            stParameters.append("\nNGlycosylated proteins : " + totalNglyc);
+            stParameters.append("\nN-Glycosylated proteins : " + totalNglyc);
             stParameters.append("\nIdentified epitopes    : " + totalEpitopes);
-            stParameters.append("\nN-glycosylated epitopes: " + totalEpitopesNglyc);
+            stParameters.append("\nN-Glycosylated epitopes: " + totalEpitopesNglyc);
             stParameters.append("\n");
             String fileParameters = saveRandomFileName(dest + "/" + basename + "epibuilder-parameters", stParameters.toString(), "txt");
             sout("\t Parameters - done\t");
@@ -460,7 +453,7 @@ public class EpitopeFinder {
                 ExcelReport.generateExcelXlsx(excelTab, fileEpibuilderExcel);
                 excelReport = true;
             } catch (Exception e) {
-                System.err.println("Error generating excel files:" + e.getMessage());
+                sout("Error generating excel files:" + e.getMessage());
                 e.printStackTrace();
             }
 
@@ -486,9 +479,9 @@ public class EpitopeFinder {
             sout("Finish\t");
             return stReport.toString();
         } catch (Exception e) {
+            sout("An error occured: "+ e.getMessage());
             e.printStackTrace();
             return e.getMessage();
-
         }
     }
 
@@ -547,7 +540,7 @@ public class EpitopeFinder {
             sb.append(String.format("%s\t%s\t%s\t%.2f\t%.2f\t-\t%s",
                     count++,
                     report.getProteinId(),
-                    StringUtils.leftPad(SoftwareBcellEnum.BEPIPRED2.description, 15, ' '),
+                    StringUtils.leftPad(SoftwareBcellEnum.BEPIPRED.description, 15, ' '),
                     Parameters.THRESHOLD_BEPIPRED,
                     report.getAvgBepipredScore(),
                     report.getEpitope()));
@@ -632,7 +625,7 @@ public class EpitopeFinder {
         }
 
         StringBuilder sb = new StringBuilder();
-        sb.append("N\tId\tEpitope\tStart\tEnd\tN-Glyc\tN-Glyc-Count\tN-Glyc-Motifs\tLength\tMW(kDa)\tI.P\tHydropathy\tAll Matches Cover\tAvg Cover\tBepiPred2" + stMethod + stOrganismCount + "\n");
+        sb.append("N\tId\tEpitope\tStart\tEnd\tN-Glyc\tN-Glyc-Count\tN-Glyc-Motifs\tLength\tMW(kDa)\tI.P\tHydropathy\tAll Matches Cover\tAvg Cover\tBepiPred3" + stMethod + stOrganismCount + "\n");
         int count = 1;
         for (Report report : reportList) {
             String stOrganismEpitopeCount = "";
@@ -688,7 +681,7 @@ public class EpitopeFinder {
         for (SoftwareBcellEnum softwareBcellEnum : Parameters.MAP_SOFTWARES.keySet()) {
             stMethod += "\t" + softwareBcellEnum.description;
         }
-        StringBuffer sb = new StringBuffer("Id\tPosition\tResidue\tBepipred2" + stMethod + "\tMW\tIP\tHydropathy\n");
+        StringBuffer sb = new StringBuffer("Id\tPosition\tResidue\tBepipred3" + stMethod + "\tMW\tIP\tHydropathy\n");
         for (Protein proteina : proteinas) {
             for (AminoEpitopo aminoEpitopo : proteina.getAminoEpitopos()) {
 

@@ -20,8 +20,8 @@ public class Parameters {
 
     public static SO OPERATIONAL_SYSTEM = SO.linux;
     public static double THRESHOLD_BEPIPRED = 0.6;
-    public static int MIN_LENGTH_BEPIPRED2 = 10;
-    public static int MAX_LENGTH_BEPIPRED2 = 30;
+    public static int MIN_LENGTH_BEPIPRED = 10;
+    public static int MAX_LENGTH_BEPIPRED = 30;
     public static int LENGTH_SEQUENCE_EMINI_PARKER = 10;
     public static File BEPIPRED_FILE = null;
     public static File EMINI_FILE = null;
@@ -46,7 +46,7 @@ public class Parameters {
     }
 
     public enum BEPIPRED_TYPE {
-        BCELL_STANDALONE("bcell_bepipred2"), ONLINE("online"), JOB_ID("job_id"), LOCAL("local"), BEPIPRED3_BIOLIB("bepipred3_biolib"), FASTA("fasta");
+        CSV("csv"), FASTA("fasta");
         private final String name;
 
         private BEPIPRED_TYPE(String name) {
@@ -58,12 +58,7 @@ public class Parameters {
         }
     };
 
-    public static BEPIPRED_TYPE BEPIPRED_INPUT = BEPIPRED_TYPE.BCELL_STANDALONE;
-
-    public static String BEPIPRED2_PATH = "BepiPred-2.0";
-    public static String BEPIPRED2_BCELL_STANDALONE_PATH = "predict_antibody_epitope.py";
-    public static String BEPIPRED2_JOBID;
-    public static String BEPIPRED2_JOBID_FILE;
+    public static BEPIPRED_TYPE BEPIPRED_INPUT = BEPIPRED_TYPE.FASTA;
     public static String DESTINATION_FOLDER = ".";
     public static boolean OUTPUT_FILE = false;
     public static boolean HIT_ACCESSION = true;

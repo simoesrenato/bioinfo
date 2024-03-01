@@ -6,6 +6,8 @@
 package br.ufsc.epibuilder.converter;
 
 import br.ufsc.epibuilder.exceptions.InputException;
+
+import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -49,6 +51,7 @@ public class BepiPred3Converter {
                 e.printStackTrace();
                 throw new InputException(e);
             }
+
         }
         return proteins;
     }
